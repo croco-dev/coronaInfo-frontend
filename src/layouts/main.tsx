@@ -46,6 +46,7 @@ const MainLayout: React.FC = props => {
       setIsMobile(true)
     } else {
       setIsMobile(false)
+      setSidebar(false) // desktop 버전으로 가면 사이드바 해제해놓기
     }
   }
 
