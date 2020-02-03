@@ -7,7 +7,7 @@ const EmojiBox = styled.span`
     height: 1em;
     width: 1em;
     margin: 0 0.05em 0 0.1em;
-    vertical-align: -0.1em;
+    vertical-align: -0.2em;
   }
 `
 
@@ -22,7 +22,9 @@ const Emoji: React.FC<EmojiProps> = props => {
   }
   return (
     <EmojiBox role="img">
-      <Twemoji options={TwemojiOptions}>{props.str}</Twemoji>
+      <Twemoji tag="span" options={TwemojiOptions}>
+        {props.str}
+      </Twemoji>
     </EmojiBox>
   )
 }
