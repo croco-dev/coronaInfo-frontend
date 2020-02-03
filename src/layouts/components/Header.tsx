@@ -11,6 +11,7 @@ const EditedContainer = styled(Container)`
 const Nav = styled.nav`
   background: #fff;
   height: 60px;
+  z-index: 1;
 `
 
 const NavLogo = styled.a`
