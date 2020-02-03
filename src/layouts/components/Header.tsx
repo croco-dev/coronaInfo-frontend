@@ -37,6 +37,14 @@ const NavRight = styled.div`
   margin-left: auto;
 `
 
+const NavButton = styled.a`
+  background: var(--main);
+  border-radius: 30px;
+  color: #fff;
+  padding: 12px 48px;
+  font-weight: 500;
+`
+
 const Header: React.FC = () => {
   return (
     <Nav>
@@ -50,7 +58,9 @@ const Header: React.FC = () => {
           <li>실시간 피드</li>
           <li>커뮤니티 게시판</li>
         </NavMenu>
-        <NavRight>Right</NavRight>
+        <NavRight>
+          <NavButton>로그인</NavButton>
+        </NavRight>
       </EditedContainer>
     </Nav>
   )
