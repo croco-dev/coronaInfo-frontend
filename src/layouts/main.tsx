@@ -30,7 +30,7 @@ const SidebarWrapper = styled.div`
   right: 0;
   z-index: 30;
   visibility: hidden;
-  transition: visibility 0s, left 0.4s ease-in-out;
+  transition: visibility 0s, left 0.3s ease-in-out;
   &.show {
     visibility: visible;
     left: 0;
