@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import Footer from '@/layouts/components/Footer'
+const Footer = dynamic(() => import('@/layouts/components/Footer'))
 
 const MainLayout: React.FC = props => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
@@ -12,6 +12,10 @@ const MainLayout: React.FC = props => {
     } else {
       setIsMobile(false)
     }
+  }
+
+  const sidebarChange = () => {
+    sidebar ? setSidebar(false) : setSidebar(true)
   }
 
   useEffect(() => {
@@ -29,7 +33,7 @@ const MainLayout: React.FC = props => {
     const HeaderMobile = dynamic(() => import('@/layouts/components/HeaderMobile'))
     return (
       <>
-        <HeaderMobile />
+        <HeaderMobile sidebarChange={sidebarChange} />
         {props.children}
         <Footer />
       </>

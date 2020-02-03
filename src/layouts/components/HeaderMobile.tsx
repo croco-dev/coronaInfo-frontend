@@ -7,6 +7,8 @@ const EditedContainer = styled(Container)`
   display: flex;
   height: 100%;
   position: relative;
+  justify-content: space-between;
+  padding: 0 10px;
 `
 
 const Nav = styled.nav`
@@ -26,10 +28,39 @@ const NavLogo = styled.a`
   }
 `
 
-const Header: React.FC = () => {
+const Menubar = styled.button`
+  background: transparent;
+  border: 0;
+  height: 100%;
+  outline: none;
+  cursor: pointer;
+`
+
+interface HeaderProps {
+  sidebarChange: () => void
+}
+
+const Header: React.FC<HeaderProps> = props => {
   return (
     <Nav>
       <EditedContainer>
+        <Menubar onClick={props.sidebarChange}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </Menubar>
         <NavLogo>
           <span>코로나</span>인포
         </NavLogo>
