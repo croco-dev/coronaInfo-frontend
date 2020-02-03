@@ -1,0 +1,19 @@
+// Reset
+@import './libraries/reset';
+
+:root {
+  --main: #c361ff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f8f8f8;
+  color: #2c2c2c;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.9rem;
+}
