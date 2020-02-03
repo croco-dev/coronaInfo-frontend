@@ -71,7 +71,7 @@ const MainLayout: React.FC = props => {
       <>
         <SideBackground className={sidebar && 'show'} onClick={sidebarChange} />
         <SidebarWrapper className={sidebar && 'show'}>
-          <Sidebar />
+          <Sidebar sidebarChange={sidebarChange} />
         </SidebarWrapper>
         <HeaderMobile sidebarChange={sidebarChange} />
         {props.children}
