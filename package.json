@@ -9,6 +9,8 @@
     "lint": "eslint --ext .js,.ts,.jsx,.tsx --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
     "@zeit/next-sass": "^1.0.1",
     "next": "9.2.1",
     "node-sass": "^4.13.1",
@@ -20,6 +22,7 @@
     "@types/react": "^16.9.19",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
+    "babel-plugin-emotion": "^10.0.27",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-config-react-app": "^5.2.0",
