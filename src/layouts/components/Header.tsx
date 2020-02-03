@@ -42,7 +42,7 @@ const NavButton = styled.a`
   background: var(--main);
   border-radius: 30px;
   color: #fff;
-  padding: 12px 48px;
+  padding: 10px 48px;
   font-weight: 500;
 `
 
