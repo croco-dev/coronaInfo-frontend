@@ -2,10 +2,6 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Twemoji from 'react-twemoji'
 
-interface EmojiProps {
-  children?: React.ReactNode
-}
-
 const EmojiBox = styled.span`
   .emoji {
     height: 1em;
@@ -15,14 +11,18 @@ const EmojiBox = styled.span`
   }
 `
 
-const Emoji: React.FC = (props: EmojiProps) => {
+interface EmojiProps {
+  str: string
+}
+
+const Emoji: React.FC<EmojiProps> = props => {
   const TwemojiOptions = {
     folder: 'svg',
     ext: '.svg',
   }
   return (
-    <EmojiBox>
-      <Twemoji options={TwemojiOptions}>{props.children}</Twemoji>
+    <EmojiBox role="img">
+      <Twemoji options={TwemojiOptions}>{props.str}</Twemoji>
     </EmojiBox>
   )
 }
