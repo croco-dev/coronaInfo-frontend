@@ -1,6 +1,7 @@
 /* eslint-disable */
 const withSass = require('@zeit/next-sass')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = withSass({
   poweredByHeader: false,
