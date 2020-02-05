@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from '@emotion/styled'
 import { RenderAfterNavermapsLoaded, NaverMap } from 'react-naver-maps'
 
 const naverMapClientId = 'qp7da4lz69'
