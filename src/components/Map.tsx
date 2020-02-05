@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { RenderAfterNavermapsLoaded, NaverMap } from 'react-naver-maps'
 
 const naverMapClientId = 'qp7da4lz69'
@@ -10,10 +10,10 @@ const Map: React.FC = () => {
         mapDivId={'coronaMap'} // default: react-naver-map
         style={{
           width: '100%',
-          height: '500px',
+          height: '40vh',
         }}
-        defaultCenter={{ lat: 37.3595704, lng: 127.105399 }}
-        defaultZoom={10}
+        defaultCenter={{ lat: 37.5840928, lng: 126.9666966 }}
+        defaultZoom={8}
       />
     </RenderAfterNavermapsLoaded>
   )
