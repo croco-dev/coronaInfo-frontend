@@ -1,22 +1,14 @@
-import React, { useState } from 'react'
-import { RenderAfterNavermapsLoaded, NaverMap } from 'react-naver-maps'
+import React from 'react'
+import { Map, Marker, MarkerClusterer, Polyline } from 'react-kakao-maps'
 
-const naverMapClientId = 'qp7da4lz69'
-
-const Map: React.FC = () => {
+const MapComponent: React.FC = () => {
   return (
-    <RenderAfterNavermapsLoaded ncpClientId={naverMapClientId}>
-      <NaverMap
-        mapDivId={'coronaMap'} // default: react-naver-map
-        style={{
-          width: '100%',
-          height: '40vh',
-        }}
-        defaultCenter={{ lat: 37.5840928, lng: 126.9666966 }}
-        defaultZoom={8}
-      />
-    </RenderAfterNavermapsLoaded>
+    <>
+      <div style={{ width: '100%', height: '450px' }}>
+        <Map options={{ center: new kakao.maps.LatLng(37.5840928, 126.9666966), level: 11 }}></Map>
+      </div>
+    </>
   )
 }
 
-export default Map
+export default MapComponent
