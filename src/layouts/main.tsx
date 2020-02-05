@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import dynamic from 'next/dynamic'
+
 const HeaderMobile = dynamic(() => import('@/layouts/components/HeaderMobile'))
 const Header = dynamic(() => import('@/layouts/components/Header'))
 const Footer = dynamic(() => import('@/layouts/components/Footer'))
