@@ -16,7 +16,7 @@
     "node-sass": "^4.13.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "react-kakao-maps": "Musma/react-kakao-maps",
+    "react-naver-maps": "^0.0.13",
     "react-twemoji": "^0.2.3"
   },
   "devDependencies": {

@@ -1,24 +1,23 @@
-import React from 'react'
-import { Map, Marker, MarkerClusterer } from 'react-kakao-maps'
+import React, { useRef, useEffect } from 'react'
+import { RenderAfterNavermapsLoaded, NaverMap } from 'react-naver-maps'
+
+const naverMapClientId = 'qp7da4lz69'
+declare const naver: any
 
 const MapComponent: React.FC = () => {
-  const cOptions = new kakao.maps.MarkerClusterer({
-    averageCenter: true,
-    minLevel: 10,
-  })
   return (
     <>
-      <div style={{ width: '100%', height: '450px' }}>
-        <Map options={{ center: new kakao.maps.LatLng(37.5840928, 126.9666966), level: 11 }}>
-          <MarkerClusterer options={cOptions}>
-            <Marker
-              options={{
-                position: new kakao.maps.LatLng(33.450701, 126.570667),
-              }}
-            />
-          </MarkerClusterer>
-        </Map>
-      </div>
+      <RenderAfterNavermapsLoaded ncpClientId={naverMapClientId}>
+        <NaverMap
+          mapDivId={'dash-map'} // default: react-naver-map
+          style={{
+            width: '100%',
+            height: '45vh',
+          }}
+          defaultCenter={{ lat: 37.3213564, lng: 127.0978459 }}
+          defaultZoom={8}
+        />
+      </RenderAfterNavermapsLoaded>
     </>
   )
 }
