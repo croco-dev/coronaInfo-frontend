@@ -1234,7 +1234,7 @@ declare namespace kakao.maps {
     /**
      * 클러스터링 할 마커 배열
      */
-    markers: Marker[]
+    markers?: Marker[]
 
     /**
      * 클러스터의 격자 크기.
