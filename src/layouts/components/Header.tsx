@@ -29,9 +29,12 @@ const NavMenu = styled.ul`
   display: flex;
   list-style: none;
   margin-left: 20px;
-  li {
+  li,
+  a {
     padding: 0 13px;
     font-size: 0.95rem;
+    text-decoration: none;
+    color: #585858;
   }
 `
 
@@ -60,7 +63,9 @@ const Header: React.FC = () => {
         <NavMenu>
           <li>지도</li>
           <li>영상 모아보기</li>
-          <li>실시간 피드</li>
+          <Link href="/feeds">
+            <a>실시간 피드</a>
+          </Link>
           <li>커뮤니티 게시판</li>
         </NavMenu>
         {/* <NavRight>
