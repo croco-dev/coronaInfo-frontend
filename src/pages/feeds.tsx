@@ -22,7 +22,9 @@ const DataBox = styled.div`
 `
 
 const CardBox = styled.div`
-  border: 1px solid #e8e8e8;
+  border: 1px solid #dadada;
+  border-left: 6px solid var(--main);
+  border-radius: 4px;
   padding: 20px 15px;
   margin: 25px 0;
   .raw {
