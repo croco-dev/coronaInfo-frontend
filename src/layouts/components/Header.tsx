@@ -18,6 +18,7 @@ const Nav = styled.nav`
 const NavLogo = styled.a`
   font-size: 1.3rem;
   text-decoration: none;
+  color: #2c2c2c;
   span {
     color: var(--main);
     font-weight: 700;
