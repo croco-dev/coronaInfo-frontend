@@ -38,6 +38,7 @@ const Aside = styled.aside`
 const NavLogo = styled.a`
   font-size: 1.4rem;
   line-height: 1.1;
+  cursor: pointer;
   span {
     color: var(--main);
     font-weight: 700;
@@ -52,11 +53,14 @@ const Sidebar: React.FC<SidebarProps> = props => {
   return (
     <Aside>
       <div className="logo">
-        <NavLogo>
-          <span>코로나</span>
-          <br />
-          인포
-        </NavLogo>
+        <Link href="/">
+          <NavLogo>
+            <span>코로나</span>
+            <br />
+            인포
+          </NavLogo>
+        </Link>
+
         <button onClick={props.sidebarChange}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

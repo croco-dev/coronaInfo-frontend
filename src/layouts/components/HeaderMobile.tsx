@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Container from '@/components/Container'
+import Link from 'next/link'
 
 const EditedContainer = styled(Container)`
   align-items: center;
@@ -22,6 +23,7 @@ const NavLogo = styled.a`
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   font-size: 1.3rem;
+  cursor: pointer;
   span {
     color: var(--main);
     font-weight: 700;
@@ -61,9 +63,11 @@ const Header: React.FC<HeaderProps> = props => {
             <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </Menubar>
-        <NavLogo>
-          <span>코로나</span>인포
-        </NavLogo>
+        <Link href="/">
+          <NavLogo>
+            <span>코로나</span>인포
+          </NavLogo>
+        </Link>
       </EditedContainer>
     </Nav>
   )
