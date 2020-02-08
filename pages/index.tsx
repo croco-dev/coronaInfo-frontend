@@ -1,20 +1,39 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../layouts/main'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
-import ReactGA from 'react-ga'
-const Map = dynamic(() => import('../components/Map'), { ssr: false })
 
 const Home = ({ data }): JSX.Element => {
+  const [isMobile, setIsMobile] = useState(false) // 모바일 여부
+  const resizeEvent = () => {
+    if (window.innerWidth < 992) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
+
   useEffect(() => {
-    ReactGA.initialize('UA-158027501-01')
-    ReactGA.pageview(window.location.pathname)
+    if (typeof window !== 'undefined') {
+      resizeEvent()
+      window.addEventListener('resize', resizeEvent)
+      return () => {
+        window.removeEventListener('resize', resizeEvent)
+      }
+    }
   }, [])
-  return (
-    <Layout>
-      <Map movements={data} />
-    </Layout>
-  )
+
+  const checkRender = () => {
+    if (isMobile) {
+      const Mobile = dynamic(() => import('../components/Main/Mobile'))
+      return <Mobile markerData={data} />
+    } else {
+      const Desktop = dynamic(() => import('../components/Main/Desktop'))
+      return <Desktop markerData={data} />
+    }
+  }
+
+  return <Layout>{checkRender()}</Layout>
 }
 
 Home.getInitialProps = async () => {
