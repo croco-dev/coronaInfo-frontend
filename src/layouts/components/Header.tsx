@@ -30,7 +30,6 @@ const NavMenu = styled.ul`
   display: flex;
   list-style: none;
   margin-left: 20px;
-  li,
   a {
     padding: 0 13px;
     font-size: 0.95rem;
@@ -63,13 +62,15 @@ const Header: React.FC = () => {
         </Link>
         <NavMenu>
           <Link href="/">
-            <li>지도</li>
+            <a>지도</a>
           </Link>
-          <li>영상 모아보기</li>
+          <Link href="/videos">
+            <a>영상 모아보기</a>
+          </Link>
           <Link href="/feeds">
             <a>실시간 피드</a>
           </Link>
-          <li>커뮤니티 게시판</li>
+          {/* <li>커뮤니티 게시판</li> */}
         </NavMenu>
         {/* <NavRight>
           <NavButton>로그인</NavButton>

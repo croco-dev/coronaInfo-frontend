@@ -23,7 +23,11 @@ const Aside = styled.aside`
     padding: 30px 0;
     ul {
       list-style: none;
+      a,
       li {
+        color: inherit;
+        text-decoration: none;
+        display: list-item;
         padding: 12px 0;
         font-size: 1rem;
       }
@@ -73,13 +77,15 @@ const Sidebar: React.FC<SidebarProps> = props => {
       <div className="menu">
         <ul>
           <Link href="/">
-            <li>지도</li>
+            <a>지도</a>
           </Link>
-          <li>영상 모아보기</li>
+          <Link href="/videos">
+            <a>영상 모아보기</a>
+          </Link>
           <Link href="/feeds">
-            <li>실시간 피드</li>
+            <a>실시간 피드</a>
           </Link>
-          <li>커뮤니티 게시판</li>
+          {/* <li>커뮤니티 게시판</li> */}
         </ul>
       </div>
     </Aside>
