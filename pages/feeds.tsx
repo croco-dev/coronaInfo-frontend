@@ -52,8 +52,10 @@ const FeedPage = ({ data }): JSX.Element => {
     return (
       <>
         <CardBox>
-          {data.date}, {data.index}번째 확진자의{' '}
-          {data.log_type === 'movements' ? '이동경로' : '정보'}가 변경되었습니다.
+          {data.date}, {data.index}번째 확진자가{' '}
+          {data.log_type === 'movements'
+            ? '이동경로 정보가 업데이트되었습니다.'
+            : '확진 및 격리되었습니다.'}
           {data.place ? <span className="raw">{data.place}</span> : <></>}
         </CardBox>
       </>
