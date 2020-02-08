@@ -53,7 +53,7 @@ const FeedPage = ({ data }): JSX.Element => {
       <>
         <CardBox>
           {data.date}, {data.index}번째 확진자의{' '}
-          {data.log_type === 'movement' ? '이동경로' : '정보'} 가 변경되었습니다.
+          {data.log_type === 'movements' ? '이동경로' : '정보'}가 변경되었습니다.
           {data.place ? <span className="raw">{data.place}</span> : <></>}
         </CardBox>
       </>
