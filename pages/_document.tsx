@@ -14,6 +14,7 @@ export default class MyDocument extends Document {
             name="google-site-verification"
             content="f3t63McdfQwW6s1PtPOOaR_RifZvgwGRjMp0epjbSsU"
           />
+          <meta name="naver-site-verification" content="d8d7494c6be7247cda2c620579801dacba054b4a" />
           <meta name="description" content="코로나 바이러스 정보를 알려드립니다!" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="코로나인포 - Corona Info" />
