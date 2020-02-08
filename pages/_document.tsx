@@ -10,6 +10,10 @@ export default class MyDocument extends Document {
             name="keywords"
             content="코로나, 코로나 치료법, 코로나 바이러스, 현황, 코로나 현황, 코로나 치료법 현황, 코로나 정보, 코로나 지도, 코로나 맵"
           />
+          <meta
+            name="google-site-verification"
+            content="f3t63McdfQwW6s1PtPOOaR_RifZvgwGRjMp0epjbSsU"
+          />
           <meta name="description" content="코로나 바이러스 정보를 알려드립니다!" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="코로나인포 - Corona Info" />
