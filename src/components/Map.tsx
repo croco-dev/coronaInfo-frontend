@@ -21,9 +21,15 @@ const Map = ({ movements }): JSX.Element => {
         defaultCenter={{ lat: 37.3213564, lng: 127.0978459 }}
         defaultZoom={8}
       >
-        {movements.map(item => {
+        {movements.map((item, i) => {
           const navermaps = window.naver.maps
-          return <Marker position={new navermaps.LatLng(item.lat, item.lng)} title={item.place} />
+          return (
+            <Marker
+              key={i}
+              position={new navermaps.LatLng(item.lat, item.lng)}
+              title={item.place}
+            />
+          )
         })}
       </NaverMap>
     </>

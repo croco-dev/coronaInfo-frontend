@@ -106,6 +106,10 @@ Videos.getInitialProps = async () => {
       url: 'https://www.youtube.com/watch?v=C7ZXQbtMx-M',
     },
     {
+      title: "'신종 코로나' 추가 확진자 없지만...의심환자 급증 / YTN",
+      url: 'https://www.youtube.com/watch?v=Pmcmwh5A6D8',
+    },
+    {
       title: '키친타올·고무줄로 마스크를 만들 수 있다고?! 신종 코로나 예방 마스크 만들기!',
       url: 'https://www.youtube.com/watch?v=1rbdfwH0wUc',
     },
