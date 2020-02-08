@@ -13,6 +13,7 @@ const MapContainer = styled.section`
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 15px;
+    padding-left: 6px;
   }
 `
 
@@ -50,7 +51,7 @@ const MainDesktop = ({ markerData }): JSX.Element => {
             <MapContainer>
               <Card>
                 <div className="t">
-                  <h2>확진자 현황</h2>
+                  <h2>감염 통계</h2>
                 </div>
                 <Map movements={markerData} />
               </Card>
