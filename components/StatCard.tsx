@@ -9,7 +9,7 @@ const Card = styled.div`
   border-radius: 8px;
   line-height: 1.6;
   background: #fff;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
   z-index: 101;
   .d {
     font-weight: 500;
