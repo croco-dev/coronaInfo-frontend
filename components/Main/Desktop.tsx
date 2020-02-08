@@ -17,6 +17,32 @@ const MapContainer = styled.section`
   }
 `
 
+const StatTable = styled.table`
+  width: 100%;
+  text-align: center;
+  td {
+    padding: 10px 20px;
+    border: 1px solid #e6e6e6;
+  }
+  h4 {
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+  .data {
+    font-weight: 500;
+    font-size: 24px;
+  }
+  .change {
+    font-size: 13px;
+    &.up {
+      color: blue;
+    }
+    &.down {
+      color: red;
+    }
+  }
+`
+
 const MainDesktop = ({ markerData }): JSX.Element => {
   return (
     <>
@@ -53,7 +79,32 @@ const MainDesktop = ({ markerData }): JSX.Element => {
                 <div className="t">
                   <h2>감염 통계</h2>
                 </div>
-                <Map movements={markerData} />
+                <StatTable>
+                  <tr>
+                    <td>
+                      <h4>증가비율</h4>
+                      <p className="data">99.15%</p>
+                      <p className={'change up'}>▲ 0.35%p</p>
+                    </td>
+                    <td>
+                      <h4>2차 감염 비율</h4>
+                      <p className="data">99.15%</p>
+                      <p className={'change down'}>▼ 0.35%p</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h4>사망자 비율</h4>
+                      <p className="data">99.15%</p>
+                      <p className={'change down'}>▼ 0.35%p</p>
+                    </td>
+                    <td>
+                      <h4>완치자 비율</h4>
+                      <p className="data">99.15%</p>
+                      <p className={'change up'}>▲ 0.35%p</p>
+                    </td>
+                  </tr>
+                </StatTable>
               </Card>
             </MapContainer>
           </div>
