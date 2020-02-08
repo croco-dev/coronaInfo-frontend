@@ -16,7 +16,7 @@ const SideBackground = styled.div`
   background: rgba(0, 0, 0, 0.4);
   opacity: 0;
   transition: visibility 0s, opacity 0.1s linear;
-  z-index: 10;
+  z-index: 200;
   &.show {
     visibility: visible;
     opacity: 1;
@@ -29,7 +29,7 @@ const SidebarWrapper = styled.div`
   bottom: 0;
   left: -230px;
   right: 0;
-  z-index: 30;
+  z-index: 400;
   visibility: hidden;
   transition: visibility 0s, left 0.3s ease-in-out;
   &.show {

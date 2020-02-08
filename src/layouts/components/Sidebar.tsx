@@ -6,7 +6,7 @@ const Aside = styled.aside`
   background: #fff;
   width: 230px;
   height: 100%;
-  z-index: 50;
+  z-index: 600;
   padding: 25px 25px;
   .logo {
     display: flex;
@@ -82,6 +82,9 @@ const Sidebar: React.FC<SidebarProps> = props => {
         <ul>
           <Link href="/">
             <a>지도</a>
+          </Link>
+          <Link href="/patients">
+            <a>확진자</a>
           </Link>
           <Link href="/videos">
             <a>영상 모아보기</a>

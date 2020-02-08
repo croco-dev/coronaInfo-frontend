@@ -12,7 +12,7 @@ const EditedContainer = styled(Container)`
 const Nav = styled.nav`
   background: #fff;
   height: 60px;
-  z-index: 1;
+  z-index: 20;
 `
 
 const NavLogo = styled.a`
@@ -63,6 +63,9 @@ const Header: React.FC = () => {
         <NavMenu>
           <Link href="/">
             <a>지도</a>
+          </Link>
+          <Link href="/patients">
+            <a>확진자</a>
           </Link>
           <Link href="/videos">
             <a>영상 모아보기</a>
