@@ -4,7 +4,7 @@
   "build": {
     "env": {
       "API_URL": "@api-url",
-      "NAVER_MAP_KEY": "@naver-map-key"
+      "NAVER_MAP_API": "@naver-map-api"
     }
   }
 }
