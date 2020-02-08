@@ -8,7 +8,8 @@ const CardStyle = styled.div`
   padding: 20px;
   line-height: 1.5;
   background: #fff;
-  border: 1px solid #e0e0e0;
+  box-shadow: 0px 20px 40px 0 rgba(0, 0, 0, 0.14);
+  border: 0;
   z-index: 101;
 `
 

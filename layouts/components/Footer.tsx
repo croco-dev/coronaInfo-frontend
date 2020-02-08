@@ -13,8 +13,6 @@ const StyledFooter = styled.footer`
   text-align: center;
   padding: 25px 0;
   line-height: 2;
-  position: absolute;
-  bottom: 0;
 `
 
 const Footer: React.FC = () => {

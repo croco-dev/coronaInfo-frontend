@@ -22,7 +22,7 @@ const StatTable = styled.table`
   text-align: center;
   td {
     padding: 10px 20px;
-    border: 1px solid #e6e6e6;
+    border: 0;
   }
   h4 {
     font-size: 15px;

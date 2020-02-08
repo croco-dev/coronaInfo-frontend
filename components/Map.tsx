@@ -21,7 +21,7 @@ const Map: React.FC<MapProps> = ({ movements, height }): JSX.Element => {
         mapDivId={'dash-map'} // default: react-naver-map
         style={{
           width: '100%',
-          height: height || '30vh',
+          height: height || '50vh',
         }}
         defaultCenter={{ lat: 36.3213564, lng: 127.0978459 }}
         defaultZoom={6}

@@ -6,9 +6,7 @@ const HeaderMobile = dynamic(() => import('./components/HeaderMobile'))
 const Header = dynamic(() => import('./components/Header'))
 const Footer = dynamic(() => import('./components/Footer'))
 
-const LayoutWrapper = styled.div`
-  margin-bottom: 140px;
-`
+const LayoutWrapper = styled.div``
 
 const SideBackground = styled.div`
   position: absolute;

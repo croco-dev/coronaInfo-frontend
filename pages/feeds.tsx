@@ -22,11 +22,13 @@ const DataBox = styled.div`
 `
 
 const CardBox = styled.div`
-  border: 1px solid #dadada;
+  background: #ffffff;
   border-left: 6px solid var(--main);
   border-radius: 4px;
   padding: 20px 15px;
   margin: 25px 0;
+  box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
+  line-height: 150%;
   .raw {
     margin-top: 15px;
     display: block;
@@ -52,7 +54,9 @@ const FeedPage = ({ data }): JSX.Element => {
     return (
       <>
         <CardBox>
-          {data.date}, {data.index}번째 확진자가{' '}
+          {data.date},
+          <br />
+          {data.index}번째 확진자가{' '}
           {data.log_type === 'movements'
             ? '이동경로 정보가 업데이트되었습니다.'
             : '확진 및 격리되었습니다.'}
