@@ -16,10 +16,10 @@ const Map = ({ movements }): JSX.Element => {
         mapDivId={'dash-map'} // default: react-naver-map
         style={{
           width: '100%',
-          height: '45vh',
+          height: '30vh',
         }}
-        defaultCenter={{ lat: 37.3213564, lng: 127.0978459 }}
-        defaultZoom={8}
+        defaultCenter={{ lat: 36.3213564, lng: 127.0978459 }}
+        defaultZoom={6}
       >
         {movements.map((item, i) => {
           const navermaps = window.naver.maps
