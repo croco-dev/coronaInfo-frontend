@@ -3,7 +3,7 @@ import App from 'next/app'
 import Head from 'next/head'
 
 // 👁 Global Style
-import './styles/core.scss'
+import '@/styles/core.scss'
 
 class MyApp extends App {
   render(): JSX.Element {
