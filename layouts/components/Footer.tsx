@@ -3,7 +3,8 @@ import styled from '@emotion/styled'
 import Emoji from '../../components/Emoji'
 
 const StyledFooter = styled.footer`
-  background: #dfecf7;
+  background: #ffffff;
+  border-top: 1px solid #e4e4e4;
   text-align: center;
   padding: 25px 0;
   line-height: 2;
