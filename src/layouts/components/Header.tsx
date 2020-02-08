@@ -62,7 +62,9 @@ const Header: React.FC = () => {
           </NavLogo>
         </Link>
         <NavMenu>
-          <li>지도</li>
+          <Link href="/">
+            <li>지도</li>
+          </Link>
           <li>영상 모아보기</li>
           <Link href="/feeds">
             <a>실시간 피드</a>

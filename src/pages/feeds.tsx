@@ -98,9 +98,8 @@ const FeedPage = ({ data }): JSX.Element => {
 }
 
 FeedPage.getInitialProps = async () => {
-  const res = await fetch('https://api.coronas.info/feeds/?format=json')
+  const res = await fetch(`${process.env.API_URL}/feeds/?format=json`)
   const json = await res.json()
-  console.log(json)
   return { data: json }
 }
 

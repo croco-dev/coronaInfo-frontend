@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import Link from 'next/link'
 
 const Aside = styled.aside`
   background: #fff;
@@ -71,9 +72,13 @@ const Sidebar: React.FC<SidebarProps> = props => {
       </div>
       <div className="menu">
         <ul>
-          <li>지도</li>
+          <Link href="/">
+            <li>지도</li>
+          </Link>
           <li>영상 모아보기</li>
-          <li>실시간 피드</li>
+          <Link href="/feeds">
+            <li>실시간 피드</li>
+          </Link>
           <li>커뮤니티 게시판</li>
         </ul>
       </div>

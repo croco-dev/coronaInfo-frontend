@@ -1,0 +1,10 @@
+{
+  "name": "coronainfo-frontend",
+  "scope": "croco",
+  "build": {
+    "env": {
+      "API_URL": "@api-url",
+      "NAVER_MAP_KEY": "@naver-map-key"
+    }
+  }
+}

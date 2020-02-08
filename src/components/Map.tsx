@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { RenderAfterNavermapsLoaded, NaverMap } from 'react-naver-maps'
 
-const naverMapClientId = 'qp7da4lz69'
+const naverMapClientId = process.env.NAVER_MAP_API || ''
 declare const naver: any
 
 const MapComponent: React.FC = () => {
