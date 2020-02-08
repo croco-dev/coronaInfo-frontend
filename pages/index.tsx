@@ -3,7 +3,7 @@ import Layout from '../layouts/main'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 
-const Home = ({ data }): JSX.Element => {
+const Home = ({ data, report }): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
   const resizeEvent = () => {
     if (window.innerWidth < 992) {
@@ -26,10 +26,10 @@ const Home = ({ data }): JSX.Element => {
   const checkRender = () => {
     if (isMobile) {
       const Mobile = dynamic(() => import('../components/Main/Mobile'))
-      return <Mobile markerData={data} />
+      return <Mobile report={report} markerData={data} />
     } else {
       const Desktop = dynamic(() => import('../components/Main/Desktop'))
-      return <Desktop markerData={data} />
+      return <Desktop report={report} markerData={data} />
     }
   }
 
@@ -38,8 +38,10 @@ const Home = ({ data }): JSX.Element => {
 
 Home.getInitialProps = async () => {
   const res = await fetch(`${process.env.API_URL}/movements/?format=json`)
-  const json = await res.json()
-  return { data: json }
+  const report = await fetch(`${process.env.API_URL}/reports/?format=json`)
+  const dataJson = await res.json()
+  const reportJson = await report.json()
+  return { data: dataJson, report: reportJson }
 }
 
 export default Home

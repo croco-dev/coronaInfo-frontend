@@ -6,7 +6,7 @@ import Layout from '../../layouts/main'
 import Container from '../Container'
 const Map = dynamic(() => import('../Map'), { ssr: false })
 
-const MainMobile = ({ markerData }): JSX.Element => {
+const MainMobile = ({ report, markerData }): JSX.Element => {
   return (
     <>
       <Map movements={markerData} />

@@ -35,15 +35,15 @@ const StatTable = styled.table`
   .change {
     font-size: 13px;
     &.up {
-      color: blue;
+      color: #1bbf83;
     }
     &.down {
-      color: red;
+      color: #f24147;
     }
   }
 `
 
-const MainDesktop = ({ markerData }): JSX.Element => {
+const MainDesktop = ({ report, markerData }): JSX.Element => {
   return (
     <>
       <Container
@@ -53,17 +53,17 @@ const MainDesktop = ({ markerData }): JSX.Element => {
       >
         <div className="row">
           <div className="col-md-4">
-            <StatCard title="국내 확진자 수" content="100,000,000" />
+            <StatCard title="국내 확진자 수" content={report.total_count} />
           </div>
           <div className="col-md-4">
-            <StatCard title="국내 치료자 수" content="100,000,000" />
+            <StatCard title="국내 치료자 수" content={report.cure_count} />
           </div>
           <div className="col-md-4">
-            <StatCard title="국내 사망자 수" content="100,000,000" />
+            <StatCard title="국내 사망자 수" content={report.death_count} />
           </div>
         </div>
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-7">
             <MapContainer>
               <Card>
                 <div className="t">
@@ -73,7 +73,7 @@ const MainDesktop = ({ markerData }): JSX.Element => {
               </Card>
             </MapContainer>
           </div>
-          <div className="col-md-7">
+          <div className="col-md-5">
             <MapContainer>
               <Card>
                 <div className="t">
@@ -83,25 +83,29 @@ const MainDesktop = ({ markerData }): JSX.Element => {
                   <tr>
                     <td>
                       <h4>증가비율</h4>
-                      <p className="data">99.15%</p>
-                      <p className={'change up'}>▲ 0.35%p</p>
+                      <p className={report.increase_rate > 0 ? 'change up' : 'change down'}>
+                        {report.increase_rate}%
+                      </p>
                     </td>
                     <td>
                       <h4>2차 감염 비율</h4>
-                      <p className="data">99.15%</p>
-                      <p className={'change down'}>▼ 0.35%p</p>
+                      <p className={report.increase_rate > 0 ? 'change up' : 'change down'}>
+                        {report.increase_rate}%
+                      </p>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <h4>사망자 비율</h4>
-                      <p className="data">99.15%</p>
-                      <p className={'change down'}>▼ 0.35%p</p>
+                      <p className={report.death_rate >= 0 ? 'change up' : 'change down'}>
+                        {report.death_rate}%
+                      </p>
                     </td>
                     <td>
                       <h4>완치자 비율</h4>
-                      <p className="data">99.15%</p>
-                      <p className={'change up'}>▲ 0.35%p</p>
+                      <p className={report.cure_rate > 0 ? 'change up' : 'change down'}>
+                        {report.cure_rate}%
+                      </p>
                     </td>
                   </tr>
                 </StatTable>
