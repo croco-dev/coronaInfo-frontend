@@ -1,8 +1,11 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
+import ReactGA from 'react-ga'
 
 export default class MyDocument extends Document {
   render(): JSX.Element {
+    ReactGA.initialize('UA-158027501-01')
+    ReactGA.pageview(window.location.pathname + window.location.search)
     return (
       <html>
         <Head>
