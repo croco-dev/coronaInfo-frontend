@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 const HeaderMobile = dynamic(() => import('./components/HeaderMobile'))
 const Header = dynamic(() => import('./components/Header'))
 const Footer = dynamic(() => import('./components/Footer'))
+const GA = dynamic(() => import('../components/GA'))
 
 const SideBackground = styled.div`
   position: absolute;
@@ -83,6 +84,7 @@ const MainLayout: React.FC = props => {
     // desktop mode
     return (
       <>
+        <GA />
         <Header />
         {props.children}
         <Footer />
