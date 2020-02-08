@@ -12,8 +12,10 @@
 }
 
 body {
-  background: #f8f8f8;
+  background: #eaf5ff;
   color: #2c2c2c;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 0.9rem;
 }
+
+@import './libraries/grid';
