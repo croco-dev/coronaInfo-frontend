@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import Layout from '@/layouts/main'
-import Container from '@/components/Container'
+import Layout from '../layouts/main'
+import Container from '../components/Container'
 import fetch from 'isomorphic-unfetch'
 
 const Jumbotron = styled.div`

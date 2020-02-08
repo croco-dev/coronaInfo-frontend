@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import Layout from '@/layouts/main'
-import Container from '@/components/Container'
+import Layout from '../layouts/main'
+import Container from '../components/Container'
 import fetch from 'isomorphic-unfetch'
+import Link from 'next/link'
 
 const Jumbotron = styled.div`
   background: #f1f1f1;
@@ -35,7 +36,7 @@ const CardBox = styled.div`
   }
 `
 
-const FeedPage = ({ data }): JSX.Element => {
+const Videos = ({ data }): JSX.Element => {
   const DataShow = (): JSX.Element => {
     return (
       <>
@@ -52,9 +53,9 @@ const FeedPage = ({ data }): JSX.Element => {
     return (
       <>
         <CardBox>
-          {data.date}, {data.index}번째 확진자의{' '}
-          {data.log_type === 'movement' ? '이동경로' : '정보'} 가 변경되었습니다.
-          {data.place ? <span className="raw">{data.place}</span> : <></>}
+          <Link href={data.url}>
+            <a target="_blank">{data.title}</a>
+          </Link>
         </CardBox>
       </>
     )
@@ -78,9 +79,9 @@ const FeedPage = ({ data }): JSX.Element => {
       <Layout>
         <Jumbotron>
           <Container>
-            <h1>코로나인포 피드</h1>
+            <h1>영상 모아보기</h1>
             <p className="description">
-              코로나인포에 언제 어떤 정보가 추가되었는지 확인할 수 있습니다. (1분마다 갱신)
+              신종 코로나 바이러스에 대처하는 좋은 영상들을 알려드립니다!
             </p>
           </Container>
         </Jumbotron>
@@ -98,10 +99,31 @@ const FeedPage = ({ data }): JSX.Element => {
   )
 }
 
-FeedPage.getInitialProps = async () => {
-  const res = await fetch(`${process.env.API_URL}/feeds/?format=json`)
-  const json = await res.json()
+Videos.getInitialProps = async () => {
+  const json = [
+    {
+      title: "[자막뉴스] '퇴원' 신종 코로나 2번 환자, 이렇게 치료했다 / YTN",
+      url: 'https://www.youtube.com/watch?v=C7ZXQbtMx-M',
+    },
+    {
+      title: "'신종 코로나' 추가 확진자 없지만...의심환자 급증 / YTN",
+      url: 'https://www.youtube.com/watch?v=Pmcmwh5A6D8',
+    },
+    {
+      title: '키친타올·고무줄로 마스크를 만들 수 있다고?! 신종 코로나 예방 마스크 만들기!',
+      url: 'https://www.youtube.com/watch?v=1rbdfwH0wUc',
+    },
+    {
+      title: '구하기 힘든 손 소독제, 집에서 쉽게 만드는 방법 / SBS',
+      url: 'https://www.youtube.com/watch?v=FJJaK8663a8',
+    },
+    {
+      title: '신종 코로나바이러스감염증 예방행동수칙',
+      url: 'https://www.youtube.com/watch?v=GXcKt4MA9cs',
+    },
+    { title: '신종코로나 바이러스 예방수칙', url: 'https://www.youtube.com/watch?v=CuNLEqShGOw' },
+  ]
   return { data: json }
 }
 
-export default FeedPage
+export default Videos

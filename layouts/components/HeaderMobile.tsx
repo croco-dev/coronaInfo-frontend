@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import Container from '@/components/Container'
+import Container from '../../components/Container'
 import Link from 'next/link'
 
 const EditedContainer = styled(Container)`

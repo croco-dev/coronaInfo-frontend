@@ -1,9 +1,9 @@
 import React from 'react'
-import Layout from '@/layouts/main'
+import Layout from '../layouts/main'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 
-const Map = dynamic(() => import('@/components/Map'), { ssr: false })
+const Map = dynamic(() => import('../components/Map'), { ssr: false })
 
 const Home = ({ data }): JSX.Element => {
   return (

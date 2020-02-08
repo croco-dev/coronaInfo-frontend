@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import Emoji from '@/components/Emoji'
+import Emoji from '../../components/Emoji'
 
 const StyledFooter = styled.footer`
   background: #f1f1f1;

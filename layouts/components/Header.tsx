@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from '@emotion/styled'
-import Container from '@/components/Container'
+import Container from '../../components/Container'
 
 const EditedContainer = styled(Container)`
   align-items: center;

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import dynamic from 'next/dynamic'
 
-const HeaderMobile = dynamic(() => import('@/layouts/components/HeaderMobile'))
-const Header = dynamic(() => import('@/layouts/components/Header'))
-const Footer = dynamic(() => import('@/layouts/components/Footer'))
+const HeaderMobile = dynamic(() => import('./components/HeaderMobile'))
+const Header = dynamic(() => import('./components/Header'))
+const Footer = dynamic(() => import('./components/Footer'))
 
 const SideBackground = styled.div`
   position: absolute;
@@ -67,7 +67,7 @@ const MainLayout: React.FC = props => {
 
   if (isMobile) {
     // mobile mode
-    const Sidebar = dynamic(() => import('@/layouts/components/Sidebar'))
+    const Sidebar = dynamic(() => import('./components/Sidebar'))
     return (
       <>
         <SideBackground className={sidebar && 'show'} onClick={sidebarChange} />
