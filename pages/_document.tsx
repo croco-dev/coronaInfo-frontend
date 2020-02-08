@@ -31,6 +31,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="shortcut icon" href="/static/favicon/favicon.ico" />
+          <link rel="canonical" href="https://coronas.info" />
         </Head>
         <body>
           <Main />
