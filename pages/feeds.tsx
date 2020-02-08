@@ -37,7 +37,7 @@ const CardBox = styled.div`
   }
 `
 
-const FeedPage = ({ data }): JSX.Element => {
+const FeedPage = ({ data, version }): JSX.Element => {
   const DataShow = (): JSX.Element => {
     return (
       <>
@@ -81,7 +81,8 @@ const FeedPage = ({ data }): JSX.Element => {
 
   return (
     <>
-      <Layout>
+      <Layout version={version}>
+        {' '}
         <Jumbotron>
           <Container>
             <h1>코로나인포 피드</h1>
@@ -107,7 +108,9 @@ const FeedPage = ({ data }): JSX.Element => {
 FeedPage.getInitialProps = async () => {
   const res = await fetch(`${process.env.API_URL}/feeds/?format=json`)
   const json = await res.json()
-  return { data: json }
+  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
+  const verJson = await version.json()
+  return { data: json, version: verJson[0].version }
 }
 
 export default FeedPage

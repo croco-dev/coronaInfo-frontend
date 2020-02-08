@@ -40,7 +40,7 @@ const SidebarWrapper = styled.div`
   }
 `
 
-const MainLayout: React.FC = props => {
+const MainLayout = ({ children, version }): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
   const [sidebar, setSidebar] = useState(false) // 사이드바 On/Off
 
@@ -77,8 +77,8 @@ const MainLayout: React.FC = props => {
           <Sidebar sidebarChange={sidebarChange} />
         </SidebarWrapper>
         <HeaderMobile sidebarChange={sidebarChange} />
-        {props.children}
-        <Footer />
+        {children}
+        <Footer version={version} />
       </>
     )
   } else {
@@ -87,8 +87,8 @@ const MainLayout: React.FC = props => {
       <>
         <LayoutWrapper>
           <Header />
-          {props.children}
-          <Footer />
+          {children}
+          <Footer version={version} />
         </LayoutWrapper>
       </>
     )

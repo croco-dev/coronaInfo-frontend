@@ -4,9 +4,9 @@ import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 const Map = dynamic(() => import('../components/Map'), { ssr: false })
 
-const Maps = ({ data }): JSX.Element => {
+const Maps = ({ data, version }): JSX.Element => {
   return (
-    <Layout>
+    <Layout version={version}>
       <Map movements={data} />
     </Layout>
   )
@@ -15,7 +15,9 @@ const Maps = ({ data }): JSX.Element => {
 Maps.getInitialProps = async () => {
   const res = await fetch(`${process.env.API_URL}/movements/?format=json`)
   const json = await res.json()
-  return { data: json }
+  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
+  const verJson = await version.json()
+  return { data: json, version: verJson[0].version }
 }
 
 export default Maps

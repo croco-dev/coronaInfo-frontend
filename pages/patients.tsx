@@ -37,7 +37,7 @@ const CardBox = styled.div`
   }
 `
 
-const PatientsPage = ({ data }): JSX.Element => {
+const PatientsPage = ({ data, version }): JSX.Element => {
   const DataShow = (): JSX.Element => {
     return (
       <>
@@ -78,7 +78,7 @@ const PatientsPage = ({ data }): JSX.Element => {
 
   return (
     <>
-      <Layout>
+      <Layout version={version}>
         <Jumbotron>
           <Container>
             <h1>확진자 리스트</h1>
@@ -102,7 +102,9 @@ const PatientsPage = ({ data }): JSX.Element => {
 PatientsPage.getInitialProps = async () => {
   const res = await fetch(`${process.env.API_URL}/patients/?format=json`)
   const json = await res.json()
-  return { data: json }
+  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
+  const verJson = await version.json()
+  return { data: json, version: verJson[0].version }
 }
 
 export default PatientsPage

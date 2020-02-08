@@ -37,7 +37,7 @@ const CardBox = styled.div`
   }
 `
 
-const Videos = ({ data }): JSX.Element => {
+const Videos = ({ data, version }): JSX.Element => {
   const DataShow = (): JSX.Element => {
     return (
       <>
@@ -77,7 +77,7 @@ const Videos = ({ data }): JSX.Element => {
 
   return (
     <>
-      <Layout>
+      <Layout version={version}>
         <Jumbotron>
           <Container>
             <h1>영상 모아보기</h1>
@@ -124,7 +124,9 @@ Videos.getInitialProps = async () => {
     },
     { title: '신종코로나 바이러스 예방수칙', url: 'https://www.youtube.com/watch?v=CuNLEqShGOw' },
   ]
-  return { data: json }
+  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
+  const verJson = await version.json()
+  return { data: json, version: verJson[0].version }
 }
 
 export default Videos

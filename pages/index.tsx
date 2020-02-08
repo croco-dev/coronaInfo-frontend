@@ -3,7 +3,7 @@ import Layout from '../layouts/main'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 
-const Home = ({ data, report }): JSX.Element => {
+const Home = ({ data, report, version }): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
   const resizeEvent = () => {
     if (window.innerWidth < 992) {
@@ -33,15 +33,17 @@ const Home = ({ data, report }): JSX.Element => {
     }
   }
 
-  return <Layout>{checkRender()}</Layout>
+  return <Layout version={version}>{checkRender()}</Layout>
 }
 
 Home.getInitialProps = async () => {
   const res = await fetch(`${process.env.API_URL}/movements/?format=json`)
   const report = await fetch(`${process.env.API_URL}/reports/?format=json`)
+  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
+  const verJson = await version.json()
   const dataJson = await res.json()
   const reportJson = await report.json()
-  return { data: dataJson, report: reportJson }
+  return { data: dataJson, report: reportJson, version: verJson[0].version }
 }
 
 export default Home

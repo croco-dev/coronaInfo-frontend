@@ -15,7 +15,7 @@ const StyledFooter = styled.footer`
   line-height: 2;
 `
 
-const Footer: React.FC = () => {
+const Footer = ({ version }): JSX.Element => {
   return (
     <StyledFooter>
       <div>
@@ -23,6 +23,7 @@ const Footer: React.FC = () => {
           제보, 정정 요청은 이메일로 받습니다 <Emoji str="🙂" />
         </p>
         <p>admin@coronas.info</p>
+        <p>{version} 기준 정보입니다.</p>
         <p>
           <Emoji str="❤️" /> from Croco.
         </p>
