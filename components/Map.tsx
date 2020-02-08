@@ -9,14 +9,19 @@ declare global {
   }
 }
 
-const Map = ({ movements }): JSX.Element => {
+interface MapProps {
+  movements: any
+  height?: string
+}
+
+const Map: React.FC<MapProps> = ({ movements, height }): JSX.Element => {
   return (
     <>
       <NaverMap
         mapDivId={'dash-map'} // default: react-naver-map
         style={{
           width: '100%',
-          height: '30vh',
+          height: height || '30vh',
         }}
         defaultCenter={{ lat: 36.3213564, lng: 127.0978459 }}
         defaultZoom={6}
