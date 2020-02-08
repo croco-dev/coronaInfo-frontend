@@ -6,6 +6,10 @@ const HeaderMobile = dynamic(() => import('./components/HeaderMobile'))
 const Header = dynamic(() => import('./components/Header'))
 const Footer = dynamic(() => import('./components/Footer'))
 
+const LayoutWrapper = styled.div`
+  margin-bottom: 140px;
+`
+
 const SideBackground = styled.div`
   position: absolute;
   visibility: hidden;
@@ -83,9 +87,11 @@ const MainLayout: React.FC = props => {
     // desktop mode
     return (
       <>
-        <Header />
-        {props.children}
-        <Footer />
+        <LayoutWrapper>
+          <Header />
+          {props.children}
+          <Footer />
+        </LayoutWrapper>
       </>
     )
   }

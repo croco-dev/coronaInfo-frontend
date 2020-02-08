@@ -3,6 +3,11 @@ import styled from '@emotion/styled'
 import Emoji from '../../components/Emoji'
 
 const StyledFooter = styled.footer`
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #ffffff;
   border-top: 1px solid #e4e4e4;
   text-align: center;
@@ -10,19 +15,20 @@ const StyledFooter = styled.footer`
   line-height: 2;
   position: absolute;
   bottom: 0;
-  width: 100%;
 `
 
 const Footer: React.FC = () => {
   return (
     <StyledFooter>
-      <p>
-        제보, 정정 요청은 이메일로 받습니다 <Emoji str="🙂" />
-      </p>
-      <p>admin@coronas.info</p>
-      <p>
-        <Emoji str="❤️" /> from Croco.
-      </p>
+      <div>
+        <p>
+          제보, 정정 요청은 이메일로 받습니다 <Emoji str="🙂" />
+        </p>
+        <p>admin@coronas.info</p>
+        <p>
+          <Emoji str="❤️" /> from Croco.
+        </p>
+      </div>
     </StyledFooter>
   )
 }
