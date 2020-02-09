@@ -16,7 +16,7 @@ const Map = ({ pdata }): JSX.Element => {
         mapDivId={'dash-map'} // default: react-naver-map
         style={{
           width: '100%',
-          height: '45vh',
+          height: '100vh',
         }}
         defaultCenter={{ lat: 37.3213564, lng: 127.0978459 }}
         defaultZoom={8}
@@ -24,9 +24,7 @@ const Map = ({ pdata }): JSX.Element => {
         {pdata.map((item, i) => {
           const navermaps = window.naver.maps
           const paths = []
-          pdata.movements.map((item2, i2) => {
-            paths.push(new navermaps.LatLng(item2.lat, item2.lng))
-          })
+          paths.push(new navermaps.LatLng(item.lat, item.lng))
           return (
             <Polygon
               paths={[paths]}
@@ -35,6 +33,7 @@ const Map = ({ pdata }): JSX.Element => {
               strokeColor={'#ff0000'}
               strokeOpacity={0.6}
               strokeWeight={3}
+              key={i}
             />
           )
         })}
