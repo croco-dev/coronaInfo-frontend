@@ -8,7 +8,7 @@ import StatCard from '../StatCard'
 const Map = dynamic(() => import('../Map'), { ssr: false })
 
 const MapContainer = styled.section`
-  padding: 20px 0;
+  padding: 20px 10px;
   h2 {
     font-size: 20px;
     font-weight: 500;
@@ -26,14 +26,12 @@ const StatTable = styled.table`
   }
   h4 {
     font-size: 15px;
+    font-weight: 500;
     margin-bottom: 3px;
   }
-  .data {
-    font-weight: 500;
-    font-size: 24px;
-  }
   .change {
-    font-size: 13px;
+    font-weight: 700;
+    font-size: 24px;
     &.up {
       color: #1bbf83;
     }
@@ -51,23 +49,33 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
           <Map movements={markerData} />
           <div className="col-md-5">
             <MapContainer>
+              <div className="row">
+                <div
+                  className="col-md-4"
+                  style={{
+                    marginBottom: '15px',
+                  }}
+                >
+                  <StatCard title="국내 확진자 수" content={report.total_count} />
+                </div>
+                <div
+                  className="col-md-4"
+                  style={{
+                    marginBottom: '15px',
+                  }}
+                >
+                  <StatCard title="국내 치료자 수" content={report.cure_count} />
+                </div>
+                <div
+                  className="col-md-4"
+                  style={{
+                    marginBottom: '25px',
+                  }}
+                >
+                  <StatCard title="국내 사망자 수" content={report.death_count} />
+                </div>
+              </div>
               <Card>
-                <StatTable>
-                  <tr>
-                    <td>
-                      <h4>국내 확진자</h4>
-                      <p className="change down">{report.total_count}</p>
-                    </td>
-                    <td>
-                      <h4>국내 치료자</h4>
-                      <p className="change up">{report.cure_count} </p>
-                    </td>
-                    <td>
-                      <h4>국내 사망자</h4>
-                      <p className="change down">{report.death_count}</p>
-                    </td>
-                  </tr>
-                </StatTable>
                 <StatTable>
                   <tr>
                     <td>
