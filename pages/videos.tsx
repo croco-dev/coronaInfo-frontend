@@ -28,7 +28,7 @@ const CardBox = styled.div`
   border-radius: 4px;
   padding: 20px 15px;
   margin: 25px 0;
-  box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
   .raw {
     margin-top: 15px;
     display: block;
