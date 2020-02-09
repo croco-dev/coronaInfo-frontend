@@ -31,9 +31,6 @@ const StatTable = styled.table`
   .data {
     font-weight: 500;
     font-size: 24px;
-  }
-  .change {
-    font-size: 13px;
     &.up {
       color: #1bbf83;
     }
@@ -83,13 +80,13 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
                   <tr>
                     <td>
                       <h4>증가비율</h4>
-                      <p className={report.increase_rate > 0 ? 'change up' : 'change down'}>
+                      <p className={report.increase_rate > 0 ? 'data up' : 'data down'}>
                         {report.increase_rate}%
                       </p>
                     </td>
                     <td>
                       <h4>2차 감염 비율</h4>
-                      <p className={report.increase_rate > 0 ? 'change up' : 'change down'}>
+                      <p className={report.increase_rate > 0 ? 'data up' : 'data down'}>
                         {report.increase_rate}%
                       </p>
                     </td>
@@ -97,13 +94,13 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
                   <tr>
                     <td>
                       <h4>사망자 비율</h4>
-                      <p className={report.death_rate >= 0 ? 'change up' : 'change down'}>
+                      <p className={report.death_rate >= 0 ? 'data up' : 'data down'}>
                         {report.death_rate}%
                       </p>
                     </td>
                     <td>
                       <h4>완치자 비율</h4>
-                      <p className={report.cure_rate > 0 ? 'change up' : 'change down'}>
+                      <p className={report.cure_rate > 0 ? 'data up' : 'data down'}>
                         {report.cure_rate}%
                       </p>
                     </td>
