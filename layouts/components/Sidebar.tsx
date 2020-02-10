@@ -80,7 +80,7 @@ const Sidebar: React.FC<SidebarProps> = props => {
       </div>
       <div className="menu">
         <ul>
-          <Link href="/">
+          <Link href="/maps">
             <a>지도</a>
           </Link>
           <Link href="/patients">
