@@ -93,7 +93,7 @@ const FeedPage = ({ data, version }): JSX.Element => {
           <Container>
             <h1>코로나인포 피드</h1>
             <p className="description">
-              코로나인포에 언제 어떤 정보가 추가되었는지 확인할 수 있습니다. (1분마다 갱신)
+              코로나인포에 언제 어떤 정보가 추가되었는지 확인할 수 있습니다.
             </p>
           </Container>
         </Jumbotron>
