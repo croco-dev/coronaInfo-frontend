@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import styled from '@emotion/styled'
 import Layout from 'layouts/main'
 import Container from 'components/Container'
@@ -87,6 +88,9 @@ const FeedPage = ({ data }): JSX.Element => {
 
   return (
     <>
+      <Head>
+        <title>피드 - 코로나인포 (CoronaInfo)</title>
+      </Head>
       <Layout>
         {' '}
         <Jumbotron>
