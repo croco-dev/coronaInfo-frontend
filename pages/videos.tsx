@@ -55,7 +55,7 @@ const Videos = ({ data, version }): JSX.Element => {
       <>
         {data.map((row, i) => {
           return (
-            <div className={'col-xs-12 col-md-4'}>
+            <div key={i} className={'col-xs-12 col-md-4'}>
               <Card data={row} key={i} />
             </div>
           )
@@ -112,7 +112,7 @@ const Videos = ({ data, version }): JSX.Element => {
             </p>
           </Container>
         </Jumbotron>
-        <div className="row">
+        <div className="row" style={{ padding: '20px 0' }}>
           {data && data.length > 0 ? (
             <>
               <Container>
