@@ -6,5 +6,15 @@
       "API_URL": "@api-url",
       "NAVER_MAP_API": "@naver-map-api"
     }
-  }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "headers": {
+        "X-XSS-Protection": "1; mode=block",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-Content-Type-Options": "nosniff"
+      }
+    }
+  ]
 }
