@@ -5,19 +5,7 @@ import Layout from '../layouts/main'
 import Container from '../components/Container'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
-
-const Jumbotron = styled.div`
-  background: #f1f1f1;
-  padding: 35px 0;
-  line-height: 1.6;
-  h1 {
-    font-size: 1.7rem;
-    font-weight: 700;
-  }
-  p.description {
-    font-size: 1rem;
-  }
-`
+import Jumbotron from '../components/Jumbotron'
 
 const CardBox = styled.div`
   background: #ffffff;
@@ -108,14 +96,10 @@ const Videos = ({ data }): JSX.Element => {
         <title>영상 모아보기 - 코로나인포 (CoronaInfo)</title>
       </Head>
       <Layout>
-        <Jumbotron>
-          <Container>
-            <h1>영상 모아보기</h1>
-            <p className="description">
-              신종 코로나 바이러스에 대처하는 좋은 영상들을 알려드립니다!
-            </p>
-          </Container>
-        </Jumbotron>
+        <Jumbotron
+          title="영상 모아보기"
+          desc="신종 코로나 바이러스에 대처하는 좋은 영상들을 알려드립니다!"
+        />
         <div className="row" style={{ padding: '20px 0' }}>
           {data && data.length > 0 ? (
             <>
