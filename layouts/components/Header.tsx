@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from '@emotion/styled'
-import Container from '../../components/Container'
+import Container from '@/components/Container'
+import { Menu } from '@/layouts/components/Menu'
 
 const EditedContainer = styled(Container)`
   align-items: center;
@@ -61,18 +62,13 @@ const Header: React.FC = () => {
           </NavLogo>
         </Link>
         <NavMenu>
-          <Link href="/maps">
-            <a>지도</a>
-          </Link>
-          <Link href="/patients">
-            <a>확진자</a>
-          </Link>
-          <Link href="/videos">
-            <a>영상 모아보기</a>
-          </Link>
-          <Link href="/feeds">
-            <a>실시간 피드</a>
-          </Link>
+          {Menu.map((item, i) => {
+            return (
+              <Link href={item.href} key={i}>
+                <a>{item.title}</a>
+              </Link>
+            )
+          })}
           {/* <li>커뮤니티 게시판</li> */}
         </NavMenu>
         {/* <NavRight>
