@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import styled from '@emotion/styled'
 import Layout from '../layouts/main'
 import Container from '../components/Container'
@@ -79,6 +80,9 @@ const PatientsPage = ({ data }): JSX.Element => {
   return (
     <>
       <Layout>
+        <Head>
+          <title>확진자 리스트 - 코로나인포 (CoronaInfo)</title>
+        </Head>
         <Jumbotron>
           <Container>
             <h1>확진자 리스트</h1>

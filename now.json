@@ -6,5 +6,16 @@
       "API_URL": "@api-url",
       "NAVER_MAP_API": "@naver-map-api"
     }
-  }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "headers": {
+        "Content-Security-Policy": " default-src 'none'; connect-src https://api.coronas.info/feeds/ https://api.coronas.info/movements/ https://api.coronas.info/patients/ https://api.coronas.info/reports/ https://api.coronas.info/versions/; font-src https://fonts.gstatic.com; img-src 'self' https://img.youtube.com https://nrbe.pstatic.net https://ssl.pstatic.net https://twemoji.maxcdn.com https://www.google-analytics.com; script-src 'self' https://nrbe.pstatic.net/styles/basic.json https://nrbe.pstatic.net/styles/satellite.json https://nrbe.pstatic.net/styles/terrain.json https://openapi.map.naver.com/openapi/v3/maps.js https://openapi.map.naver.com/v1/validatev3 https://www.google-analytics.com/analytics.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/;",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-Content-Type-Options": "nosniff"
+      }
+    }
+  ]
 }

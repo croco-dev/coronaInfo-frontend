@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import styled from '@emotion/styled'
 import Layout from '../layouts/main'
 import Container from '../components/Container'
@@ -103,6 +104,9 @@ const Videos = ({ data }): JSX.Element => {
 
   return (
     <>
+      <Head>
+        <title>영상 모아보기 - 코로나인포 (CoronaInfo)</title>
+      </Head>
       <Layout>
         <Jumbotron>
           <Container>
