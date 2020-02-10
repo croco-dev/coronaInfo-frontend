@@ -87,8 +87,8 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
                       </td>
                       <td>
                         <h4>2차 감염 비율</h4>
-                        <p className={report.increase_rate > 0 ? 'data up' : 'data down'}>
-                          {report.increase_rate}%
+                        <p className={report.second_rate > 0 ? 'data up' : 'data down'}>
+                          {report.second_rate}%
                         </p>
                       </td>
                     </tr>
