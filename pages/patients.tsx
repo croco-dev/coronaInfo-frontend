@@ -4,22 +4,7 @@ import styled from '@emotion/styled'
 import Layout from '../layouts/main'
 import Container from '../components/Container'
 import fetch from 'isomorphic-unfetch'
-
-const Jumbotron = styled.div`
-  background: #f1f1f1;
-  padding: 35px 0;
-  line-height: 1.6;
-  h1 {
-    font-size: 1.7rem;
-    font-weight: 700;
-  }
-  p.description {
-    font-size: 1rem;
-  }
-  @media (max-width: 992px) {
-    padding: 35px 10px;
-  }
-`
+import Jumbotron from '../components/Jumbotron'
 
 const DataBox = styled.div`
   padding: 25px 0;
@@ -128,12 +113,7 @@ const PatientsPage = ({ data }): JSX.Element => {
         <Head>
           <title>확진자 리스트 - 코로나인포 (CoronaInfo)</title>
         </Head>
-        <Jumbotron>
-          <Container>
-            <h1>확진자 리스트</h1>
-            <p className="description">확진자 리스트를 확인할 수 있습니다.</p>
-          </Container>
-        </Jumbotron>
+        <Jumbotron title="확진자 리스트" desc="확진된 환자들의 현재 상태를 확인하세요" />
         {data && data.length > 0 ? (
           <>
             <Container>
