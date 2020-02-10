@@ -31,10 +31,10 @@ const StatTable = styled.table`
   .data {
     font-weight: 500;
     font-size: 24px;
-    &.up {
+    &.green {
       color: #1bbf83;
     }
-    &.down {
+    &.red {
       color: #f24147;
     }
   }
