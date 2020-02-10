@@ -49,7 +49,7 @@ const CardBox = styled.div`
   }
 `
 
-const Videos = ({ data, version }): JSX.Element => {
+const Videos = ({ data }): JSX.Element => {
   const DataShow = (): JSX.Element => {
     return (
       <>
@@ -103,7 +103,7 @@ const Videos = ({ data, version }): JSX.Element => {
 
   return (
     <>
-      <Layout version={version}>
+      <Layout>
         <Jumbotron>
           <Container>
             <h1>영상 모아보기</h1>
@@ -141,10 +141,25 @@ Videos.getInitialProps = async () => {
       url: 'https://www.youtube.com/watch?v=Pmcmwh5A6D8',
     },
     { title: '신종코로나 바이러스 예방수칙', url: 'https://www.youtube.com/watch?v=CuNLEqShGOw' },
+    {
+      title: '중국, 사망 908명·확진 4만 명 넘어...일일 사망자 또 최대 증가 / YTN',
+      url: 'https://www.youtube.com/watch?v=VvSV1bayCQw',
+    },
+    {
+      title: '"신종 코로나" 직격탄…휴직에 희망퇴직까지 / KBS뉴스(News)',
+      url: 'https://www.youtube.com/watch?v=BGMhGfAI84U',
+    },
+    {
+      title: '[속보] 국내 신종 코로나바이러스 2명 추가 발생...27명으로 늘어 / YTN',
+      url: 'https://www.youtube.com/watch?v=v5ga7fLNcxo',
+    },
+    {
+      title:
+        '"신종 코로나" 관련 중앙사고수습본부 브리핑 - [끝까지 LIVE]MBC 뉴스특보 2020년 2월 10일',
+      url: 'https://www.youtube.com/watch?v=5B-OuWqzJgQ',
+    },
   ]
-  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
-  const verJson = await version.json()
-  return { data: json, version: verJson[0].version }
+  return { data: json }
 }
 
 export default Videos

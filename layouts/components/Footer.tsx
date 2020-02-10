@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import Emoji from '../../components/Emoji'
+import fetch from 'isomorphic-unfetch'
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -15,7 +16,17 @@ const StyledFooter = styled.footer`
   line-height: 2;
 `
 
-const Footer = ({ version }): JSX.Element => {
+const Footer = (): JSX.Element => {
+  const [version, setVersion] = useState('')
+  useEffect(() => {
+    fetchData()
+    async function fetchData() {
+      // You can await here
+      const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
+      const verJson = await version.json()
+      setVersion(verJson[0].version)
+    }
+  }, [])
   return (
     <StyledFooter>
       <div>

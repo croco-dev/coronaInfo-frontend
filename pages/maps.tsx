@@ -4,9 +4,9 @@ import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 const Map = dynamic(() => import('../components/MapPolygon'), { ssr: false })
 
-const Maps = ({ data, version }): JSX.Element => {
+const Maps = ({ data }): JSX.Element => {
   return (
-    <Layout version={version}>
+    <Layout>
       <Map pdata={data} />
     </Layout>
   )
@@ -15,9 +15,7 @@ const Maps = ({ data, version }): JSX.Element => {
 Maps.getInitialProps = async () => {
   const res = await fetch(`${process.env.API_URL}/patients/?format=json`)
   const json = await res.json()
-  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
-  const verJson = await version.json()
-  return { data: json, version: verJson[0].version }
+  return { data: json }
 }
 
 export default Maps

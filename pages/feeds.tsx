@@ -44,7 +44,7 @@ const DateSpan = styled.span`
   margin-bottom: 8px;
 `
 
-const FeedPage = ({ data, version }): JSX.Element => {
+const FeedPage = ({ data }): JSX.Element => {
   const DataShow = (): JSX.Element => {
     return (
       <>
@@ -65,7 +65,7 @@ const FeedPage = ({ data, version }): JSX.Element => {
           {data.index}번째 확진자가{' '}
           {data.log_type === 'movements'
             ? '이동경로 정보가 업데이트되었습니다.'
-            : '확진 및 격리되었습니다.'}
+            : `${data.status}되었습니다.`}
           {data.place ? <span className="raw">{data.place}</span> : <></>}
         </CardBox>
       </>
@@ -87,13 +87,13 @@ const FeedPage = ({ data, version }): JSX.Element => {
 
   return (
     <>
-      <Layout version={version}>
+      <Layout>
         {' '}
         <Jumbotron>
           <Container>
             <h1>코로나인포 피드</h1>
             <p className="description">
-              코로나인포에 언제 어떤 정보가 추가되었는지 확인할 수 있습니다. (1분마다 갱신)
+              코로나인포에 언제 어떤 정보가 추가되었는지 확인할 수 있습니다.
             </p>
           </Container>
         </Jumbotron>
@@ -114,9 +114,7 @@ const FeedPage = ({ data, version }): JSX.Element => {
 FeedPage.getInitialProps = async () => {
   const res = await fetch(`${process.env.API_URL}/feeds/?format=json`)
   const json = await res.json()
-  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
-  const verJson = await version.json()
-  return { data: json, version: verJson[0].version }
+  return { data: json }
 }
 
 export default FeedPage
