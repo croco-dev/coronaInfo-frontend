@@ -158,10 +158,6 @@ Videos.getInitialProps = async () => {
         '"신종 코로나" 관련 중앙사고수습본부 브리핑 - [끝까지 LIVE]MBC 뉴스특보 2020년 2월 10일',
       url: 'https://www.youtube.com/watch?v=5B-OuWqzJgQ',
     },
-    {
-      title: '"중국 방문" 27번 환자, 신종 코로나 검사 못 받았다 (정부브리핑) / SBS',
-      url: 'https://www.youtube.com/watch?v=9ztBPhPA0Ho',
-    },
   ]
   const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
   const verJson = await version.json()
