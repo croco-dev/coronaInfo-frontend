@@ -40,7 +40,7 @@ const SidebarWrapper = styled.div`
   }
 `
 
-const MainLayout = ({ children, version }): JSX.Element => {
+const MainLayout = ({ children }): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
   const [sidebar, setSidebar] = useState(false) // 사이드바 On/Off
 
@@ -78,7 +78,7 @@ const MainLayout = ({ children, version }): JSX.Element => {
         </SidebarWrapper>
         <HeaderMobile sidebarChange={sidebarChange} />
         {children}
-        <Footer version={version} />
+        <Footer />
       </>
     )
   } else {
@@ -88,7 +88,7 @@ const MainLayout = ({ children, version }): JSX.Element => {
         <LayoutWrapper>
           <Header />
           {children}
-          <Footer version={version} />
+          <Footer />
         </LayoutWrapper>
       </>
     )

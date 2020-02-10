@@ -44,7 +44,7 @@ const DateSpan = styled.span`
   margin-bottom: 8px;
 `
 
-const FeedPage = ({ data, version }): JSX.Element => {
+const FeedPage = ({ data }): JSX.Element => {
   const DataShow = (): JSX.Element => {
     return (
       <>
@@ -87,7 +87,7 @@ const FeedPage = ({ data, version }): JSX.Element => {
 
   return (
     <>
-      <Layout version={version}>
+      <Layout>
         {' '}
         <Jumbotron>
           <Container>
@@ -114,9 +114,7 @@ const FeedPage = ({ data, version }): JSX.Element => {
 FeedPage.getInitialProps = async () => {
   const res = await fetch(`${process.env.API_URL}/feeds/?format=json`)
   const json = await res.json()
-  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
-  const verJson = await version.json()
-  return { data: json, version: verJson[0].version }
+  return { data: json }
 }
 
 export default FeedPage

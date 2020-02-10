@@ -49,7 +49,7 @@ const CardBox = styled.div`
   }
 `
 
-const Videos = ({ data, version }): JSX.Element => {
+const Videos = ({ data }): JSX.Element => {
   const DataShow = (): JSX.Element => {
     return (
       <>
@@ -103,7 +103,7 @@ const Videos = ({ data, version }): JSX.Element => {
 
   return (
     <>
-      <Layout version={version}>
+      <Layout>
         <Jumbotron>
           <Container>
             <h1>영상 모아보기</h1>
@@ -159,9 +159,7 @@ Videos.getInitialProps = async () => {
       url: 'https://www.youtube.com/watch?v=5B-OuWqzJgQ',
     },
   ]
-  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
-  const verJson = await version.json()
-  return { data: json, version: verJson[0].version }
+  return { data: json }
 }
 
 export default Videos
