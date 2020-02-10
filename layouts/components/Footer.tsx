@@ -33,4 +33,10 @@ const Footer = ({ version }): JSX.Element => {
   )
 }
 
+Footer.getInitialProps = async () => {
+  const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
+  const verJson = await version.json()
+  return { version: verJson[0].version }
+}
+
 export default Footer
