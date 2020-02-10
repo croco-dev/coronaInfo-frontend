@@ -20,11 +20,10 @@ const Footer = (): JSX.Element => {
   const [version, setVersion] = useState('')
   useEffect(() => {
     fetchData()
-    async function fetchData() {
-      // You can await here
+    async function fetchData(): Promise<void> {
       const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
       const verJson = await version.json()
-      setVersion(verJson[0].version)
+      return setVersion(verJson[0].version)
     }
   }, [])
   return (
