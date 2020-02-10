@@ -24,17 +24,43 @@ const DataBox = styled.div`
 
 const CardBox = styled.div`
   background: #ffffff;
-  border-left: 6px solid var(--main);
-  border-radius: 4px;
-  padding: 20px 15px;
+  border-radius: 13px;
   margin: 25px 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
   line-height: 150%;
-  .raw {
-    margin-top: 15px;
-    display: block;
-    background: #ececec;
+  .cc-h {
+    background: #e6e6e6;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
     padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .cc-a {
+    display: flex;
+    padding: 0 10px;
+  }
+  .head {
+    margin: 20px 4px;
+    background: #333;
+    border-radius: 15px;
+    color: #fff;
+    padding: 5px 13px;
+    &.w {
+      background: #e0e0e0;
+      color: #333;
+    }
+    &.b {
+      background: #59aafd;
+    }
+    &.f {
+      background: var(--main);
+    }
+  }
+  .content {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
   }
 `
 
@@ -43,9 +69,15 @@ const PatientsPage = ({ data }): JSX.Element => {
     return (
       <>
         <DataBox>
-          {data.map((row, i) => {
-            return <Card data={row} key={i} />
-          })}
+          <div className="row">
+            {data.map((row, i) => {
+              return (
+                <div className="col-xs-12 col-md-6" key={i}>
+                  <Card data={row} />
+                </div>
+              )
+            })}
+          </div>
         </DataBox>
       </>
     )
@@ -55,10 +87,17 @@ const PatientsPage = ({ data }): JSX.Element => {
     return (
       <>
         <CardBox>
-          {data.date},
-          <br />
-          {data.index}번째 확진자가 {data.status}되었습니다.
-          {data.place ? <span className="raw">{data.place}</span> : <></>}
+          <div className="cc-h">
+            <span>{data.index}</span>번째 확진자
+          </div>
+          <div className="cc-a">
+            {data.status === '확진 및 격리' ? (
+              <div className="head f">{data.status}</div>
+            ) : (
+              <div className="head b">{data.status}</div>
+            )}
+            <div className="content">{data.date}에 확진 판정</div>
+          </div>
         </CardBox>
       </>
     )
