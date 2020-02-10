@@ -77,34 +77,36 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
               </div>
               <Card>
                 <StatTable>
-                  <tr>
-                    <td>
-                      <h4>증가비율</h4>
-                      <p className={report.increase_rate > 0 ? 'change up' : 'change down'}>
-                        {report.increase_rate}%
-                      </p>
-                    </td>
-                    <td>
-                      <h4>2차 감염 비율</h4>
-                      <p className={report.increase_rate > 0 ? 'change up' : 'change down'}>
-                        {report.increase_rate}%
-                      </p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h4>사망자 비율</h4>
-                      <p className={report.death_rate >= 0 ? 'change up' : 'change down'}>
-                        {report.death_rate}%
-                      </p>
-                    </td>
-                    <td>
-                      <h4>완치자 비율</h4>
-                      <p className={report.cure_rate > 0 ? 'change up' : 'change down'}>
-                        {report.cure_rate}%
-                      </p>
-                    </td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <h4>증가비율</h4>
+                        <p className={report.increase_rate > 0 ? 'change up' : 'change down'}>
+                          {report.increase_rate}%
+                        </p>
+                      </td>
+                      <td>
+                        <h4>2차 감염 비율</h4>
+                        <p className={report.increase_rate > 0 ? 'change up' : 'change down'}>
+                          {report.increase_rate}%
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h4>사망자 비율</h4>
+                        <p className={report.death_rate >= 0 ? 'change up' : 'change down'}>
+                          {report.death_rate}%
+                        </p>
+                      </td>
+                      <td>
+                        <h4>완치자 비율</h4>
+                        <p className={report.cure_rate > 0 ? 'change up' : 'change down'}>
+                          {report.cure_rate}%
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
                 </StatTable>
               </Card>
             </MapContainer>

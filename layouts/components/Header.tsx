@@ -61,7 +61,7 @@ const Header: React.FC = () => {
           </NavLogo>
         </Link>
         <NavMenu>
-          <Link href="/">
+          <Link href="/maps">
             <a>지도</a>
           </Link>
           <Link href="/patients">
