@@ -16,6 +16,9 @@ const Jumbotron = styled.div`
   p.description {
     font-size: 1rem;
   }
+  @media (max-width: 992px) {
+    padding: 35px 10px;
+  }
 `
 
 const DataBox = styled.div`
@@ -28,6 +31,9 @@ const CardBox = styled.div`
   margin: 25px 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
   line-height: 150%;
+  @media (max-width: 992px) {
+    margin: 17px 10px;
+  }
   .cc-h {
     background: #e6e6e6;
     border-top-left-radius: 13px;
