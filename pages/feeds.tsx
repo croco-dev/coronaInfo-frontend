@@ -37,6 +37,13 @@ const CardBox = styled.div`
   }
 `
 
+const DateSpan = styled.span`
+  color: #333;
+  display: block;
+  font-size: 20px;
+  margin-bottom: 8px;
+`
+
 const FeedPage = ({ data, version }): JSX.Element => {
   const DataShow = (): JSX.Element => {
     return (
@@ -54,8 +61,7 @@ const FeedPage = ({ data, version }): JSX.Element => {
     return (
       <>
         <CardBox>
-          {data.date},
-          <br />
+          <DateSpan>{data.date}</DateSpan>
           {data.index}번째 확진자가{' '}
           {data.log_type === 'movements'
             ? '이동경로 정보가 업데이트되었습니다.'

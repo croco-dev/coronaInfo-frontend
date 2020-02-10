@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react'
-import { RenderAfterNavermapsLoaded, NaverMap, Polygon } from 'react-naver-maps'
+import { RenderAfterNavermapsLoaded, NaverMap, Polyline } from 'react-naver-maps'
+import randomColor from 'randomcolor'
 
 const naverMapClientId = process.env.NAVER_MAP_API || ''
 declare const naver: any
@@ -23,16 +24,21 @@ const Map = ({ pdata }): JSX.Element => {
       >
         {pdata.map((item, i) => {
           const navermaps = window.naver.maps
+          const color = randomColor()
           const paths = []
-          paths.push(new navermaps.LatLng(item.lat, item.lng))
+          item.movements.map((item2, i2) => {
+            paths.push(new navermaps.LatLng(item2.lat, item2.lng))
+          })
           return (
-            <Polygon
-              paths={[paths]}
-              fillColor={'#ff0000'}
-              fillOpacity={0.3}
-              strokeColor={'#ff0000'}
-              strokeOpacity={0.6}
+            <Polyline
+              path={paths}
+              strokeColor={color}
+              strokeStyle={'solid'}
+              strokeOpacity={0.8}
               strokeWeight={3}
+              strokeLineCap="round"
+              startIcon={3}
+              endIcon={3}
               key={i}
             />
           )

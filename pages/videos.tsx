@@ -18,16 +18,11 @@ const Jumbotron = styled.div`
   }
 `
 
-const DataBox = styled.div`
-  padding: 25px 0;
-`
-
 const CardBox = styled.div`
   background: #ffffff;
-  border-left: 6px solid var(--main);
   border-radius: 4px;
   padding: 20px 15px;
-  margin: 25px 0;
+  margin: 10px 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
   .raw {
     margin-top: 15px;
@@ -35,17 +30,36 @@ const CardBox = styled.div`
     background: #ececec;
     padding: 10px 20px;
   }
+  .desc {
+    display: block;
+    text-align: center;
+    font-size: 1.12rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #333;
+    margin-top: 15px;
+    line-height: 1.4;
+  }
+
+  img {
+    width: 100%;
+  }
+  @media (max-width: 992px) {
+    margin: 15px 25px;
+  }
 `
 
 const Videos = ({ data, version }): JSX.Element => {
   const DataShow = (): JSX.Element => {
     return (
       <>
-        <DataBox>
-          {data.map((row, i) => {
-            return <Card data={row} key={i} />
-          })}
-        </DataBox>
+        {data.map((row, i) => {
+          return (
+            <div key={i} className={'col-xs-12 col-md-4'}>
+              <Card data={row} key={i} />
+            </div>
+          )
+        })}
       </>
     )
   }
@@ -54,9 +68,21 @@ const Videos = ({ data, version }): JSX.Element => {
     return (
       <>
         <CardBox>
-          <Link href={data.url}>
-            <a target="_blank">{data.title}</a>
-          </Link>
+          <a href={data.url} target="_blank" rel="noopener noreferrer">
+            <img
+              src={
+                'https://img.youtube.com/vi/' +
+                data.url
+                  .replace('https://www.youtube.com/watch?v=', '')
+                  .replace('https://youtu.be/', '') +
+                '/maxresdefault.jpg'
+              }
+              alt={data.title}
+            />
+          </a>
+          <a href={data.url} target="_blank" rel="noopener noreferrer" className="desc">
+            {data.title}
+          </a>
         </CardBox>
       </>
     )
@@ -86,15 +112,19 @@ const Videos = ({ data, version }): JSX.Element => {
             </p>
           </Container>
         </Jumbotron>
-        {data && data.length > 0 ? (
-          <>
-            <Container>
-              <DataShow />
-            </Container>
-          </>
-        ) : (
-          <DataLoading />
-        )}
+        <div className="row" style={{ padding: '20px 0' }}>
+          {data && data.length > 0 ? (
+            <>
+              <Container>
+                <div className="row">
+                  <DataShow />
+                </div>
+              </Container>
+            </>
+          ) : (
+            <DataLoading />
+          )}
+        </div>
       </Layout>
     </>
   )
@@ -109,18 +139,6 @@ Videos.getInitialProps = async () => {
     {
       title: "'신종 코로나' 추가 확진자 없지만...의심환자 급증 / YTN",
       url: 'https://www.youtube.com/watch?v=Pmcmwh5A6D8',
-    },
-    {
-      title: '키친타올·고무줄로 마스크를 만들 수 있다고?! 신종 코로나 예방 마스크 만들기!',
-      url: 'https://www.youtube.com/watch?v=1rbdfwH0wUc',
-    },
-    {
-      title: '구하기 힘든 손 소독제, 집에서 쉽게 만드는 방법 / SBS',
-      url: 'https://www.youtube.com/watch?v=FJJaK8663a8',
-    },
-    {
-      title: '신종 코로나바이러스감염증 예방행동수칙',
-      url: 'https://www.youtube.com/watch?v=GXcKt4MA9cs',
     },
     { title: '신종코로나 바이러스 예방수칙', url: 'https://www.youtube.com/watch?v=CuNLEqShGOw' },
   ]

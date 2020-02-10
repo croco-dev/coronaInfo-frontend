@@ -7,7 +7,7 @@ import ReactGA from 'react-ga'
 import '@/styles/core.scss'
 
 class MyApp extends App {
-  componentDidMount() {
+  componentDidMount(): void {
     ReactGA.initialize('UA-158027501-01')
     ReactGA.pageview(window.location.pathname)
   }

@@ -20,10 +20,11 @@ const Footer = ({ version }): JSX.Element => {
     <StyledFooter>
       <div>
         <p>
-          제보, 정정 요청은 이메일로 받습니다 <Emoji str="🙂" />
+          admin@coronas.info / 제보, 정정 요청은 이메일로 받습니다 <Emoji str="🙂" />
         </p>
-        <p>admin@coronas.info</p>
-        <p>{version} 기준 정보입니다.</p>
+        <p>
+          <Emoji str="🧠" /> Last updated: {version}
+        </p>
         <p>
           <Emoji str="❤️" /> from Croco.
         </p>

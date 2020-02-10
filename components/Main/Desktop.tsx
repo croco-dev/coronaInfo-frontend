@@ -77,34 +77,36 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
                   <h2>감염 통계</h2>
                 </div>
                 <StatTable>
-                  <tr>
-                    <td>
-                      <h4>증가비율</h4>
-                      <p className={report.increase_rate > 0 ? 'data up' : 'data down'}>
-                        {report.increase_rate}%
-                      </p>
-                    </td>
-                    <td>
-                      <h4>2차 감염 비율</h4>
-                      <p className={report.increase_rate > 0 ? 'data up' : 'data down'}>
-                        {report.increase_rate}%
-                      </p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h4>사망자 비율</h4>
-                      <p className={report.death_rate >= 0 ? 'data up' : 'data down'}>
-                        {report.death_rate}%
-                      </p>
-                    </td>
-                    <td>
-                      <h4>완치자 비율</h4>
-                      <p className={report.cure_rate > 0 ? 'data up' : 'data down'}>
-                        {report.cure_rate}%
-                      </p>
-                    </td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <h4>증가비율</h4>
+                        <p className={report.increase_rate > 0 ? 'data up' : 'data down'}>
+                          {report.increase_rate}%
+                        </p>
+                      </td>
+                      <td>
+                        <h4>2차 감염 비율</h4>
+                        <p className={report.increase_rate > 0 ? 'data up' : 'data down'}>
+                          {report.increase_rate}%
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h4>사망자 비율</h4>
+                        <p className={report.death_rate >= 0 ? 'data up' : 'data down'}>
+                          {report.death_rate}%
+                        </p>
+                      </td>
+                      <td>
+                        <h4>완치자 비율</h4>
+                        <p className={report.cure_rate > 0 ? 'data up' : 'data down'}>
+                          {report.cure_rate}%
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
                 </StatTable>
               </Card>
             </MapContainer>

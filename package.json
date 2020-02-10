@@ -16,6 +16,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.2.1",
     "node-sass": "^4.13.1",
+    "randomcolor": "^0.5.4",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-ga": "^2.7.0",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@types/node": "^13.7.0",
+    "@types/randomcolor": "^0.5.3",
     "@types/react": "^16.9.19",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",

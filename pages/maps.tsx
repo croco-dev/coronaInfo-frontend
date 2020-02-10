@@ -13,9 +13,8 @@ const Maps = ({ data, version }): JSX.Element => {
 }
 
 Maps.getInitialProps = async () => {
-  const res = await fetch(`${process.env.API_URL}/movements/?format=json`)
+  const res = await fetch(`${process.env.API_URL}/patients/?format=json`)
   const json = await res.json()
-  console.log(json)
   const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
   const verJson = await version.json()
   return { data: json, version: verJson[0].version }
