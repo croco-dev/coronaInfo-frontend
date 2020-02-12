@@ -22,13 +22,13 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
   return (
     <>
       <Container>
-        <div className="row">
+        <div>
           <Map movements={markerData} />
-          <div className="col-md-5">
+          <div>
             <MapContainer>
               <div className="row">
                 <div
-                  className="col-md-4"
+                  className="col-md-6"
                   style={{
                     marginBottom: '15px',
                   }}
@@ -50,7 +50,7 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
                   />
                 </div>
                 <div
-                  className="col-md-4"
+                  className="col-md-6"
                   style={{
                     marginBottom: '15px',
                   }}
@@ -71,7 +71,7 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
                   />
                 </div>
                 <div
-                  className="col-md-4"
+                  className="col-md-12"
                   style={{
                     marginBottom: '25px',
                   }}
