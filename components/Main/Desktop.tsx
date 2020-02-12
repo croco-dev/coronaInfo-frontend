@@ -31,7 +31,7 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
             <StatCard title="국내 확진자 수" content={report.total_count} />
           </div>
           <div className="col-md-4">
-            <StatCard title="국내 치료자 수" content={report.cure_count} />
+            <StatCard title="국내 확진자 격리해제 수" content={report.cure_count} />
           </div>
           <div className="col-md-4">
             <StatCard title="국내 사망자 수" content={report.death_count} />

@@ -41,7 +41,7 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
                     marginBottom: '15px',
                   }}
                 >
-                  <StatCard title="국내 치료자 수" content={report.cure_count} />
+                  <StatCard title="국내 확진자 격리해제 수" content={report.cure_count} />
                 </div>
                 <div
                   className="col-md-4"
