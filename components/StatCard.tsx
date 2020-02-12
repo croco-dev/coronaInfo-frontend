@@ -26,6 +26,9 @@ const Card = styled.div`
     .d {
       font-weight: 500;
       font-size: 18px;
+      @media (max-width: 997px) {
+        font-size: 15px;
+      }
     }
     .n {
       font-weight: 700;
