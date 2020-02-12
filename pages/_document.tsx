@@ -6,6 +6,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <meta httpEquiv="Content-Security-Policy" content={`prefetch-src 'self';`} />
           <meta
             name="keywords"
             content="코로나, 코로나 치료법, 코로나 바이러스, 현황, 코로나 현황, 코로나 치료법 현황, 코로나 정보, 코로나 지도, 코로나 맵"
