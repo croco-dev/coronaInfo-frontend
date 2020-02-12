@@ -1,5 +1,5 @@
-import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
+import React from 'react'
 
 export default class MyDocument extends Document {
   render(): JSX.Element {
@@ -15,15 +15,24 @@ export default class MyDocument extends Document {
             content="f3t63McdfQwW6s1PtPOOaR_RifZvgwGRjMp0epjbSsU"
           />
           <meta name="naver-site-verification" content="d8d7494c6be7247cda2c620579801dacba054b4a" />
-          <meta name="description" content="코로나 바이러스 정보를 알려드립니다!" />
+          <meta
+            name="description"
+            content="코로나-19 (COVID-19) / 신종 코로나 바이러스의 대한민국 정보를 알려드립니다!"
+          />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="코로나인포 - Corona Info" />
-          <meta property="og:description" content="코로나 바이러스 정보를 알려드립니다!" />
+          <meta
+            property="og:description"
+            content="코로나-19 (COVID-19) / 신종 코로나 바이러스의 대한민국 정보를 알려드립니다!"
+          />
           <meta property="og:url" content="https://coronas.info" />
           <meta property="og:image" content="/static/images/bg.png" />
           <meta property="twitter:card" content="summary" />
           <meta name="twitter:title" content="코로나인포 - Corona Info" />
-          <meta name="twitter:description" content="페이지 설명" />
+          <meta
+            name="twitter:description"
+            content="코로나-19 (COVID-19) / 신종 코로나 바이러스의 대한민국 정보를 알려드립니다!"
+          />
           <meta name="twitter:image" content="/static/images/bg.png" />
           <meta name="twitter:domain" content="코로나인포 - Corona Info" />
           <link
