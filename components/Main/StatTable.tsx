@@ -29,8 +29,10 @@ const StatTableComponent = ({ report }): JSX.Element => (
     <tbody>
       <tr>
         <td>
-          <h4>증가비율</h4>
-          <p className={report.increase_rate > 0 ? 'data red' : 'data'}>{report.increase_rate}%</p>
+          <h4>증가 인원</h4>
+          <p className={report.increase_count > 0 ? 'data red' : 'data'}>
+            {report.increase_count}%
+          </p>
         </td>
         <td>
           <h4>2차 감염 비율</h4>
