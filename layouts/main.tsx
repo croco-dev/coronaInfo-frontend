@@ -82,7 +82,7 @@ const MainLayout = ({ children, isFull }: MainLayoutProps): JSX.Element => {
         <SidebarWrapper className={sidebar && 'show'}>
           <Sidebar sidebarChange={sidebarChange} />
         </SidebarWrapper>
-        <HeaderMobile sidebarChange={sidebarChange} />
+        <HeaderMobile sidebarChange={sidebarChange} fix={isFull} />
         {children}
         <Footer />
       </>
@@ -93,7 +93,7 @@ const MainLayout = ({ children, isFull }: MainLayoutProps): JSX.Element => {
     return (
       <>
         <LayoutWrapper>
-          <Header />
+          <Header fix={isFull} />
           {children}
           <Footer />
         </LayoutWrapper>
