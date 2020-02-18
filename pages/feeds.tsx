@@ -80,7 +80,6 @@ const FeedPage = ({ data }): JSX.Element => {
         <title>피드 - 코로나인포 (CoronaInfo)</title>
       </Head>
       <Layout>
-        {' '}
         <Jumbotron
           title="코로나인포 피드"
           desc="코로나인포에 언제 어떤 정보가 추가되었는지 확인할 수 있습니다."
