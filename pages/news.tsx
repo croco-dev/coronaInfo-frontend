@@ -31,6 +31,7 @@ const Card = styled.a`
     font-size: 1.2rem;
     &:hover,
     &:focus {
+      color: #c361ff;
       text-decoration: underline;
     }
   }
