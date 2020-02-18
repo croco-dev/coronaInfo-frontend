@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import styled from '@emotion/styled'
 import Layout from '@/layouts/main'
@@ -41,6 +41,7 @@ const Card = styled.a`
 `
 
 const NewsPage = ({ data }): JSX.Element => {
+  const [store, setStore] = useState(data)
   const DataCard = ({ data }): JSX.Element => {
     return (
       <Card href={data.originallink}>
@@ -50,6 +51,17 @@ const NewsPage = ({ data }): JSX.Element => {
     )
   }
 
+  useEffect(() => {
+    const timer = setInterval(async () => {
+      const res = await fetch(`${process.env.API_URL}/news/?format=json`)
+      const json = await res.json()
+      setStore(json)
+    }, 10000)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
   return (
     <>
       <Head>
@@ -57,13 +69,13 @@ const NewsPage = ({ data }): JSX.Element => {
       </Head>
       <Layout>
         <Jumbotron
-          title="기사 모아보기"
-          desc="'코로나19'에 관련된 뉴스 기사를 모아보실 수 있습니다."
+          title="실시간 기사"
+          desc="'코로나19'에 관련된 뉴스 기사를 실시간으로 모아보실 수 있습니다."
         />
         <Content>
           <Container>
             <CardContainer>
-              {data.news.map((row, i) => {
+              {store.news.map((row, i) => {
                 return <DataCard data={row} key={i} />
               })}
             </CardContainer>
