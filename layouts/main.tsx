@@ -44,7 +44,7 @@ interface MainLayoutProps {
   header?: boolean
   footer?: boolean
   isFull?: boolean
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const MainLayout = ({ children, isFull, header, footer }: MainLayoutProps): JSX.Element => {
