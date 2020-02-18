@@ -1,11 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
 import styled from '@emotion/styled'
-import Layout from '../layouts/main'
-import Container from '../components/Container'
+import Layout from '@/layouts/main'
+import Container from '@/components/Container'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
-import Jumbotron from '../components/Jumbotron'
+import Jumbotron from '@/components/Jumbotron'
 
 const CardBox = styled.div`
   background: #ffffff;
