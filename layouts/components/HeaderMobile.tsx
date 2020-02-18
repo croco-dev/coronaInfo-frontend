@@ -15,6 +15,11 @@ const EditedContainer = styled(Container)`
 const Nav = styled.nav`
   background: #fff;
   height: 60px;
+  &.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
 `
 
 const NavLogo = styled.a`
@@ -40,11 +45,12 @@ const Menubar = styled.button`
 
 interface HeaderProps {
   sidebarChange: () => void
+  fix?: boolean
 }
 
 const Header = (props: HeaderProps): JSX.Element => {
   return (
-    <Nav>
+    <Nav className={props.fix ? 'fixed' : ''}>
       <EditedContainer>
         <Menubar onClick={props.sidebarChange}>
           <svg
