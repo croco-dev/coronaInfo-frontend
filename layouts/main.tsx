@@ -41,11 +41,13 @@ const SidebarWrapper = styled.div`
 `
 
 interface MainLayoutProps {
+  header?: boolean
+  footer?: boolean
   isFull?: boolean
   children: React.ReactNode
 }
 
-const MainLayout = ({ children, isFull }: MainLayoutProps): JSX.Element => {
+const MainLayout = ({ children, isFull, header, footer }: MainLayoutProps): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
   const [sidebar, setSidebar] = useState(false) // 사이드바 On/Off
 
@@ -78,11 +80,15 @@ const MainLayout = ({ children, isFull }: MainLayoutProps): JSX.Element => {
     const Sidebar = dynamic(() => import('./components/Sidebar'))
     return (
       <>
-        <SideBackground className={sidebar && 'show'} onClick={sidebarChange} />
-        <SidebarWrapper className={sidebar && 'show'}>
-          <Sidebar sidebarChange={sidebarChange} />
-        </SidebarWrapper>
-        <HeaderMobile sidebarChange={sidebarChange} fix={isFull} />
+        {header && (
+          <>
+            <SideBackground className={sidebar && 'show'} onClick={sidebarChange} />
+            <SidebarWrapper className={sidebar && 'show'}>
+              <Sidebar sidebarChange={sidebarChange} />
+            </SidebarWrapper>
+            <HeaderMobile sidebarChange={sidebarChange} fix={isFull} />
+          </>
+        )}
         {children}
         <Footer />
       </>
@@ -93,13 +99,18 @@ const MainLayout = ({ children, isFull }: MainLayoutProps): JSX.Element => {
     return (
       <>
         <LayoutWrapper>
-          <Header fix={isFull} />
+          {header && <Header fix={isFull} />}
           {children}
           <Footer />
         </LayoutWrapper>
       </>
     )
   }
+}
+
+MainLayout.defaultProps = {
+  header: true,
+  footer: true,
 }
 
 export default MainLayout
