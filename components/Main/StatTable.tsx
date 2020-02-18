@@ -31,7 +31,7 @@ const StatTableComponent = ({ report }): JSX.Element => (
         <td>
           <h4>증가 인원</h4>
           <p className={report.increase_count > 0 ? 'data red' : 'data'}>
-            {report.increase_count}%
+            {report.increase_count}명
           </p>
         </td>
         <td>
