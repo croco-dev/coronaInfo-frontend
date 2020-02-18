@@ -90,7 +90,7 @@ const MainLayout = ({ children, isFull, header, footer }: MainLayoutProps): JSX.
           </>
         )}
         {children}
-        <Footer />
+        {header && <Footer />}
       </>
     )
   } else {
@@ -101,7 +101,7 @@ const MainLayout = ({ children, isFull, header, footer }: MainLayoutProps): JSX.
         <LayoutWrapper>
           {header && <Header fix={isFull} />}
           {children}
-          <Footer />
+          {header && <Footer />}
         </LayoutWrapper>
       </>
     )
