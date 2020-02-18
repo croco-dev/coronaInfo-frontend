@@ -21,6 +21,11 @@ const Card = styled.a`
   line-height: 1.4;
   text-decoration: none;
 
+  &:hover,
+  &:focus {
+    border: 1px solid #c361ff;
+  }
+
   h3 {
     color: #333;
     font-size: 1.2rem;
