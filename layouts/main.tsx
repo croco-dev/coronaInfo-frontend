@@ -40,11 +40,16 @@ const SidebarWrapper = styled.div`
   }
 `
 
-const MainLayout = ({ children }): JSX.Element => {
+interface MainLayoutProps {
+  isFull?: boolean
+  children: React.ReactNode
+}
+
+const MainLayout = ({ children, isFull }: MainLayoutProps): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
   const [sidebar, setSidebar] = useState(false) // 사이드바 On/Off
 
-  const resizeEvent = () => {
+  const resizeEvent = (): void => {
     if (window.innerWidth < 992) {
       setIsMobile(true)
     } else {
@@ -53,7 +58,7 @@ const MainLayout = ({ children }): JSX.Element => {
     }
   }
 
-  const sidebarChange = () => {
+  const sidebarChange = (): void => {
     sidebar ? setSidebar(false) : setSidebar(true)
   }
 
@@ -61,7 +66,7 @@ const MainLayout = ({ children }): JSX.Element => {
     if (typeof window !== 'undefined') {
       resizeEvent()
       window.addEventListener('resize', resizeEvent)
-      return () => {
+      return (): void => {
         window.removeEventListener('resize', resizeEvent)
       }
     }
@@ -86,7 +91,7 @@ const MainLayout = ({ children }): JSX.Element => {
     return (
       <>
         <LayoutWrapper>
-          <Header />
+          <Header style={(props)} />
           {children}
           <Footer />
         </LayoutWrapper>
