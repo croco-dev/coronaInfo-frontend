@@ -74,6 +74,7 @@ const MainLayout = ({ children, isFull }: MainLayoutProps): JSX.Element => {
 
   if (isMobile) {
     // mobile mode
+    const HeaderMobile = dynamic(() => import('./components/HeaderMobile'))
     const Sidebar = dynamic(() => import('./components/Sidebar'))
     return (
       <>
@@ -88,10 +89,11 @@ const MainLayout = ({ children, isFull }: MainLayoutProps): JSX.Element => {
     )
   } else {
     // desktop mode
+    const Header = dynamic(() => import('./components/Header'))
     return (
       <>
         <LayoutWrapper>
-          <Header style={(props)} />
+          <Header />
           {children}
           <Footer />
         </LayoutWrapper>

@@ -52,7 +52,7 @@ const NavMenu = styled.ul`
 //   font-weight: 500;
 // `
 
-const Header: React.FC = () => {
+const Header = (): JSX.Element => {
   return (
     <Nav>
       <EditedContainer>

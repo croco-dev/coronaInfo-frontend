@@ -42,7 +42,7 @@ interface HeaderProps {
   sidebarChange: () => void
 }
 
-const Header: React.FC<HeaderProps> = props => {
+const Header = (props: HeaderProps): JSX.Element => {
   return (
     <Nav>
       <EditedContainer>
