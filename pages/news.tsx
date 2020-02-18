@@ -42,19 +42,12 @@ const Card = styled.a`
 
 const NewsPage = ({ data }): JSX.Element => {
   const DataCard = ({ data }): JSX.Element => {
-    const date = new Date(data.pubDate)
     return (
       <Card href={data.originallink}>
         <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
         <p dangerouslySetInnerHTML={{ __html: data.description }}></p>
       </Card>
     )
-  }
-
-  const News = () => {
-    data.map((row, i) => {
-      return <DataCard data={row} key={i} />
-    })
   }
 
   return (
