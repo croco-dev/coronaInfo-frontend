@@ -15,7 +15,7 @@ const CardContainer = styled.div``
 const Card = styled.a`
   display: block;
   border-radius: 6px;
-  border: 1px solid #dadce0;
+  border: 2px solid #dadce0;
   padding: 20px 17px;
   margin: 15px 0;
   line-height: 1.4;
@@ -23,17 +23,15 @@ const Card = styled.a`
 
   &:hover,
   &:focus {
-    border: 1px solid #c361ff;
+    border: 2px solid #c361ff;
+    h3 {
+      color: #c05bfd;
+    }
   }
 
   h3 {
     color: #333;
     font-size: 1.2rem;
-    &:hover,
-    &:focus {
-      color: #c361ff;
-      text-decoration: underline;
-    }
   }
   p {
     color: #757575;
