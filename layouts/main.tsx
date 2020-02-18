@@ -40,11 +40,18 @@ const SidebarWrapper = styled.div`
   }
 `
 
-const MainLayout = ({ children }): JSX.Element => {
+interface MainLayoutProps {
+  header?: boolean
+  footer?: boolean
+  isFull?: boolean
+  children: React.ReactNode
+}
+
+const MainLayout = ({ children, isFull, header, footer }: MainLayoutProps): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
   const [sidebar, setSidebar] = useState(false) // 사이드바 On/Off
 
-  const resizeEvent = () => {
+  const resizeEvent = (): void => {
     if (window.innerWidth < 992) {
       setIsMobile(true)
     } else {
@@ -53,7 +60,7 @@ const MainLayout = ({ children }): JSX.Element => {
     }
   }
 
-  const sidebarChange = () => {
+  const sidebarChange = (): void => {
     sidebar ? setSidebar(false) : setSidebar(true)
   }
 
@@ -61,7 +68,7 @@ const MainLayout = ({ children }): JSX.Element => {
     if (typeof window !== 'undefined') {
       resizeEvent()
       window.addEventListener('resize', resizeEvent)
-      return () => {
+      return (): void => {
         window.removeEventListener('resize', resizeEvent)
       }
     }
@@ -69,30 +76,41 @@ const MainLayout = ({ children }): JSX.Element => {
 
   if (isMobile) {
     // mobile mode
+    const HeaderMobile = dynamic(() => import('./components/HeaderMobile'))
     const Sidebar = dynamic(() => import('./components/Sidebar'))
     return (
       <>
-        <SideBackground className={sidebar && 'show'} onClick={sidebarChange} />
-        <SidebarWrapper className={sidebar && 'show'}>
-          <Sidebar sidebarChange={sidebarChange} />
-        </SidebarWrapper>
-        <HeaderMobile sidebarChange={sidebarChange} />
+        {header && (
+          <>
+            <SideBackground className={sidebar && 'show'} onClick={sidebarChange} />
+            <SidebarWrapper className={sidebar && 'show'}>
+              <Sidebar sidebarChange={sidebarChange} />
+            </SidebarWrapper>
+            <HeaderMobile sidebarChange={sidebarChange} fix={isFull} />
+          </>
+        )}
         {children}
-        <Footer />
+        {footer && <Footer />}
       </>
     )
   } else {
     // desktop mode
+    const Header = dynamic(() => import('./components/Header'))
     return (
       <>
         <LayoutWrapper>
-          <Header />
+          {header && <Header fix={isFull} />}
           {children}
-          <Footer />
+          {footer && <Footer />}
         </LayoutWrapper>
       </>
     )
   }
+}
+
+MainLayout.defaultProps = {
+  header: true,
+  footer: true,
 }
 
 export default MainLayout

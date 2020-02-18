@@ -14,6 +14,12 @@ const Nav = styled.nav`
   background: #fff;
   height: 60px;
   z-index: 20;
+  &.fixed {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+  }
 `
 
 const NavLogo = styled.a`
@@ -52,9 +58,13 @@ const NavMenu = styled.ul`
 //   font-weight: 500;
 // `
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  fix?: boolean
+}
+
+const Header = ({ fix }: HeaderProps): JSX.Element => {
   return (
-    <Nav>
+    <Nav className={fix ? 'fixed' : ''}>
       <EditedContainer>
         <Link href="/" passHref>
           <NavLogo>

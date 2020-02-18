@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import Layout from '../layouts/main'
 import dynamic from 'next/dynamic'
@@ -7,7 +7,7 @@ const Map = dynamic(() => import('../components/MapPolygon'), { ssr: false })
 
 const Maps = ({ data }): JSX.Element => {
   return (
-    <Layout>
+    <Layout isFull={true} footer={false}>
       <Head>
         <title>지도 - 코로나인포 (CoronaInfo)</title>
       </Head>
@@ -16,7 +16,7 @@ const Maps = ({ data }): JSX.Element => {
   )
 }
 
-Maps.getInitialProps = async () => {
+Maps.getInitialProps = async (): Promise<object> => {
   const res = await fetch(`${process.env.API_URL}/patients/?format=json`)
   const json = await res.json()
   return { data: json }
