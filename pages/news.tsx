@@ -56,7 +56,7 @@ const NewsPage = ({ data }): JSX.Element => {
       const res = await fetch(`${process.env.API_URL}/news/?format=json`)
       const json = await res.json()
       setStore(json)
-    }, 10000)
+    }, 30000)
     return () => {
       clearInterval(timer)
     }
