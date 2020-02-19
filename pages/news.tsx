@@ -57,7 +57,7 @@ const NewsPage = ({ data }): JSX.Element => {
       const json = await res.json()
       setStore(json)
     }, 30000)
-    return () => {
+    return (): void => {
       clearInterval(timer)
     }
   }, [])
