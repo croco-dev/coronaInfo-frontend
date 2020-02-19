@@ -15,6 +15,9 @@ const MapContainer = styled.section`
     font-weight: 500;
     margin-bottom: 15px;
     padding-left: 6px;
+    span {
+      font-size: 15px;
+    }
   }
 `
 
@@ -95,6 +98,9 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
                 </div>
               </div>
               <Card>
+                <h2>
+                  통계 <span>(오늘 기준)</span>
+                </h2>
                 <StatTable report={report} />
               </Card>
             </MapContainer>

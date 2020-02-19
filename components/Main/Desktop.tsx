@@ -15,6 +15,9 @@ const MapContainer = styled.section`
     font-weight: 500;
     margin-bottom: 15px;
     padding-left: 6px;
+    span {
+      font-size: 15px;
+    }
   }
 `
 
@@ -94,7 +97,9 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
             <MapContainer>
               <Card>
                 <div className="t">
-                  <h2>감염 통계</h2>
+                  <h2>
+                    감염 통계 <span>(오늘 기준)</span>
+                  </h2>
                 </div>
                 <StatTable report={report} />
               </Card>
