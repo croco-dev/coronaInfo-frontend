@@ -70,7 +70,7 @@ const NewsPage = ({ data }): JSX.Element => {
       </Head>
       <Layout>
         <Jumbotron
-          title="실시간 기사"
+          title="실시간 뉴스 모아보기"
           desc="'코로나19'에 관련된 뉴스 기사를 실시간으로 모아보실 수 있습니다."
         />
         <Content>
