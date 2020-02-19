@@ -14,6 +14,13 @@ const StyledFooter = styled.footer`
   text-align: center;
   padding: 25px 0;
   line-height: 2;
+  a {
+    text-decoration: none;
+    color: #194a7d;
+  }
+  .small {
+    font-size: 90%;
+  }
 `
 
 const Footer = (): JSX.Element => {
@@ -30,14 +37,21 @@ const Footer = (): JSX.Element => {
     <StyledFooter>
       <div>
         <p>
-          admin@coronas.info / 제보, 정정 요청은 이메일로 받습니다 <Emoji str="🙂" />
+          제보, 정정 요청은 이메일로 받습니다 <Emoji str="🙂" /> <br />
+          <span className="small">
+            <Emoji str="📧" /> admin@coronas.info
+          </span>
         </p>
         <p>
-          <Emoji str="🧠" /> Last updated: {version}
+          <Emoji str="🔄" /> 업데이트: {version}
         </p>
-        <p>
-          <Emoji str="❤️" /> from Croco.
-        </p>
+        <a
+          href="https://www.notion.so/6bd0a7cdaae4456ca7059a7d4da7c484"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Emoji str="ℹ️" /> 코로나인포 소개
+        </a>
       </div>
     </StyledFooter>
   )
