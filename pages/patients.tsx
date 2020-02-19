@@ -246,7 +246,10 @@ const PatientsPage = ({ data }): JSX.Element => {
         <Head>
           <title>확진자 리스트 - 코로나인포 (CoronaInfo)</title>
         </Head>
-        <Jumbotron title="확진자 리스트" desc="확진된 환자들의 현재 상태를 확인하세요" />
+        <Jumbotron
+          title="확진자 리스트"
+          desc="국내 코로나-19 확진자들의 정보와 상태를 한 눈에 확인하세요!"
+        />
         {data && data.length > 0 ? (
           <>
             <Container>
