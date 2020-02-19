@@ -21,12 +21,15 @@ const MapContainer = styled.section`
   }
 `
 
+const MarginBox = styled.div`
+  margin-bottom: 20px;
+`
+
 const MainMobile = ({ report, markerData }): JSX.Element => {
   return (
     <>
       <Container>
         <div>
-          <Map movements={markerData} />
           <div>
             <MapContainer>
               <div className="row">
@@ -97,6 +100,12 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
                   />
                 </div>
               </div>
+              <MarginBox>
+                <Card>
+                  <h2>확진자 지도</h2>
+                  <Map movements={markerData} />
+                </Card>
+              </MarginBox>
               <Card>
                 <h2>
                   통계 <span>(오늘 기준)</span>
