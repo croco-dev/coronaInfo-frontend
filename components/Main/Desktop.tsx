@@ -30,7 +30,7 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
           <div className="col-md-4">
             <StatCard
               title="국내 확진자 수"
-              content={report.total_count}
+              content={report.total_count.toLocaleString()}
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#c361ff">
                   <path d="M0 0h24v24H0V0z" fill="none" />
@@ -47,7 +47,7 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
           <div className="col-md-4">
             <StatCard
               title="국내 확진자 격리해제 수"
-              content={report.cure_count}
+              content={report.cure_count.toLocaleString()}
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#43c595">
                   <path d="M0 0h24v24H0V0z" fill="none" />
@@ -63,7 +63,7 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
           <div className="col-md-4">
             <StatCard
               title="국내 사망자 수"
-              content={report.death_count}
+              content={report.death_count.toLocaleString()}
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f24147">
                   <path d="M0 0h24v24H0V0z" fill="none" />
