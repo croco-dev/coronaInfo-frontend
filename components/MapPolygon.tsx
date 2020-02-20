@@ -47,10 +47,11 @@ const Map = ({ pdata }): JSX.Element => {
     </>
   )
 }
-const MapComponent = ({ pdata }): JSX.Element => (
-  <RenderAfterNavermapsLoaded ncpClientId={naverMapClientId}>
-    <Map pdata={pdata} />
-  </RenderAfterNavermapsLoaded>
-)
-
+const MapComponent = ({ pdata }): JSX.Element => {
+  if (window.naver.maps) {
+    return <Map pdata={pdata} />
+  } else {
+    return <p>Loading...</p>
+  }
+}
 export default MapComponent

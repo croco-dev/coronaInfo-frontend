@@ -39,10 +39,10 @@ const Map: React.FC<MapProps> = ({ movements, height }): JSX.Element => {
     </>
   )
 }
-const MapComponent = ({ movements }): JSX.Element => (
-  <RenderAfterNavermapsLoaded ncpClientId={naverMapClientId}>
-    <Map movements={movements} />
-  </RenderAfterNavermapsLoaded>
-)
+const MapComponent = ({ movements }): JSX.Element => {
+  if (window.naver.maps) {
+    return <Map movements={movements} />
+  }
+}
 
 export default MapComponent
