@@ -31,12 +31,12 @@ const StatTableComponent = ({ report }): JSX.Element => (
         <td>
           <h4>증가 인원</h4>
           <p className={report.increase_count > 0 ? 'data red' : 'data'}>
-            {report.increase_count}명
+            {report.increase_count.toLocaleString()}명
           </p>
         </td>
         <td>
           <h4>접촉자 인원</h4>
-          <p className={'data'}>{report.contact_count}명</p>
+          <p className={'data'}>{report.contact_count.toLocaleString()}명</p>
         </td>
       </tr>
       <tr>

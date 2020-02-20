@@ -7,23 +7,24 @@ import Jumbotron from '@/components/Jumbotron'
 
 const Content = styled.div`
   padding: 30px 0;
-  background: #fff;
+  background: #f9f9f9;
 `
 
 const CardContainer = styled.div``
 
 const Card = styled.a`
   display: block;
+  background: #fff;
   border-radius: 6px;
-  border: 2px solid #dadce0;
+  border: 1px solid #dadce0;
+  border-left: 5px solid var(--main);
   padding: 20px 17px;
   margin: 15px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
   line-height: 1.4;
   text-decoration: none;
 
-  &:hover,
-  &:focus {
-    border: 2px solid #c361ff;
+  &:hover {
     h3 {
       color: #c05bfd;
     }
@@ -44,7 +45,7 @@ const NewsPage = ({ data }): JSX.Element => {
   const [store, setStore] = useState(data)
   const DataCard = ({ data }): JSX.Element => {
     return (
-      <Card href={data.originallink}>
+      <Card href={data.originallink} target="_blank">
         <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
         <p dangerouslySetInnerHTML={{ __html: data.description }}></p>
       </Card>
@@ -57,7 +58,7 @@ const NewsPage = ({ data }): JSX.Element => {
       const json = await res.json()
       setStore(json)
     }, 30000)
-    return () => {
+    return (): void => {
       clearInterval(timer)
     }
   }, [])
@@ -69,7 +70,7 @@ const NewsPage = ({ data }): JSX.Element => {
       </Head>
       <Layout>
         <Jumbotron
-          title="실시간 기사"
+          title="실시간 뉴스 모아보기"
           desc="'코로나19'에 관련된 뉴스 기사를 실시간으로 모아보실 수 있습니다."
         />
         <Content>

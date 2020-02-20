@@ -15,6 +15,7 @@
     "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.2.1",
+    "next-seo": "^4.1.0",
     "node-sass": "^4.13.1",
     "randomcolor": "^0.5.4",
     "react": "16.12.0",
@@ -24,6 +25,7 @@
     "react-twemoji": "^0.2.3"
   },
   "devDependencies": {
+    "@types/next-seo": "^1.10.0",
     "@types/node": "^13.7.0",
     "@types/randomcolor": "^0.5.3",
     "@types/react": "^16.9.19",

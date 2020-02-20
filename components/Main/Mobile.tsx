@@ -15,7 +15,14 @@ const MapContainer = styled.section`
     font-weight: 500;
     margin-bottom: 15px;
     padding-left: 6px;
+    span {
+      font-size: 15px;
+    }
   }
+`
+
+const MarginBox = styled.div`
+  margin-bottom: 20px;
 `
 
 const MainMobile = ({ report, markerData }): JSX.Element => {
@@ -23,7 +30,6 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
     <>
       <Container>
         <div>
-          <Map movements={markerData} />
           <div>
             <MapContainer>
               <div className="row">
@@ -35,7 +41,7 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
                 >
                   <StatCard
                     title="국내 확진자 수"
-                    content={report.total_count}
+                    content={report.total_count.toLocaleString()}
                     icon={
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#c361ff">
                         <path d="M0 0h24v24H0V0z" fill="none" />
@@ -57,7 +63,7 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
                 >
                   <StatCard
                     title="국내 확진자 격리해제 수"
-                    content={report.cure_count}
+                    content={report.cure_count.toLocaleString()}
                     icon={
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#43c595">
                         <path d="M0 0h24v24H0V0z" fill="none" />
@@ -78,7 +84,7 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
                 >
                   <StatCard
                     title="국내 사망자 수"
-                    content={report.death_count}
+                    content={report.death_count.toLocaleString()}
                     icon={
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f24147">
                         <path d="M0 0h24v24H0V0z" fill="none" />
@@ -94,7 +100,16 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
                   />
                 </div>
               </div>
+              <MarginBox>
+                <Card>
+                  <h2>확진자 지도</h2>
+                  <Map movements={markerData} />
+                </Card>
+              </MarginBox>
               <Card>
+                <h2>
+                  통계 <span>(오늘 기준)</span>
+                </h2>
                 <StatTable report={report} />
               </Card>
             </MapContainer>

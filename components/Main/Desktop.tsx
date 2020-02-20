@@ -15,6 +15,9 @@ const MapContainer = styled.section`
     font-weight: 500;
     margin-bottom: 15px;
     padding-left: 6px;
+    span {
+      font-size: 15px;
+    }
   }
 `
 
@@ -30,7 +33,7 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
           <div className="col-md-4">
             <StatCard
               title="국내 확진자 수"
-              content={report.total_count}
+              content={report.total_count.toLocaleString()}
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#c361ff">
                   <path d="M0 0h24v24H0V0z" fill="none" />
@@ -47,7 +50,7 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
           <div className="col-md-4">
             <StatCard
               title="국내 확진자 격리해제 수"
-              content={report.cure_count}
+              content={report.cure_count.toLocaleString()}
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#43c595">
                   <path d="M0 0h24v24H0V0z" fill="none" />
@@ -63,7 +66,7 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
           <div className="col-md-4">
             <StatCard
               title="국내 사망자 수"
-              content={report.death_count}
+              content={report.death_count.toLocaleString()}
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f24147">
                   <path d="M0 0h24v24H0V0z" fill="none" />
@@ -84,7 +87,7 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
             <MapContainer>
               <Card>
                 <div className="t">
-                  <h2>확진자 현황</h2>
+                  <h2>확진자 지도</h2>
                 </div>
                 <Map movements={markerData} />
               </Card>
@@ -94,7 +97,9 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
             <MapContainer>
               <Card>
                 <div className="t">
-                  <h2>감염 통계</h2>
+                  <h2>
+                    감염 통계 <span>(오늘 기준)</span>
+                  </h2>
                 </div>
                 <StatTable report={report} />
               </Card>
