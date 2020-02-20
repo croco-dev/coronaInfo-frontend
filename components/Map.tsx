@@ -72,7 +72,7 @@ class MapComponent extends React.Component<MapProps> {
 
     const markerClustering = new MarkerClustering({
       minClusterSize: 1,
-      maxZoom: 8,
+      maxZoom: 14,
       map: this.mapRef.instance,
       markers: markers,
       disableClickZoom: false,
