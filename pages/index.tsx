@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Layout from '../layouts/main'
+import Layout from '@/layouts/main'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
+
+import Desktop from '@/components/Main/Desktop'
 
 const Home = ({ data, report }): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
@@ -25,10 +27,9 @@ const Home = ({ data, report }): JSX.Element => {
 
   const checkRender = () => {
     if (isMobile) {
-      const Mobile = dynamic(() => import('../components/Main/Mobile'))
+      const Mobile = dynamic(() => import('@/components/Main/Mobile'))
       return <Mobile report={report} markerData={data} />
     } else {
-      const Desktop = dynamic(() => import('../components/Main/Desktop'))
       return <Desktop report={report} markerData={data} />
     }
   }
