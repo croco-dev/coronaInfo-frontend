@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps'
 
-const naverMapClientId = process.env.NAVER_MAP_API || ''
 declare global {
   interface Window {
     naver: any

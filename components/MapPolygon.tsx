@@ -2,8 +2,6 @@ import React, { useRef, useEffect } from 'react'
 import { RenderAfterNavermapsLoaded, NaverMap, Polyline } from 'react-naver-maps'
 import randomColor from 'randomcolor'
 
-const naverMapClientId = process.env.NAVER_MAP_API || ''
-declare const naver: any
 declare global {
   interface Window {
     naver: any
