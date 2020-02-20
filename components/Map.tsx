@@ -1,8 +1,7 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps'
 
 const naverMapClientId = process.env.NAVER_MAP_API || ''
-declare const naver: any
 declare global {
   interface Window {
     naver: any
@@ -15,6 +14,7 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({ movements, height }): JSX.Element => {
+  const navermaps = window.naver.maps
   return (
     <>
       <NaverMap
@@ -27,7 +27,6 @@ const Map: React.FC<MapProps> = ({ movements, height }): JSX.Element => {
         defaultZoom={6}
       >
         {movements.map((item, i) => {
-          const navermaps = window.naver.maps
           return (
             <Marker
               key={i}
