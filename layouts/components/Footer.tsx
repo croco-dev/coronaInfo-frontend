@@ -30,7 +30,7 @@ const Footer = (): JSX.Element => {
     async function fetchData(): Promise<void> {
       const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
       const verJson = await version.json()
-      return setVersion(verJson[0].date)
+      return setVersion(verJson.date)
     }
   }, [])
   return (
