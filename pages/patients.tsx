@@ -81,6 +81,9 @@ const CardBox = styled.div`
     &.i {
       background: #1aa06f;
     }
+    &.r {
+      background: #e65555;
+    }
     &.h {
       background: #e65555;
       display: flex;
@@ -132,11 +135,9 @@ const PatientsPage = ({ data }): JSX.Element => {
           </div>
           <div className="cc-a">
             <div>
-              {data.status === '확진 및 격리' ? (
-                <div className="head f">{data.status}</div>
-              ) : (
-                <div className="head b">{data.status}</div>
-              )}
+              {data.status === '확진 및 격리' && <div className="head f">{data.status}</div>}
+              {data.status === '완치' && <div className="head b">{data.status}</div>}
+              {data.status === '사망' && <div className="head r">{data.status}</div>}
               {data.second_infection && data.second_infection > 0 && (
                 <div className="head i">2차 감염</div>
               )}
