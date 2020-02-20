@@ -19,11 +19,11 @@ interface MapProps {
 const MapWrapper = styled.div`
   .clusterMark {
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     line-height: 26px;
-    font-size: 10px;
-    border-radius: 50%;
+    font-size: 12px;
+    border-radius: 100%;
     color: white;
     text-align: center;
     font-weight: bold;
