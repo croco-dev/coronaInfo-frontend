@@ -12,7 +12,7 @@ declare global {
 }
 
 interface MapProps {
-  movements: any
+  patients: any
   height?: string
 }
 
@@ -56,12 +56,14 @@ class MapComponent extends React.Component<MapProps> {
 
   componentDidMount(): void {
     const markers = []
-    this.props.movements.map((item, i) => {
-      const marker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(item.lat, item.lng),
-        map: this.mapRef.instance,
-      })
-      markers.push(marker)
+    this.props.patients.map((item, i) => {
+      if (item.last_movement !== null) {
+        const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(item.last_movement.lat, item.last_movement.lng),
+          map: this.mapRef.instance,
+        })
+        markers.push(marker)
+      }
     })
 
     const htmlMarker1 = {

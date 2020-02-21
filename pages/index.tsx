@@ -38,7 +38,7 @@ const Home = ({ data, report }): JSX.Element => {
 }
 
 Home.getInitialProps = async () => {
-  const res = await fetch(`${process.env.API_URL}/movements/?format=json`)
+  const res = await fetch(`${process.env.API_URL}/patients/?format=json`)
   const report = await fetch(`${process.env.API_URL}/reports/?format=json`)
   const dataJson = await res.json()
   const reportJson = await report.json()

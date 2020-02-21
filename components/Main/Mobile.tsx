@@ -103,7 +103,7 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
               <MarginBox>
                 <Card>
                   <h2>확진자 지도</h2>
-                  <Map movements={markerData} />
+                  <Map patients={markerData} />
                 </Card>
               </MarginBox>
               <Card>
