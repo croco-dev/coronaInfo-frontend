@@ -89,7 +89,7 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
                 <div className="t">
                   <h2>확진자 지도</h2>
                 </div>
-                <Map movements={markerData} />
+                <Map patients={markerData} />
               </Card>
             </MapContainer>
           </div>

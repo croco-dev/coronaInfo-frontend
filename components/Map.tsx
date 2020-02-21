@@ -1,49 +1,91 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps'
+import styled from '@emotion/styled'
 
-const naverMapClientId = process.env.NAVER_MAP_API || ''
-declare const naver: any
 declare global {
   interface Window {
     naver: any
   }
+  const naver: any
+  const MarkerClustering: any
+  const N: any
 }
 
 interface MapProps {
-  movements: any
+  patients: any
   height?: string
 }
 
-const Map: React.FC<MapProps> = ({ movements, height }): JSX.Element => {
-  return (
-    <>
-      <NaverMap
-        mapDivId={'dash-map'} // default: react-naver-map
-        style={{
-          width: '100%',
-          height: height || '40vh',
-        }}
-        defaultCenter={{ lat: 36.3213564, lng: 127.0978459 }}
-        defaultZoom={6}
-      >
-        {movements.map((item, i) => {
-          const navermaps = window.naver.maps
-          return (
-            <Marker
-              key={i}
-              position={new navermaps.LatLng(item.lat, item.lng)}
-              title={item.place}
-            />
-          )
-        })}
-      </NaverMap>
-    </>
-  )
+const MapWrapper = styled.div`
+  .clusterMark {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    line-height: 26px;
+    font-size: 12px;
+    border-radius: 100%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background: rgba(195, 97, 255, 0.8);
+    background-size: contain;
+  }
+`
+
+class MapComponent extends React.Component<MapProps> {
+  mapRef: any
+
+  render(): JSX.Element {
+    return (
+      <MapWrapper>
+        <NaverMap
+          naverRef={ref => {
+            this.mapRef = ref
+          }}
+          mapDivId={'dash-map'} // default: react-naver-map
+          style={{
+            width: '100%',
+            height: '40vh',
+          }}
+          defaultCenter={{ lat: 36.3213564, lng: 127.0978459 }}
+          defaultZoom={6}
+        ></NaverMap>
+      </MapWrapper>
+    )
+  }
+
+  componentDidMount(): void {
+    const markers = []
+    this.props.patients.map((item, i) => {
+      if (item.last_movement !== null) {
+        const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(item.last_movement.lat, item.last_movement.lng),
+          map: this.mapRef.instance,
+        })
+        markers.push(marker)
+      }
+    })
+
+    const htmlMarker1 = {
+      content: '<div class="clusterMark"></div>',
+      size: N.Size(40, 40),
+      anchor: N.Point(20, 20),
+    }
+
+    const markerClustering = new MarkerClustering({
+      minClusterSize: 1,
+      maxZoom: 14,
+      map: this.mapRef.instance,
+      markers: markers,
+      disableClickZoom: false,
+      gridSize: 120,
+      icons: [htmlMarker1],
+      indexGenerator: [10],
+      stylingFunction: function(clusterMarker, count) {
+        clusterMarker._wrapper.firstChild.innerText = count
+      },
+    })
+  }
 }
-const MapComponent = ({ movements }): JSX.Element => (
-  <RenderAfterNavermapsLoaded ncpClientId={naverMapClientId}>
-    <Map movements={movements} />
-  </RenderAfterNavermapsLoaded>
-)
 
 export default MapComponent

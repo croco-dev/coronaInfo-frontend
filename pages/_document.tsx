@@ -1,6 +1,8 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import React from 'react'
 
+const naverMapClientId = process.env.NAVER_MAP_API || ''
+
 export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
@@ -16,6 +18,10 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="shortcut icon" href="/static/favicon/favicon.ico" />
+          <script
+            src={'https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=' + naverMapClientId}
+          ></script>
+          <script src="https://cdn.jsdelivr.net/gh/navermaps/marker-tools.js@master/marker-clustering/src/MarkerClustering.js"></script>
         </Head>
         <body>
           <Main />

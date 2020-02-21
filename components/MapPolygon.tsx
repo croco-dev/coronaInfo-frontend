@@ -2,8 +2,6 @@ import React, { useRef, useEffect } from 'react'
 import { RenderAfterNavermapsLoaded, NaverMap, Polyline } from 'react-naver-maps'
 import randomColor from 'randomcolor'
 
-const naverMapClientId = process.env.NAVER_MAP_API || ''
-declare const naver: any
 declare global {
   interface Window {
     naver: any
@@ -11,6 +9,14 @@ declare global {
 }
 
 const Map = ({ pdata }): JSX.Element => {
+  const data = {}
+  pdata.map(item => {
+    if (data.hasOwnProperty(item.index)) {
+      data[item.index] = [...data[item.index], item]
+    } else {
+      data[item.index] = [item]
+    }
+  })
   return (
     <>
       <NaverMap
@@ -22,12 +28,12 @@ const Map = ({ pdata }): JSX.Element => {
         defaultCenter={{ lat: 37.3213564, lng: 127.0978459 }}
         defaultZoom={8}
       >
-        {pdata.map((item, i) => {
+        {Object.keys(data).map(key => {
           const navermaps = window.naver.maps
           const color = randomColor()
           const paths = []
-          item.movements.map((item2, i2) => {
-            paths.push(new navermaps.LatLng(item2.lat, item2.lng))
+          data[key].map(item => {
+            paths.push(new navermaps.LatLng(item.lat, item.lng))
           })
           return (
             <Polyline
@@ -39,7 +45,7 @@ const Map = ({ pdata }): JSX.Element => {
               strokeLineCap="round"
               startIcon={3}
               endIcon={3}
-              key={i}
+              key={key}
             />
           )
         })}
@@ -47,10 +53,11 @@ const Map = ({ pdata }): JSX.Element => {
     </>
   )
 }
-const MapComponent = ({ pdata }): JSX.Element => (
-  <RenderAfterNavermapsLoaded ncpClientId={naverMapClientId}>
-    <Map pdata={pdata} />
-  </RenderAfterNavermapsLoaded>
-)
-
+const MapComponent = ({ pdata }): JSX.Element => {
+  if (window.naver.maps) {
+    return <Map pdata={pdata} />
+  } else {
+    return <p>Loading...</p>
+  }
+}
 export default MapComponent
