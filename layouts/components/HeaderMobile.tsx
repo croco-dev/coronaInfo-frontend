@@ -15,6 +15,7 @@ const EditedContainer = styled(Container)`
 const Nav = styled.nav`
   background: #fff;
   height: 60px;
+  width: 100vw;
   &.fixed {
     position: fixed;
     top: 0;
