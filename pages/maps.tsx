@@ -17,7 +17,7 @@ const Maps = ({ data }): JSX.Element => {
 }
 
 Maps.getInitialProps = async (): Promise<object> => {
-  const res = await fetch(`${process.env.API_URL}/patients/?format=json`)
+  const res = await fetch(`${process.env.API_URL}/movements/?format=json`)
   const json = await res.json()
   return { data: json }
 }
