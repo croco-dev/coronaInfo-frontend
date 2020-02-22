@@ -6,12 +6,17 @@ import Container from '../components/Container'
 import fetch from 'isomorphic-unfetch'
 import Jumbotron from '../components/Jumbotron'
 
+const Background = styled.div`
+  background: #f7f7f7;
+`
+
 const DataBox = styled.div`
   padding: 25px 0;
 `
 
 const CardBox = styled.div`
   background: #ffffff;
+  border: 1px solid #dedede;
   border-radius: 13px;
   margin: 25px 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
@@ -251,15 +256,17 @@ const PatientsPage = ({ data }): JSX.Element => {
           title="확진자 리스트"
           desc="국내 코로나-19 확진자들의 정보와 상태를 한 눈에 확인하세요!"
         />
-        {data && data.length > 0 ? (
-          <>
-            <Container>
-              <DataShow />
-            </Container>
-          </>
-        ) : (
-          <DataLoading />
-        )}
+        <Background>
+          {data && data.length > 0 ? (
+            <>
+              <Container>
+                <DataShow />
+              </Container>
+            </>
+          ) : (
+            <DataLoading />
+          )}
+        </Background>
       </Layout>
     </>
   )
