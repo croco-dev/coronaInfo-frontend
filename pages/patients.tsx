@@ -16,6 +16,14 @@ const DataBox = styled.div`
 
 const TopPickerBlock = styled.div`
   margin-top: 35px;
+  @media (max-width: 992px) {
+    margin: 0 10px;
+    .pick {
+      margin-top: 20px;
+      margin-right: 14px !important;
+      padding: 8px 15px !important;
+    }
+  }
   .pick {
     -webkit-appearance: none;
     cursor: pointer;
