@@ -14,6 +14,18 @@ const DataBox = styled.div`
   padding: 25px 0;
 `
 
+const TopPickerBlock = styled.div`
+  margin-top: 35px;
+  margin-bottom: 10px;
+  select {
+    -webkit-appearance: none;
+    border-radius: 50px;
+    font-size: 15px;
+    padding: 8px 20px;
+    outline: none;
+  }
+`
+
 const CardBox = styled.div`
   background: #ffffff;
   border: 1px solid #dedede;
@@ -246,6 +258,37 @@ const PatientsPage = ({ data }): JSX.Element => {
     </>
   )
 
+  // Picker
+  const [status, setStatus] = useState('all')
+
+  const PickerChange = option => {
+    setStatus(option.value)
+    console.log(`Option selected:`, option.value)
+  }
+
+  const TopPicker = () => {
+    return (
+      <>
+        <TopPickerBlock>
+          <div>
+            <Select
+              instanceId="TopSelect"
+              onChange={PickerChange}
+              options={[
+                { value: 'all', label: '모두 보기' },
+                { value: 'patient', label: '확진 및 격리' },
+                { value: 'complete', label: '완치' },
+                { value: 'dead', label: '사망' },
+              ]}
+              defaultValue="all"
+              value={status}
+            />
+          </div>
+        </TopPickerBlock>
+      </>
+    )
+  }
+
   return (
     <>
       <Layout>
@@ -260,6 +303,7 @@ const PatientsPage = ({ data }): JSX.Element => {
           {data && data.length > 0 ? (
             <>
               <Container>
+                <TopPicker />
                 <DataShow />
               </Container>
             </>
