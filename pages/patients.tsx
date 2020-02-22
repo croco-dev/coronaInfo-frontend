@@ -16,13 +16,22 @@ const DataBox = styled.div`
 
 const TopPickerBlock = styled.div`
   margin-top: 35px;
-  margin-bottom: 10px;
-  select {
+  .pick {
     -webkit-appearance: none;
+    cursor: pointer;
     border-radius: 50px;
-    font-size: 15px;
+    font-size: 14px;
     padding: 8px 20px;
     outline: none;
+    margin-right: 20px;
+    border: 0;
+    background: #fff;
+    color: #333;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
+    &.active {
+      background: var(--main);
+      color: #fff;
+    }
   }
 `
 
@@ -120,11 +129,28 @@ const CardBox = styled.div`
 
 const PatientsPage = ({ data }): JSX.Element => {
   const DataShow = (): JSX.Element => {
+    const data2 = data.filter(function(n) {
+      switch (status) {
+        case 'all':
+          return n
+          break
+        case 'patients':
+          return n.status === '확진 및 격리'
+          break
+        case 'cured':
+          return n.status === '완치'
+          break
+        case 'dead':
+          return n.status === '사망'
+          break
+      }
+    })
+
     return (
       <>
         <DataBox>
           <div className="row">
-            {data.map((row, i) => {
+            {data2.map((row, i) => {
               return (
                 <div className="col-xs-12 col-md-6" key={i}>
                   <Card data={row} />
@@ -261,28 +287,40 @@ const PatientsPage = ({ data }): JSX.Element => {
   // Picker
   const [status, setStatus] = useState('all')
 
-  const PickerChange = option => {
-    setStatus(option.value)
-    console.log(`Option selected:`, option.value)
-  }
-
   const TopPicker = () => {
+    const Pickers = [
+      {
+        id: 'all',
+        name: '모두 보기',
+      },
+      {
+        id: 'patients',
+        name: '확진 및 격리',
+      },
+      {
+        id: 'cured',
+        name: '완치',
+      },
+      {
+        id: 'dead',
+        name: '사망',
+      },
+    ]
     return (
       <>
         <TopPickerBlock>
           <div>
-            <Select
-              instanceId="TopSelect"
-              onChange={PickerChange}
-              options={[
-                { value: 'all', label: '모두 보기' },
-                { value: 'patient', label: '확진 및 격리' },
-                { value: 'complete', label: '완치' },
-                { value: 'dead', label: '사망' },
-              ]}
-              defaultValue="all"
-              value={status}
-            />
+            {Pickers.map((item, i) => {
+              return (
+                <button
+                  className={status === item.id ? 'pick active' : 'pick'}
+                  onClick={(): void => setStatus(item.id)}
+                  key={i}
+                >
+                  {item.name}
+                </button>
+              )
+            })}
           </div>
         </TopPickerBlock>
       </>
