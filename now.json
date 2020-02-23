@@ -15,6 +15,11 @@
         "X-Frame-Options": "SAMEORIGIN",
         "X-Content-Type-Options": "nosniff"
       }
+    },
+    {
+      "src": "/maps",
+      "status": 301,
+      "headers": { "Location": "https://coronas.info/movements" }
     }
   ]
 }

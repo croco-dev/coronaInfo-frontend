@@ -6,12 +6,46 @@ import Container from '../components/Container'
 import fetch from 'isomorphic-unfetch'
 import Jumbotron from '../components/Jumbotron'
 
+const Background = styled.div`
+  background: #f7f7f7;
+`
+
 const DataBox = styled.div`
   padding: 25px 0;
 `
 
+const TopPickerBlock = styled.div`
+  margin-top: 35px;
+  @media (max-width: 992px) {
+    margin: 0 10px;
+    .pick {
+      margin-top: 20px;
+      margin-right: 14px !important;
+      padding: 8px 15px !important;
+    }
+  }
+  .pick {
+    -webkit-appearance: none;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 14px;
+    padding: 8px 20px;
+    outline: none;
+    margin-right: 20px;
+    border: 0;
+    background: #fff;
+    color: #333;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
+    &.active {
+      background: var(--main);
+      color: #fff;
+    }
+  }
+`
+
 const CardBox = styled.div`
   background: #ffffff;
+  border: 1px solid #dedede;
   border-radius: 13px;
   margin: 25px 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
@@ -103,11 +137,28 @@ const CardBox = styled.div`
 
 const PatientsPage = ({ data }): JSX.Element => {
   const DataShow = (): JSX.Element => {
+    const data2 = data.filter(function(n) {
+      switch (status) {
+        case 'all':
+          return n
+          break
+        case 'patients':
+          return n.status === '확진 및 격리'
+          break
+        case 'cured':
+          return n.status === '완치'
+          break
+        case 'dead':
+          return n.status === '사망'
+          break
+      }
+    })
+
     return (
       <>
         <DataBox>
           <div className="row">
-            {data.map((row, i) => {
+            {data2.map((row, i) => {
               return (
                 <div className="col-xs-12 col-md-6" key={i}>
                   <Card data={row} />
@@ -241,6 +292,49 @@ const PatientsPage = ({ data }): JSX.Element => {
     </>
   )
 
+  // Picker
+  const [status, setStatus] = useState('all')
+
+  const TopPicker = () => {
+    const Pickers = [
+      {
+        id: 'all',
+        name: '모두 보기',
+      },
+      {
+        id: 'patients',
+        name: '확진 및 격리',
+      },
+      {
+        id: 'cured',
+        name: '완치',
+      },
+      {
+        id: 'dead',
+        name: '사망',
+      },
+    ]
+    return (
+      <>
+        <TopPickerBlock>
+          <div>
+            {Pickers.map((item, i) => {
+              return (
+                <button
+                  className={status === item.id ? 'pick active' : 'pick'}
+                  onClick={(): void => setStatus(item.id)}
+                  key={i}
+                >
+                  {item.name}
+                </button>
+              )
+            })}
+          </div>
+        </TopPickerBlock>
+      </>
+    )
+  }
+
   return (
     <>
       <Layout>
@@ -251,15 +345,18 @@ const PatientsPage = ({ data }): JSX.Element => {
           title="확진자 리스트"
           desc="국내 코로나-19 확진자들의 정보와 상태를 한 눈에 확인하세요!"
         />
-        {data && data.length > 0 ? (
-          <>
-            <Container>
-              <DataShow />
-            </Container>
-          </>
-        ) : (
-          <DataLoading />
-        )}
+        <Background>
+          {data && data.length > 0 ? (
+            <>
+              <Container>
+                <TopPicker />
+                <DataShow />
+              </Container>
+            </>
+          ) : (
+            <DataLoading />
+          )}
+        </Background>
       </Layout>
     </>
   )

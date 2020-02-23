@@ -15,11 +15,12 @@ const EditedContainer = styled(Container)`
 const Nav = styled.nav`
   background: #fff;
   height: 60px;
+  width: 100vw;
   &.fixed {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 30;
   }
 `
 
