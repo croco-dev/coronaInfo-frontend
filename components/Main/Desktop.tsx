@@ -82,6 +82,43 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
             />
           </div>
         </div>
+        <div
+          className="row"
+          style={{
+            marginTop: '17px',
+          }}
+        >
+          <div className="col-md-12">
+            <Card>
+              <h2
+                style={{
+                  fontSize: '20px',
+                  fontWeight: 600,
+                  marginBottom: '4px',
+                }}
+              >
+                정보 업데이트 지연 안내
+              </h2>
+              <p
+                style={{
+                  lineHeight: 1.6,
+                }}
+              >
+                현재 질병관리본부에서 '확진자 이동경로'를 업데이트하고 있지 않아, 데이터 수집에
+                차질이 발생하고 있습니다.
+                <br />
+                <b
+                  style={{
+                    fontWeight: 'bold',
+                  }}
+                >
+                  하단 카드들은
+                </b>{' '}
+                데이터가 정확하지 않은 점, 사과의 말씀 드립니다.
+              </p>
+            </Card>
+          </div>
+        </div>
         <div className="row">
           <div className="col-md-7">
             <MapContainer>
@@ -104,31 +141,6 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
                 <StatTable report={report} />
               </Card>
             </MapContainer>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12">
-            <Card>
-              <h2
-                style={{
-                  fontSize: '20px',
-                  fontWeight: 600,
-                  marginBottom: '4px',
-                }}
-              >
-                정보 업데이트 지연 안내
-              </h2>
-              <p
-                style={{
-                  lineHeight: 1.6,
-                }}
-              >
-                현재 질병관리본부에서 '확진자 이동경로'를 업데이트하고 있지 않아, 데이터 수집에
-                차질이 발생하고 있습니다.
-                <br />
-                현재 데이터가 정확하지 않은 점, 사과의 말씀 드립니다.
-              </p>
-            </Card>
           </div>
         </div>
       </Container>
