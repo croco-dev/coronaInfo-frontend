@@ -3,93 +3,16 @@ import Head from 'next/head'
 import styled from '@emotion/styled'
 import Layout from '@/layouts/main'
 import Container from '@/components/Container'
-import fetch from 'isomorphic-unfetch'
+import Emoji from '@/components/Emoji'
 import Link from 'next/link'
 import Jumbotron from '@/components/Jumbotron'
 
-const CardBox = styled.div`
-  background: #ffffff;
-  border-radius: 4px;
-  padding: 20px 15px;
-  margin: 10px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
-  .raw {
-    margin-top: 15px;
-    display: block;
-    background: #ececec;
-    padding: 10px 20px;
-  }
-  .desc {
-    display: block;
-    text-align: center;
-    font-size: 1.12rem;
-    font-weight: 500;
-    text-decoration: none;
-    color: #333;
-    margin-top: 15px;
-    line-height: 1.4;
-  }
-
-  img {
-    width: 100%;
-  }
-  @media (max-width: 992px) {
-    margin: 15px 25px;
-  }
+const DeprecatedNotice = styled.div`
+  text-align: center;
+  line-height: 1.6;
 `
 
-const Videos = ({ data }): JSX.Element => {
-  const DataShow = (): JSX.Element => {
-    return (
-      <>
-        {data.map((row, i) => {
-          return (
-            <div key={i} className={'col-xs-12 col-md-4'}>
-              <Card data={row} key={i} />
-            </div>
-          )
-        })}
-      </>
-    )
-  }
-
-  const Card = ({ data }): JSX.Element => {
-    return (
-      <>
-        <CardBox>
-          <a href={data.url} target="_blank" rel="noopener noreferrer">
-            <img
-              src={
-                'https://img.youtube.com/vi/' +
-                data.url
-                  .replace('https://www.youtube.com/watch?v=', '')
-                  .replace('https://youtu.be/', '') +
-                '/maxresdefault.jpg'
-              }
-              alt={data.title}
-            />
-          </a>
-          <a href={data.url} target="_blank" rel="noopener noreferrer" className="desc">
-            {data.title}
-          </a>
-        </CardBox>
-      </>
-    )
-  }
-
-  const DataLoading = (): JSX.Element => (
-    <>
-      <div
-        style={{
-          padding: '20px 0px',
-          textAlign: 'center',
-        }}
-      >
-        <p>데이터가 없습니다.</p>
-      </div>
-    </>
-  )
-
+const Videos = (): JSX.Element => {
   return (
     <>
       <Head>
@@ -100,18 +23,21 @@ const Videos = ({ data }): JSX.Element => {
           title="영상 모아보기"
           desc="신종 코로나 바이러스에 대처하는 좋은 영상들을 알려드립니다!"
         />
-        <div className="row" style={{ padding: '20px 0' }}>
-          {data && data.length > 0 ? (
-            <>
-              <Container>
-                <div className="row">
-                  <DataShow />
-                </div>
-              </Container>
-            </>
-          ) : (
-            <DataLoading />
-          )}
+        <div style={{ background: '#fff' }}>
+          <Container>
+            <div style={{ padding: '50px 0' }}>
+              <DeprecatedNotice>
+                <p>
+                  해당 기능은 더 이상 제공되지 않습니다. <Emoji str="😥" />
+                </p>
+                <p>
+                  <Link href="/">
+                    <a>메인으로 돌아가기</a>
+                  </Link>
+                </p>
+              </DeprecatedNotice>
+            </div>
+          </Container>
         </div>
       </Layout>
     </>
