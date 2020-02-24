@@ -1,6 +1,5 @@
 import React from 'react'
 import App from 'next/app'
-import Head from 'next/head'
 import ReactGA from 'react-ga'
 import { DefaultSeo } from 'next-seo'
 
@@ -21,7 +20,7 @@ class MyApp extends App {
         <DefaultSeo
           title="코로나인포"
           titleTemplate="%s - 코로나인포 (coronaInfo)"
-          description="코로나-19 (COVID-19) (일명 '우한 폐렴')의 국내 정보를 알려드립니다!"
+          description="코로나바이러스감염증-19 (COVID-19) (일명 '우한 폐렴')의 국내 정보를 알려드립니다!"
           canonical="https://coronas.info"
           openGraph={{
             type: 'website',

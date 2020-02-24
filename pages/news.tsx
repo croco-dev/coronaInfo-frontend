@@ -44,12 +44,16 @@ const Card = styled.a`
 const NewsPage = ({ data }): JSX.Element => {
   const [store, setStore] = useState(data)
   const DataCard = ({ data }): JSX.Element => {
-    return (
-      <Card href={data.originallink} target="_blank">
-        <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
-        <p dangerouslySetInnerHTML={{ __html: data.description }}></p>
-      </Card>
-    )
+    if (data.originallink !== '') {
+      return (
+        <Card href={data.link} target="_blank">
+          <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
+          <p dangerouslySetInnerHTML={{ __html: data.description }}></p>
+        </Card>
+      )
+    } else {
+      return <></>
+    }
   }
 
   useEffect(() => {
