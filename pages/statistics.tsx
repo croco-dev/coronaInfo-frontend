@@ -16,21 +16,35 @@ import Jumbotron from '@/components/Jumbotron'
 import Container from '@/components/Container'
 import Card from '@/components/Card'
 
-const StatisticsPage = (): JSX.Element => {
-  const data = [
-    {
-      date: '2020-01-01',
-      total: 1,
-    },
-    {
-      date: '2020-01-02',
-      total: 100,
-    },
-    {
-      date: '2020-01-03',
-      total: 2400,
-    },
-  ]
+const StatisticsPage = ({ data }): JSX.Element => {
+  // const data = [
+  //   {
+  //     date: '2020-01-01',
+  //     total: 1,
+  //   },
+  //   {
+  //     date: '2020-01-02',
+  //     total: 100,
+  //   },
+  //   {
+  //     date: '2020-01-03',
+  //     total: 2400,
+  //   },
+  // ]
+
+  let graphData = []
+  let totalCount = 0
+
+  data.total_report.forEach(item => {
+    totalCount = totalCount + parseInt(item.total)
+    graphData.push({
+      date: item.date,
+      total: totalCount,
+    })
+  })
+
+  console.log(graphData)
+
   return (
     <>
       <NextSeo title="확진자 통계" />
@@ -45,7 +59,7 @@ const StatisticsPage = (): JSX.Element => {
               <div className={'col-md-12'}>
                 <Card>
                   <ResponsiveContainer width="100%" aspect={4.0 / 1.0}>
-                    <AreaChart data={data}>
+                    <AreaChart data={graphData}>
                       <defs>
                         <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
                           <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
@@ -73,6 +87,12 @@ const StatisticsPage = (): JSX.Element => {
       </Layout>
     </>
   )
+}
+
+StatisticsPage.getInitialProps = async (): Promise<object> => {
+  const res = await fetch(`${process.env.API_URL}/report/patients/?format=json`)
+  const json = await res.json()
+  return { data: json }
 }
 
 const ContentStyle = styled.div`
