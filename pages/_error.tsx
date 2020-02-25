@@ -52,7 +52,7 @@ const Error = ({ statusCode }): JSX.Element => {
             textAlign: 'center',
           }}
         >
-          {statusCode ? `서버에서 ${statusCode} 오류가 발생!` : '클라이언트 오류 발생!'}
+          {statusCode ? `서버에서 ${statusCode} 오류가 발생했어요!` : '클라이언트 오류 발생했어요!'}
         </div>
 
         <div
