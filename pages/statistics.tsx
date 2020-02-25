@@ -51,21 +51,14 @@ const StatisticsPage = ({ data }): JSX.Element => {
           <AreaChart data={graphData}>
             <defs>
               <linearGradient id={'graphColor' + id.toUpperCase()} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={color} stopOpacity={0.8} />
-                <stop offset="95%" stopColor={color} stopOpacity={0} />
+                <stop offset="100%" stopColor={color} stopOpacity={0.8} />
               </linearGradient>
             </defs>
             <XAxis dataKey="date" />
             <YAxis />
             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
             <Tooltip />
-            <Area
-              type="monotone"
-              dataKey="total"
-              stroke={color}
-              fillOpacity={1}
-              fill={'url(#graphColor' + id.toUpperCase() + ')'}
-            />
+            <Area type="monotone" dataKey="total" stroke={color} fillOpacity={0.6} fill={color} />
           </AreaChart>
         </ResponsiveContainer>
       </Card>
