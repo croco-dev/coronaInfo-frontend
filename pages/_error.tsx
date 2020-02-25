@@ -17,39 +17,51 @@ const Logo = styled.div`
     font-weight: 700;
   }
 `
-
+const StatusCode = styled.div`
+  text-align: center;
+  font-weight: bold;
+  font-size: 4rem;
+`
+const Button = styled.a`
+  padding: 5px 15px;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--main);
+  transition: 0.5s;
+  font-size: 0.85rem;
+  border-radius: 3px;
+  color: #fff;
+  &:hover {
+    border: none;
+    color: white;
+    font-size: 0.92rem;
+    transform: scale(1.1);
+  }
+`
 const Error = ({ statusCode }): JSX.Element => {
   return (
     <ErrorStyle>
       <div>
         <Logo>
-          <span>코로나</span>인포
+          <span>이런!</span>
         </Logo>
+        <StatusCode>{statusCode}</StatusCode>
         <div
           style={{
             textAlign: 'center',
           }}
         >
-          {statusCode ? `서버에서 ${statusCode} 오류가 발생!` : '클라이언트 오류 발생!'}
+          {statusCode ? `서버에서 ${statusCode} 오류가 발생했어요!` : '클라이언트 오류 발생했어요!'}
         </div>
-        <div
-          style={{
-            marginTop: '30px',
-          }}
-        >
-          <p>이용에 불편을 드려서 죄송합니다.</p>
-          <p>
-            이메일이나 기타 연락처로 이 오류에 대해 전해주신다면, 서비스 개선에 도움이 될 수
-            있습니다.
-          </p>
-        </div>
+
         <div
           style={{
             marginTop: '30px',
             textAlign: 'center',
           }}
         >
-          <a href="/">코로나인포 메인</a>
+          <Button href="/">메인으로 이동하기</Button>
         </div>
       </div>
     </ErrorStyle>

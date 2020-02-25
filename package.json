@@ -22,13 +22,15 @@
     "react-dom": "16.12.0",
     "react-ga": "^2.7.0",
     "react-naver-maps": "^0.0.13",
-    "react-twemoji": "^0.2.3"
+    "react-twemoji": "^0.2.3",
+    "recharts": "^2.0.0-beta.1"
   },
   "devDependencies": {
     "@types/next-seo": "^1.10.0",
     "@types/node": "^13.7.0",
     "@types/randomcolor": "^0.5.3",
     "@types/react": "^16.9.19",
+    "@types/recharts": "^1.8.5",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
     "babel-plugin-emotion": "^10.0.27",
