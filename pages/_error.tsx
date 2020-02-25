@@ -23,23 +23,19 @@ const StatusCode = styled.div`
   font-size: 4rem;
 `
 const Button = styled.a`
-  padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 5px 15px;
   text-decoration: none;
-  width: 180px;
-  height: 80px;
   outline: none;
   cursor: pointer;
   background-color: var(--main);
   transition: 0.5s;
-  font-size: 1.2rem;
-  border-radius: 5px;
+  font-size: 0.85rem;
+  border-radius: 3px;
   color: #fff;
   &:hover {
     border: none;
     color: white;
-    font-size: 28px;
+    font-size: 0.92rem;
     transform: scale(1.1);
   }
 `
