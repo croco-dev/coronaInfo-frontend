@@ -15,3 +15,5 @@ Maps.getInitialProps = ({ res }) => {
 
   return {}
 }
+
+export default Maps
