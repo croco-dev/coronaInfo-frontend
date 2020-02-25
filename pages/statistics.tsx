@@ -32,16 +32,45 @@ const StatisticsPage = ({ data }): JSX.Element => {
   //   },
   // ]
 
-  const graphData = []
-  let totalCount = 0
+  const DataGraph = ({ title, data, color }): JSX.Element => {
+    const graphData = []
+    let totalCount = 0
 
-  data.total_report.forEach(item => {
-    totalCount = totalCount + parseInt(item.total)
-    graphData.push({
-      date: item.date,
-      total: totalCount,
+    data.forEach(item => {
+      totalCount = totalCount + parseInt(item.total)
+      graphData.push({
+        date: item.date,
+        total: totalCount,
+      })
     })
-  })
+
+    return (
+      <Card>
+        <h2>{title}</h2>
+        <ResponsiveContainer width="100%" height={300}>
+          <AreaChart data={graphData}>
+            <defs>
+              <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor={color} stopOpacity={0.8} />
+                <stop offset="95%" stopColor={color} stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            <XAxis dataKey="date" />
+            <YAxis />
+            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+            <Tooltip />
+            <Area
+              type="monotone"
+              dataKey="total"
+              stroke={color}
+              fillOpacity={1}
+              fill="url(#colorCount)"
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </Card>
+    )
+  }
 
   return (
     <>
@@ -55,30 +84,7 @@ const StatisticsPage = ({ data }): JSX.Element => {
           <Container>
             <div className="row">
               <div className={'col-md-12'}>
-                <Card>
-                  <h2>총 확진자 증가 상황</h2>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <AreaChart data={graphData}>
-                      <defs>
-                        <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                          <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-                        </linearGradient>
-                      </defs>
-                      <XAxis dataKey="date" />
-                      <YAxis />
-                      <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                      <Tooltip label="asd" />
-                      <Area
-                        type="monotone"
-                        dataKey="total"
-                        stroke="#8884d8"
-                        fillOpacity={1}
-                        fill="url(#colorCount)"
-                      />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </Card>
+                <DataGraph title={'총 확진자 증가 추이'} data={data.total_report} color="#c361ff" />
               </div>
             </div>
           </Container>
