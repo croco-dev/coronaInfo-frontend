@@ -32,7 +32,7 @@ const StatisticsPage = ({ data }): JSX.Element => {
   //   },
   // ]
 
-  const DataGraph = ({ title, data, color }): JSX.Element => {
+  const DataGraph = ({ id, title, data, color }): JSX.Element => {
     const graphData = []
     let totalCount = 0
 
@@ -50,7 +50,7 @@ const StatisticsPage = ({ data }): JSX.Element => {
         <ResponsiveContainer width="100%" height={300}>
           <AreaChart data={graphData}>
             <defs>
-              <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id={'graphColor' + id.toUpperCase()} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor={color} stopOpacity={0.8} />
                 <stop offset="95%" stopColor={color} stopOpacity={0} />
               </linearGradient>
@@ -64,7 +64,7 @@ const StatisticsPage = ({ data }): JSX.Element => {
               dataKey="total"
               stroke={color}
               fillOpacity={1}
-              fill="url(#colorCount)"
+              fill={'url(#graphColor' + id.toUpperCase() + ')'}
             />
           </AreaChart>
         </ResponsiveContainer>
@@ -82,9 +82,37 @@ const StatisticsPage = ({ data }): JSX.Element => {
         />
         <ContentStyle>
           <Container>
-            <div className="row">
+            <div
+              className="row"
+              style={{
+                marginBottom: '20px',
+              }}
+            >
               <div className={'col-md-12'}>
-                <DataGraph title={'총 확진자 증가 추이'} data={data.total_report} color="#c361ff" />
+                <DataGraph
+                  id={'total'}
+                  title={'총 확진자 증가 추이'}
+                  data={data.total_report}
+                  color="#c361ff"
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className={'col-sm-12 col-lg-6'}>
+                <DataGraph
+                  id={'cure'}
+                  title={'격리해제 확진자 증가 추이'}
+                  data={data.cure_report}
+                  color="#43c595"
+                />
+              </div>
+              <div className={'col-sm-12 col-lg-6'}>
+                <DataGraph
+                  id={'death'}
+                  title={'사망자 증가 추이'}
+                  data={data.death_report}
+                  color="#f24147"
+                />
               </div>
             </div>
           </Container>
