@@ -9,6 +9,7 @@ module.exports = withSass({
   env: {
     API_URL: process.env.API_URL,
     NAVER_MAP_API: process.env.NAVER_MAP_API,
+    CHANNEL_TALK: process.env.CHANNEL_TALK,
   },
   poweredByHeader: false,
   webpack: (config, options) => {

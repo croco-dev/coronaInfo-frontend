@@ -5,13 +5,13 @@ import { DefaultSeo } from 'next-seo'
 
 // 👁 Global Style
 import '@/styles/core.scss'
+import ChannelTalk from '@/components/ChannelTalk'
 
 class MyApp extends App {
   componentDidMount(): void {
     ReactGA.initialize('UA-158027501-01')
     ReactGA.pageview(window.location.pathname)
   }
-
   render(): JSX.Element {
     const { Component, pageProps } = this.props
 
@@ -36,6 +36,7 @@ class MyApp extends App {
             cardType: 'summary_large_image',
           }}
         />
+        <ChannelTalk pluginId={process.env.CHANNEL_TALK} />
         <Component {...pageProps} />
       </>
     )
