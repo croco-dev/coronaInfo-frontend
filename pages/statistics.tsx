@@ -43,8 +43,6 @@ const StatisticsPage = ({ data }): JSX.Element => {
     })
   })
 
-  console.log(graphData)
-
   return (
     <>
       <NextSeo title="확진자 통계" />
