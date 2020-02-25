@@ -9,6 +9,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
   Tooltip,
+  LabelList,
 } from 'recharts'
 
 import Layout from '@/layouts/main'
@@ -48,7 +49,7 @@ const StatisticsPage = ({ data }): JSX.Element => {
       <Card>
         <h2>{title}</h2>
         <ResponsiveContainer width="100%" height={300}>
-          <AreaChart data={graphData}>
+          <AreaChart data={graphData} margin={{ top: 20, right: 30, left: 10, bottom: 5 }}>
             <defs>
               <linearGradient id={'graphColor' + id.toUpperCase()} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="100%" stopColor={color} stopOpacity={0.8} />
@@ -58,7 +59,16 @@ const StatisticsPage = ({ data }): JSX.Element => {
             <YAxis />
             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
             <Tooltip />
-            <Area type="monotone" dataKey="total" stroke={color} fillOpacity={0.6} fill={color} />
+            <Area
+              type="monotone"
+              dataKey="total"
+              stroke={color}
+              fillOpacity={0.6}
+              fill={color}
+              dot={{ stroke: color, strokeWidth: 2 }}
+            >
+              <LabelList dataKey="total" offset={10} position="top" />
+            </Area>
           </AreaChart>
         </ResponsiveContainer>
       </Card>
@@ -127,6 +137,9 @@ const ContentStyle = styled.div`
     font-size: 1.2rem;
     font-weight: 500;
     margin-bottom: 20px;
+  }
+  .recharts-text {
+    font-size: 0.7rem;
   }
 `
 
