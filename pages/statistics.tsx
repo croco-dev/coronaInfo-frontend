@@ -32,7 +32,7 @@ const StatisticsPage = ({ data }): JSX.Element => {
   //   },
   // ]
 
-  let graphData = []
+  const graphData = []
   let totalCount = 0
 
   data.total_report.forEach(item => {
@@ -56,7 +56,8 @@ const StatisticsPage = ({ data }): JSX.Element => {
             <div className="row">
               <div className={'col-md-12'}>
                 <Card>
-                  <ResponsiveContainer width="100%" aspect={4.0 / 1.0}>
+                  <h2>총 확진자 증가 상황</h2>
+                  <ResponsiveContainer width="100%" height={300}>
                     <AreaChart data={graphData}>
                       <defs>
                         <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
@@ -94,8 +95,12 @@ StatisticsPage.getInitialProps = async (): Promise<object> => {
 }
 
 const ContentStyle = styled.div`
-  background: #fff;
   padding: 20px 0;
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
 `
 
 export default StatisticsPage
