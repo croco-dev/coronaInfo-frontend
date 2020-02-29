@@ -40,6 +40,16 @@ const StatTableComponent = ({ report }): JSX.Element => (
           <p className={'data green'}>{report.cure_rate}%</p>
         </td>
       </tr>
+      <tr>
+        <td>
+          <h4>확진자가 제일 많은 지역</h4>
+          <p>{report.top_rate_increase_location.name}</p>
+        </td>
+        <td>
+          <h4>격리해제 (완치) 비율</h4>
+          <p>{report.top_rate_total_location.name}</p>
+        </td>
+      </tr>
     </tbody>
   </StatTable>
 )
