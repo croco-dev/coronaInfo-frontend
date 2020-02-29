@@ -7,6 +7,7 @@ const StatTable = styled.table`
   td {
     padding: 10px 20px;
     border: 0;
+    width: 50%;
   }
   h4 {
     font-size: 15px;
@@ -35,7 +36,7 @@ const StatTableComponent = ({ report }): JSX.Element => (
           </p>
         </td>
         <td>
-          <h4>완치자 비율</h4>
+          <h4>격리해제 (완치) 비율</h4>
           <p className={'data green'}>{report.cure_rate}%</p>
         </td>
       </tr>
