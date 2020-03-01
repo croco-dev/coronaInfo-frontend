@@ -31,3 +31,6 @@ jobs:
           ${{ runner.os }}-yarn-
     - run: yarn install
     - run: yarn lint
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
