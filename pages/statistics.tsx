@@ -126,7 +126,7 @@ const StatisticsPage = ({ data }): JSX.Element => {
 }
 
 StatisticsPage.getInitialProps = async (): Promise<object> => {
-  const res = await fetch(`${process.env.API_URL}/report/patients/?format=json`)
+  const res = await fetch(`${process.env.API_URL}/reports/patients/?format=json`)
   const json = await res.json()
   return { data: json }
 }
