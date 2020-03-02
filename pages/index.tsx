@@ -8,7 +8,7 @@ import Desktop from '@/components/Main/Desktop'
 
 const Home = ({ data, report }): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
-  const resizeEvent = () => {
+  const resizeEvent = (): void => {
     if (window.innerWidth < 992) {
       setIsMobile(true)
     } else {
@@ -20,13 +20,13 @@ const Home = ({ data, report }): JSX.Element => {
     if (typeof window !== 'undefined') {
       resizeEvent()
       window.addEventListener('resize', resizeEvent)
-      return () => {
+      return (): void => {
         window.removeEventListener('resize', resizeEvent)
       }
     }
   }, [])
 
-  const checkRender = () => {
+  const checkRender = (): JSX.Element => {
     if (isMobile) {
       const Mobile = dynamic(() => import('@/components/Main/Mobile'))
       return <Mobile report={report} markerData={data} />
@@ -53,11 +53,10 @@ const Home = ({ data, report }): JSX.Element => {
   )
 }
 
-Home.getInitialProps = async () => {
+Home.getInitialProps = async (): Promise<object> => {
   const report = await fetch(`${process.env.API_URL}/reports/?format=json`)
-  const dataJson = await res.json()
   const reportJson = await report.json()
-  return { data: dataJson, report: reportJson }
+  return { report: reportJson }
 }
 
 export default Home
