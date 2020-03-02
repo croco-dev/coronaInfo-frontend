@@ -5,7 +5,8 @@
     "env": {
       "API_URL": "@api-url",
       "NAVER_MAP_API": "@naver-map-api",
-      "CHANNEL_TALK": "@channel-talk"
+      "CHANNEL_TALK": "@channel-talk",
+      "NODE_ENV": "production"
     }
   },
   "routes": [
@@ -13,7 +14,6 @@
       "src": "/(.*)",
       "headers": {
         "X-XSS-Protection": "1; mode=block",
-        "X-Frame-Options": "SAMEORIGIN",
         "X-Content-Type-Options": "nosniff"
       }
     }

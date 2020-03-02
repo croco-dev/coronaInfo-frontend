@@ -7,6 +7,7 @@ const StatTable = styled.table`
   td {
     padding: 10px 20px;
     border: 0;
+    width: 50%;
   }
   h4 {
     font-size: 15px;
@@ -15,12 +16,15 @@ const StatTable = styled.table`
   .data {
     font-weight: 500;
     font-size: 24px;
-    &.green {
-      color: #27af7d;
+    span.small {
+      font-size: 14px;
     }
-    &.red {
-      color: #f24147;
-    }
+  }
+  .green {
+    color: #27af7d;
+  }
+  .red {
+    color: #f24147;
   }
 `
 
@@ -29,24 +33,34 @@ const StatTableComponent = ({ report }): JSX.Element => (
     <tbody>
       <tr>
         <td>
-          <h4>증가 인원</h4>
+          <h4>오늘 확진자 증가</h4>
           <p className={report.increase_count > 0 ? 'data red' : 'data'}>
             {report.increase_count.toLocaleString()}명
           </p>
         </td>
         <td>
-          <h4>접촉자 인원</h4>
-          <p className={'data'}>{report.contact_count.toLocaleString()}명</p>
+          <h4>격리해제 (완치) 비율</h4>
+          <p className={'data green'}>{report.cure_rate}%</p>
         </td>
       </tr>
       <tr>
         <td>
-          <h4>2차 감염 비율</h4>
-          <p className={'data red'}>{report.second_rate}%</p>
+          <h4>확진자 제일 많은 지역</h4>
+          <p className={'data'}>
+            {report.top_rate_total_location.name}{' '}
+            <span className={'small red'}>
+              ({report.top_rate_total_location.total.toLocaleString()}명)
+            </span>
+          </p>
         </td>
         <td>
-          <h4>완치자 비율</h4>
-          <p className={'data green'}>{report.cure_rate}%</p>
+          <h4>오늘 확진자 제일 증가한 지역</h4>
+          <p className={'data'}>
+            {report.top_rate_increase_location.name}{' '}
+            <span className={'small red'}>
+              (+{report.top_rate_increase_location.increase.toLocaleString()}명)
+            </span>
+          </p>
         </td>
       </tr>
     </tbody>

@@ -2,16 +2,32 @@ import React from 'react'
 import App from 'next/app'
 import ReactGA from 'react-ga'
 import { DefaultSeo } from 'next-seo'
+import * as Sentry from '@sentry/browser'
 
 // 👁 Global Style
 import '@/styles/core.scss'
 import ChannelTalk from '@/components/ChannelTalk'
+
+Sentry.init({ dsn: 'https://f6473d1b251f4eeca529512dd58ddfcf@sentry.io/3324211' })
 
 class MyApp extends App {
   componentDidMount(): void {
     ReactGA.initialize('UA-158027501-01')
     ReactGA.pageview(window.location.pathname)
   }
+
+  componentDidCatch(error, errorInfo): void {
+    Sentry.withScope(scope => {
+      Object.keys(errorInfo).forEach(key => {
+        scope.setExtra(key, errorInfo[key])
+      })
+
+      Sentry.captureException(error)
+    })
+
+    super.componentDidCatch(error, errorInfo)
+  }
+
   render(): JSX.Element {
     const { Component, pageProps } = this.props
 

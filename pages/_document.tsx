@@ -1,7 +1,16 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import React from 'react'
+import * as Sentry from '@sentry/browser'
 
 const naverMapClientId = process.env.NAVER_MAP_API || ''
+
+process.on('unhandledRejection', err => {
+  Sentry.captureException(err)
+})
+
+process.on('uncaughtException', err => {
+  Sentry.captureException(err)
+})
 
 export default class MyDocument extends Document {
   render(): JSX.Element {
