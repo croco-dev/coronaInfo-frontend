@@ -7146,6 +7146,13 @@ react-smooth@^1.0.5:
     raf "^3.4.0"
     react-transition-group "^2.5.0"
 
+react-svg-map@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-svg-map/-/react-svg-map-2.0.2.tgz#3182f495cd56a9ba9b475eaf4b0f794dae8cba90"
+  integrity sha512-c/z5DQ+d0fLWFtEdhwqpBNm1CvPk4mN5Wq0MnfN7yOUHehpvw2OSCGglAVH/sTR/S/bq12fZqFjOQNjCJxs6ow==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-transition-group@^2.5.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.9.0.tgz#df9cdb025796211151a436c69a8f3b97b5b07c8d"
