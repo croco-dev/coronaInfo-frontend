@@ -5,6 +5,7 @@ import Card from '../Card'
 import Container from '../Container'
 import StatCard from '../StatCard'
 
+const MapChart = dynamic(() => import('@/components/Chart/Map'), { ssr: false })
 const StatTable = dynamic(() => import('./StatTable'))
 
 const MapContainer = styled.section`
@@ -102,13 +103,7 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
               <MarginBox>
                 <Card>
                   <h2>확진자 지도</h2>
-                  <div
-                    style={{
-                      textAlign: 'center',
-                    }}
-                  >
-                    유지보수 중입니다.
-                  </div>
+                  <MapChart />
                 </Card>
               </MarginBox>
               <Card>
