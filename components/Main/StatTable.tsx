@@ -16,12 +16,15 @@ const StatTable = styled.table`
   .data {
     font-weight: 500;
     font-size: 24px;
-    &.green {
-      color: #27af7d;
+    span.small {
+      font-size: 14px;
     }
-    &.red {
-      color: #f24147;
-    }
+  }
+  .green {
+    color: #27af7d;
+  }
+  .red {
+    color: #f24147;
   }
 `
 
@@ -42,12 +45,22 @@ const StatTableComponent = ({ report }): JSX.Element => (
       </tr>
       <tr>
         <td>
-          <h4>확진자가 제일 많은 지역</h4>
-          <p>{report.top_rate_increase_location.name}</p>
+          <h4>확진자 제일 많은 지역</h4>
+          <p className={'data'}>
+            {report.top_rate_total_location.name}{' '}
+            <span className={'small red'}>
+              ({report.top_rate_total_location.total.toLocaleString()}명)
+            </span>
+          </p>
         </td>
         <td>
-          <h4>격리해제 (완치) 비율</h4>
-          <p>{report.top_rate_total_location.name}</p>
+          <h4>오늘 확진자 제일 증가한 지역</h4>
+          <p className={'data'}>
+            {report.top_rate_increase_location.name}{' '}
+            <span className={'small red'}>
+              (+{report.top_rate_increase_location.increase.toLocaleString()}명)
+            </span>
+          </p>
         </td>
       </tr>
     </tbody>
