@@ -345,6 +345,15 @@ const PatientsPage = ({ data }): JSX.Element => {
           title="확진자 리스트"
           desc="국내 코로나-19 확진자들의 정보와 상태를 한 눈에 확인하세요!"
         />
+        <Alert>
+          <Container>
+            <h4>안내</h4>
+            <p>
+              현재 질병관리본부에서 상세한 확진자 정보를 제공하지 않고 있어, 확진자에 대한 상세
+              정보를 제공해드리지 못하고 있습니다.
+            </p>
+          </Container>
+        </Alert>
         <Background>
           {data && data.length > 0 ? (
             <>
@@ -361,6 +370,16 @@ const PatientsPage = ({ data }): JSX.Element => {
     </>
   )
 }
+
+const Alert = styled.div`
+  background: #ffd2d2;
+  padding: 20px 12px;
+  line-height: 1.6;
+  h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+`
 
 PatientsPage.getInitialProps = async (): Promise<object> => {
   const res = await fetch(`${process.env.API_URL}/patients/?format=json`)
