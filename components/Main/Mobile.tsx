@@ -25,7 +25,7 @@ const MarginBox = styled.div`
   margin-bottom: 20px;
 `
 
-const MainMobile = ({ report, markerData }): JSX.Element => {
+const MainMobile = ({ report, location }): JSX.Element => {
   return (
     <>
       <Container>
@@ -103,7 +103,7 @@ const MainMobile = ({ report, markerData }): JSX.Element => {
               <MarginBox>
                 <Card>
                   <h2>확진자 지도</h2>
-                  <MapChart />
+                  <MapChart location={location} />
                 </Card>
               </MarginBox>
               <Card>

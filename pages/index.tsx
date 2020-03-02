@@ -6,7 +6,7 @@ import { NextSeo } from 'next-seo'
 
 import Desktop from '@/components/Main/Desktop'
 
-const Home = ({ data, report }): JSX.Element => {
+const Home = ({ location, report }): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false) // 모바일 여부
   const resizeEvent = (): void => {
     if (window.innerWidth < 992) {
@@ -29,9 +29,9 @@ const Home = ({ data, report }): JSX.Element => {
   const checkRender = (): JSX.Element => {
     if (isMobile) {
       const Mobile = dynamic(() => import('@/components/Main/Mobile'))
-      return <Mobile report={report} markerData={data} />
+      return <Mobile report={report} location={location} />
     } else {
-      return <Desktop report={report} markerData={data} />
+      return <Desktop report={report} location={location} />
     }
   }
 
@@ -55,8 +55,10 @@ const Home = ({ data, report }): JSX.Element => {
 
 Home.getInitialProps = async (): Promise<object> => {
   const report = await fetch(`${process.env.API_URL}/reports/?format=json`)
+  const location = await fetch(`${process.env.API_URL}/reports/location/?format=json`)
   const reportJson = await report.json()
-  return { report: reportJson }
+  const locationJson = await location.json()
+  return { report: reportJson, location: locationJson }
 }
 
 export default Home

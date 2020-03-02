@@ -21,7 +21,7 @@ const MapContainer = styled.section`
   }
 `
 
-const MainDesktop = ({ report, markerData }): JSX.Element => {
+const MainDesktop = ({ report, location }): JSX.Element => {
   return (
     <>
       <Container
@@ -126,7 +126,7 @@ const MainDesktop = ({ report, markerData }): JSX.Element => {
                 <div className="t">
                   <h2>확진자 지도</h2>
                 </div>
-                <MapChart />
+                <MapChart location={location} />
               </Card>
             </MapContainer>
           </div>
