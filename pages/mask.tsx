@@ -17,8 +17,10 @@ const Mask = (): JSX.Element => {
       } else {
         return (
           <>
-            <div></div>
-            <div
+            <div>
+              <
+            </div>
+            {/* <div
               className="row"
               style={{
                 padding: '20px 0',
@@ -27,7 +29,7 @@ const Mask = (): JSX.Element => {
               <div className="col-md-6">
                 <MaskCard />
               </div>
-            </div>
+            </div> */}
           </>
         )
       }
