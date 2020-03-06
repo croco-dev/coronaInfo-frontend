@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import Card from '@/components/Card'
 import { InlineIcon } from '@iconify/react'
@@ -32,11 +32,18 @@ const SearchForm = styled.form`
 `
 
 const MaskSearch = (): JSX.Element => {
+  const [keyword, setKeyword] = useState('')
   return (
     <>
       <Card>
         <SearchForm>
-          <input />
+          <input
+            placeholder="주소 검색"
+            value={keyword}
+            onChange={e => {
+              setKeyword(e.target.value)
+            }}
+          />
           <button>
             <InlineIcon icon={bxSearch} />
           </button>
