@@ -45,6 +45,9 @@ const ChartMap = ({ location }): JSX.Element => {
     padding: 20px;
     width: 350px;
     margin: 0 auto;
+    @media (max-width: 992px) {
+      width: 100%;
+    }
     .map__tooltip {
       position: fixed;
       min-width: 130px;
