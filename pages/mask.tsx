@@ -4,6 +4,7 @@ import Layout from '@/layouts/main'
 import Container from '@/components/Container'
 import Jumbotron from '@/components/Jumbotron'
 import MaskCard from '@/components/Mask/card'
+import MaskSearch from '@/components/Mask/search'
 
 const Mask = (): JSX.Element => {
   const [search, setSearch] = useState(false)
@@ -18,7 +19,7 @@ const Mask = (): JSX.Element => {
         return (
           <>
             <div>
-              <
+              <MaskSearch />
             </div>
             {/* <div
               className="row"
