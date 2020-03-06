@@ -96,7 +96,11 @@ const MaskSearch = (): JSX.Element => {
           </SearchResult>
         )
       } else {
-        return <div style={{ textAlign: 'center' }}>검색 결과가 없거나, 오류입니다.</div>
+        return (
+          <div style={{ textAlign: 'center', padding: '30px 0' }}>
+            검색 결과가 없거나, 오류입니다.
+          </div>
+        )
       }
     } else {
       return <></>
