@@ -33,10 +33,31 @@ const SearchForm = styled.form`
 
 const MaskSearch = (): JSX.Element => {
   const [keyword, setKeyword] = useState('')
+
+  const searchAction = () => {
+    fetch('https://dapi.kakao.com/v2/local/search/address.json?query=' + keyword, {
+      method: 'get',
+      headers: {
+        Authorization: 'KakaoAK 1b4a73d6cb2add7318c6c956f2c4022e',
+      },
+    })
+      .then(function(res) {
+        return res.json()
+      })
+      .then(function(json) {
+        console.log(JSON.stringify(json))
+      })
+  }
+
+  const formOnSubmit = e => {
+    e.preventDefault()
+    searchAction()
+  }
+
   return (
     <>
       <Card>
-        <SearchForm>
+        <SearchForm onSubmit={formOnSubmit}>
           <input
             placeholder="주소 검색"
             value={keyword}
@@ -44,7 +65,7 @@ const MaskSearch = (): JSX.Element => {
               setKeyword(e.target.value)
             }}
           />
-          <button>
+          <button onClick={formOnSubmit}>
             <InlineIcon icon={bxSearch} />
           </button>
         </SearchForm>
