@@ -8,7 +8,7 @@ import MaskSearch from '@/components/Mask/search'
 
 const Mask = (): JSX.Element => {
   const [search, setSearch] = useState(false)
-  if (typeof window !== 'undefined') {
+  if (process.browser) {
     if (!navigator.geolocation) {
       setSearch(true)
     }
@@ -51,10 +51,15 @@ const Mask = (): JSX.Element => {
   } else {
     return (
       <>
-        <div>
-          해당 기능 (페이지)은(는) JavaScript를 지원하는 브라우저에서만 사용 가능합니다. 이용에
-          불편을 드려 죄송합니다.
-        </div>
+        <Layout>
+          <Jumbotron
+            title="내 주변 마스크?"
+            desc="내 주변에서 마스크를 어디서 구할 수 있는지에 대해 간단히 알아보실 수 있습니다."
+          />
+          <Container>
+            <div>해당 기능은 JavaScript가 켜져 있어야 이용 가능합니다.</div>
+          </Container>
+        </Layout>
       </>
     )
   }
