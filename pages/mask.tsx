@@ -17,6 +17,7 @@ const Mask = (): JSX.Element => {
       } else {
         return (
           <>
+            <div></div>
             <div
               className="row"
               style={{
