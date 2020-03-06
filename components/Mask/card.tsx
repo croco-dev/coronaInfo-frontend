@@ -5,6 +5,7 @@ import Card from '@/components/Card'
 const StyleSection = styled.div`
   .name {
     font-size: 20px;
+    font-weight: 600;
   }
 `
 
