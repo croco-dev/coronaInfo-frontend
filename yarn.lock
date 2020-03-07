@@ -989,6 +989,18 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@iconify/icons-bx@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-bx/-/icons-bx-1.0.1.tgz#8401e6915ffa0a35c04b3ba3199b1709ff2e91c4"
+  integrity sha512-vxEz3niHjxEKCuGcXWakysVknQKtxCYjSrnTjvR3M78iw3O+vdSKZ0nxsGSIT7LswYVwigbgCkljpjcHqfK3tw==
+
+"@iconify/react@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-1.1.2.tgz#6a87004f08c5d14e90193ccc1479db045df0f91f"
+  integrity sha512-52bUSY9CAgTAXkG1HVz1j7cRNepiiL9AWaIfiXLK8QNbwryBK3v9w95/cKXgTTPXKPcnxbuLYcAvkhll6R+g3w==
+  dependencies:
+    react "^16.12.0"
+
 "@sentry/browser@^5.13.0":
   version "5.13.0"
   resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.13.0.tgz#399b0a09d6603726d787b746bcc70659010bc50c"
@@ -7228,6 +7240,15 @@ react@16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
   integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+
+react@^16.12.0:
+  version "16.13.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
+  integrity sha512-TSavZz2iSLkq5/oiE7gnFzmURKZMltmi193rm5HEoUDAXpzT9Kzw6oNZnGoai/4+fUnm7FqS5dwgUL34TujcWQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

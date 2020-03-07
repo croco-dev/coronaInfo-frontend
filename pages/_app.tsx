@@ -8,7 +8,9 @@ import * as Sentry from '@sentry/browser'
 import '@/styles/core.scss'
 import ChannelTalk from '@/components/ChannelTalk'
 
-Sentry.init({ dsn: 'https://f6473d1b251f4eeca529512dd58ddfcf@sentry.io/3324211' })
+if (process.env.NODE_ENV === 'production') {
+  Sentry.init({ dsn: 'https://f6473d1b251f4eeca529512dd58ddfcf@sentry.io/3324211' })
+}
 
 class MyApp extends App {
   componentDidMount(): void {

@@ -96,8 +96,7 @@ const ChartMap = ({ location }): JSX.Element => {
       return d.name === pointedLocation
     })
     setLocationData(findData)
-    console.log(findData)
-  }, [pointedLocation])
+  }, [location, pointedLocation])
 
   const Tooltip = (): JSX.Element => {
     if (locationData) {
