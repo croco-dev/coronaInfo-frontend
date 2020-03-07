@@ -75,11 +75,11 @@ const Mask = (): JSX.Element => {
     }
     return (
       <>
-        <NextSeo title="마스크 어디에?" />
+        <NextSeo title="마스크 재고 현황" />
         <Layout>
           <Jumbotron
-            title="마스크 어디에?"
-            desc="내 반경 1km 이내에서 마스크를 구할 수 있는 곳을 찾습니다."
+            title="마스크 재고 현황"
+            desc="내 반경 1km 이내에서 마스크 재고 현황을 확인해보세요!"
           />
           <Container>
             <Infomation />
@@ -90,11 +90,11 @@ const Mask = (): JSX.Element => {
   } else {
     return (
       <>
-        <NextSeo title="마스크 어디에?" />
+        <NextSeo title="마스크 재고 현황" />
         <Layout>
           <Jumbotron
-            title="마스크 어디에?"
-            desc="내 반경 1km 이내에서 마스크를 구할 수 있는 곳을 찾습니다."
+            title="마스크 재고 현황"
+            desc="내 반경 1km 이내에서 마스크 재고 현황을 확인해보세요!"
           />
           <Container>
             <div>해당 기능은 JavaScript가 켜져 있어야 이용 가능합니다.</div>
