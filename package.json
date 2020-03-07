@@ -28,6 +28,8 @@
     "recharts": "^2.0.0-beta.1"
   },
   "devDependencies": {
+    "@iconify/icons-bx": "^1.0.1",
+    "@iconify/react": "^1.1.2",
     "@types/next-seo": "^1.10.0",
     "@types/node": "^13.7.0",
     "@types/randomcolor": "^0.5.3",
