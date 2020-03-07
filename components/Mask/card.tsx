@@ -34,6 +34,22 @@ const StyleSection = styled.div`
   .infomation {
     margin-top: 20px;
   }
+  .mapLink {
+    margin-top: 15px;
+    padding: 0 15px;
+    a {
+      display: block;
+      background: #fae000;
+      color: #1d1d1d;
+      text-decoration: none;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+      &.naver {
+        background: rgb(3, 207, 93);
+      }
+    }
+  }
 `
 const Tag = styled.span`
   display: flex;
@@ -137,6 +153,37 @@ const MaskCard = ({ data }) => {
                     </tr>
                   </tbody>
                 </table>
+                <div className="mapLink row">
+                  <a
+                    href={
+                      'https://map.kakao.com/link/to/' +
+                      encodeURIComponent(data.name) +
+                      ',' +
+                      data.lat +
+                      ',' +
+                      data.lng
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="col-md-6 col-xs-12"
+                  >
+                    카카오맵
+                  </a>
+                  <a
+                    href={
+                      'https://maps.naver.com/?menu=location&lat=' +
+                      data.lat +
+                      '&lng=' +
+                      data.lng +
+                      '&dlevel=14'
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="col-md-6 col-xs-12 naver"
+                  >
+                    네이버 지도
+                  </a>
+                </div>
               </div>
             </>
           )}
