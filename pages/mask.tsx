@@ -17,9 +17,17 @@ const Mask = (): JSX.Element => {
         lat +
         '&lng=' +
         lng +
-        '&m=1000',
+        '&m=3000',
     )
     const jsonData = await fetchData.json()
+    jsonData.stores.sort(function(a, b) {
+      if (a.remain_cnt < b.remain_cnt) {
+        return 1
+      }
+      if (a.remain_cnt > b.remain_cnt) {
+        return -1
+      }
+    })
     setData(jsonData.stores)
   }
 
@@ -79,7 +87,7 @@ const Mask = (): JSX.Element => {
         <Layout>
           <Jumbotron
             title="마스크 재고 현황"
-            desc="내 반경 1km 이내에서 마스크 재고 현황을 확인해보세요!"
+            desc="내 반경 3km 이내에서 마스크 재고 현황을 확인해보세요!"
           />
           <Container>
             <Infomation />
@@ -94,7 +102,7 @@ const Mask = (): JSX.Element => {
         <Layout>
           <Jumbotron
             title="마스크 재고 현황"
-            desc="내 반경 1km 이내에서 마스크 재고 현황을 확인해보세요!"
+            desc="내 반경 3km 이내에서 마스크 재고 현황을 확인해보세요!"
           />
           <Container>
             <div>해당 기능은 JavaScript가 켜져 있어야 이용 가능합니다.</div>
