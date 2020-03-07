@@ -15,7 +15,13 @@ const ChartMap = ({ location }): JSX.Element => {
 
     location.forEach(item => {
       let color = ''
-      if (item.total >= 1000) {
+      if (item.total >= 100000) {
+        color = '#BE1D1D'
+      } else if (item.total >= 10000) {
+        color = '#E03232'
+      } else if (item.total >= 5000) {
+        color = '#FF3939'
+      } else if (item.total >= 1000) {
         color = '#FF6161'
       } else if (item.total >= 100) {
         color = '#FF7E7E'
