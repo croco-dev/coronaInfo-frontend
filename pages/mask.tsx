@@ -5,6 +5,7 @@ import Container from '@/components/Container'
 import Jumbotron from '@/components/Jumbotron'
 import MaskCard from '@/components/Mask/card'
 import MaskSearch from '@/components/Mask/search'
+import { NextSeo } from 'next-seo'
 
 const Mask = (): JSX.Element => {
   const [search, setSearch] = useState(false)
@@ -74,6 +75,7 @@ const Mask = (): JSX.Element => {
     }
     return (
       <>
+        <NextSeo title="내 주변 마스크" />
         <Layout>
           <Jumbotron
             title="내 주변 마스크?"
@@ -88,6 +90,7 @@ const Mask = (): JSX.Element => {
   } else {
     return (
       <>
+        <NextSeo title="내 주변 마스크" />
         <Layout>
           <Jumbotron
             title="내 주변 마스크?"
