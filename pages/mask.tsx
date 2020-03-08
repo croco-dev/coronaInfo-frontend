@@ -7,6 +7,15 @@ import MaskCard from '@/components/Mask/card'
 import MaskSearch from '@/components/Mask/search'
 import { NextSeo } from 'next-seo'
 
+const Alert = styled.div`
+  background: #ffd2d2;
+  padding: 20px 12px;
+  line-height: 1.6;
+  h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+`
 const Mask = (): JSX.Element => {
   const [search, setSearch] = useState(false)
   const [data, setData] = useState([])
@@ -86,10 +95,20 @@ const Mask = (): JSX.Element => {
         <NextSeo title="마스크 재고 현황" />
         <Layout>
           <Jumbotron
-            title="마스크 재고 현황"
+            title="마스크 재고 현황 (베타)"
             desc="내 반경 3km 이내에서 마스크 재고 현황을 확인해보세요!"
           />
           <Container>
+            <Alert>
+              <Container>
+                <h4>안내</h4>
+                <p>실시간 데이터의 경우 3/9일부터 정상 제공될 예정입니다.</p>
+                <p>
+                  또한 하단에 기재된 데이터의 경우 코로나인포에서 자체적으로 수집한 데이터가
+                  아닙니다.
+                </p>
+              </Container>
+            </Alert>
             <Infomation />
           </Container>
         </Layout>
@@ -101,7 +120,7 @@ const Mask = (): JSX.Element => {
         <NextSeo title="마스크 재고 현황" />
         <Layout>
           <Jumbotron
-            title="마스크 재고 현황"
+            title="마스크 재고 현황 (베타)"
             desc="내 반경 3km 이내에서 마스크 재고 현황을 확인해보세요!"
           />
           <Container>
