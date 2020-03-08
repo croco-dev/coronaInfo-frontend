@@ -28,9 +28,21 @@ const Mask = () => {
         />
         <AlertMessage>
           <Container>
-            <h2>내일부터 서비스가 재개됩니다.</h2>
+            <h2>부정확한 정보로 인해, 서비스를 중지합니다.</h2>
             <p>현재 정보를 올바르게 제공해드리지 못하고 있어, 서비스를 중지하였습니다.</p>
-            <p>2020년 3월 9일부터 서비스가 재개됩니다. 감사합니다.</p>
+            <p>데이터 제공 재개일이 공개되지 않았습니다. 감사합니다.</p>
+          </Container>
+        </AlertMessage>
+        <AlertMessage
+          style={{
+            marginTop: '20px',
+          }}
+        >
+          <Container>
+            <h2>데이터 제공에 관련된 공지</h2>
+            <p>
+              데이터는 "한국정보화진흥원"에서 제공 받았습니다. 데이터 관련 문의는 자제 부탁드립니다.
+            </p>
           </Container>
         </AlertMessage>
       </Layout>
