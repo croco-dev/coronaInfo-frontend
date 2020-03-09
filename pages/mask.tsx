@@ -4,9 +4,21 @@ import Layout from '@/layouts/main'
 import Container from '@/components/Container'
 import Jumbotron from '@/components/Jumbotron'
 import MaskCard from '@/components/Mask/card'
-import { Callout, CalloutStatus } from '@class101/ui'
 // import MaskSearch from '@/components/Mask/search'
 import { NextSeo } from 'next-seo'
+
+const Callout = styled.div`
+  padding: 20px 25px;
+  background: #feeff2;
+  line-height: 1.7;
+  color: #3e4042;
+  margin: 20px;
+  h3 {
+    color: #ca4545;
+    font-size: 20px;
+    font-weight: bold;
+  }
+`
 
 const AgreeInfomation = styled.div`
   background: #fff;
@@ -125,7 +137,10 @@ const Mask = (): JSX.Element => {
           <Container>
             {err === 'DENY_PERMISSION' && (
               <>
-                <Callout></Callout>
+                <Callout>
+                  <h3>위치를 받아올 수 없습니다.</h3>
+                  <p>위치 권한이 수락되지 않았습니다.</p>
+                </Callout>
               </>
             )}
             {start ? (
@@ -152,7 +167,7 @@ const Mask = (): JSX.Element => {
                         loadOperation()
                       }}
                     >
-                      시작
+                      확인했습니다.
                     </button>
                   </AgreeInfomation>
                 </Container>
