@@ -8,9 +8,32 @@ import MaskCard from '@/components/Mask/card'
 import { NextSeo } from 'next-seo'
 
 const AgreeInfomation = styled.div`
-  text-align: center;
+  background: #fff;
+  line-height: 1.6;
+  padding: 20px 25px;
+  margin: 25px 0;
+  border: 1px solid #e4e4e4;
+  border-top: 5px solid #c361ff;
   h2 {
     font-size: 24px;
+    font-weight: bold;
+  }
+  ul {
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+  b {
+    font-weight: bold;
+  }
+  button {
+    -webkit-appearance: none;
+    margin-top: 15px;
+    font-size: 0.95rem;
+    border: 0;
+    background: var(--main);
+    padding: 7px 23px;
+    color: #fff;
+    cursor: pointer;
   }
 `
 
@@ -98,16 +121,23 @@ const Mask = (): JSX.Element => {
               <Infomation />
             ) : (
               <>
-                <AgreeInfomation>
-                  <h2>사용 전 읽어주세요.</h2>
-                  <ul>
-                    <li>제공되는 데이터는 실시간이 아니며, 5분 이상의 차이가 있을 수 있습니다.</li>
-                    <li>
-                      실제 재고와는 차이가 있기 때문에, 해당 데이터를 신뢰하지는 마시기 바랍니다.
-                    </li>
-                    <li>해당 데이터로 인하여 생기는 피해는 책임지지 않습니다.</li>
-                  </ul>
-                </AgreeInfomation>
+                <Container>
+                  <AgreeInfomation>
+                    <h2>사용 전 읽어주세요.</h2>
+                    <ul>
+                      <li>
+                        <b>
+                          제공되는 데이터는 실시간이 아니며, 5분 이상의 차이가 있을 수 있습니다.
+                        </b>
+                      </li>
+                      <li>
+                        실제 재고와는 차이가 있기 때문에, 해당 데이터를 신뢰하지는 마시기 바랍니다.
+                      </li>
+                      <li>해당 데이터로 인하여 생기는 피해는 책임지지 않습니다.</li>
+                    </ul>
+                    <button>시작</button>
+                  </AgreeInfomation>
+                </Container>
               </>
             )}
           </Container>
