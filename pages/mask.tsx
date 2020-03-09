@@ -135,7 +135,13 @@ const Mask = (): JSX.Element => {
                       </li>
                       <li>해당 데이터로 인하여 생기는 피해는 책임지지 않습니다.</li>
                     </ul>
-                    <button>시작</button>
+                    <button
+                      onClick={(): void => {
+                        setStart(true)
+                      }}
+                    >
+                      시작
+                    </button>
                   </AgreeInfomation>
                 </Container>
               </>
