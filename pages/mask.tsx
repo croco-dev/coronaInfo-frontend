@@ -17,7 +17,7 @@ const AlertMessage = styled.div`
   }
 `
 
-const Mask = () => {
+const Mask = (): JSX.Element => {
   return (
     <>
       <NextSeo title="마스크 재고 현황" />
