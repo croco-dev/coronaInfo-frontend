@@ -7,15 +7,13 @@ import MaskCard from '@/components/Mask/card'
 import MaskSearch from '@/components/Mask/search'
 import { NextSeo } from 'next-seo'
 
-const Alert = styled.div`
-  background: #ffd2d2;
-  padding: 20px 12px;
-  line-height: 1.6;
-  h4 {
-    font-size: 1.3rem;
-    font-weight: 600;
+const AgreeInfomation = styled.div`
+  text-align: center;
+  h2 {
+    font-size: 24px;
   }
 `
+
 const Mask = (): JSX.Element => {
   const [start, setStart] = useState(false) // 시작 여부
   const [search, setSearch] = useState(false) // 검색이 필요한가요?
@@ -96,17 +94,22 @@ const Mask = (): JSX.Element => {
             desc="내 반경 3km 이내에서 마스크 재고 현황을 확인해보세요!"
           />
           <Container>
-            <Alert>
-              <Container>
-                <h4>안내</h4>
-                <p>실시간 데이터의 경우 3/9일부터 정상 제공될 예정입니다.</p>
-                <p>
-                  또한 하단에 기재된 데이터의 경우 코로나인포에서 자체적으로 수집한 데이터가
-                  아닙니다.
-                </p>
-              </Container>
-            </Alert>
-            <Infomation />
+            {start ? (
+              <Infomation />
+            ) : (
+              <>
+                <AgreeInfomation>
+                  <h2>사용 전 읽어주세요.</h2>
+                  <ul>
+                    <li>제공되는 데이터는 실시간이 아니며, 5분 이상의 차이가 있을 수 있습니다.</li>
+                    <li>
+                      실제 재고와는 차이가 있기 때문에, 해당 데이터를 신뢰하지는 마시기 바랍니다.
+                    </li>
+                    <li>해당 데이터로 인하여 생기는 피해는 책임지지 않습니다.</li>
+                  </ul>
+                </AgreeInfomation>
+              </>
+            )}
           </Container>
         </Layout>
       </>
