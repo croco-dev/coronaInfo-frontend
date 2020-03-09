@@ -4,7 +4,7 @@ import Layout from '@/layouts/main'
 import Container from '@/components/Container'
 import Jumbotron from '@/components/Jumbotron'
 import MaskCard from '@/components/Mask/card'
-import MaskSearch from '@/components/Mask/search'
+// import MaskSearch from '@/components/Mask/search'
 import { NextSeo } from 'next-seo'
 
 const AgreeInfomation = styled.div`
