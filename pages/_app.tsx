@@ -3,6 +3,7 @@ import App from 'next/app'
 import ReactGA from 'react-ga'
 import { DefaultSeo } from 'next-seo'
 import * as Sentry from '@sentry/browser'
+import ChannelTalk from '@/components/ChannelTalk'
 
 // 👁 Global Style
 import '@/styles/core.scss'
@@ -53,6 +54,7 @@ class MyApp extends App {
             cardType: 'summary_large_image',
           }}
         />
+        <ChannelTalk pluginId={process.env.CHANNEL_TALK} />
         <Component {...pageProps} />
       </>
     )
