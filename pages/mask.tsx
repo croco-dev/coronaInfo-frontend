@@ -4,6 +4,7 @@ import Layout from '@/layouts/main'
 import Container from '@/components/Container'
 import Jumbotron from '@/components/Jumbotron'
 import MaskCard from '@/components/Mask/card'
+import { Callout, CalloutStatus } from '@class101/ui'
 // import MaskSearch from '@/components/Mask/search'
 import { NextSeo } from 'next-seo'
 
@@ -39,6 +40,7 @@ const AgreeInfomation = styled.div`
 
 const Mask = (): JSX.Element => {
   const [start, setStart] = useState(false) // 시작 여부
+  const [err, setErr] = useState('NONE')
   const [search, setSearch] = useState(false) // 검색이 필요한가요?
   const [data, setData] = useState([]) // 검색 반환 데이터
 
@@ -66,9 +68,17 @@ const Mask = (): JSX.Element => {
     if (!navigator.geolocation) {
       setSearch(true)
     } else {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        dataLoading(position.coords.latitude, position.coords.longitude)
-      })
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          dataLoading(position.coords.latitude, position.coords.longitude)
+        },
+        err => {
+          console.log(err)
+          if (err.code == err.PERMISSION_DENIED) {
+            setErr('DENY_PERMISSION')
+          }
+        },
+      )
     }
   }
 
@@ -88,7 +98,7 @@ const Mask = (): JSX.Element => {
                 padding: '20px 0',
               }}
             >
-              {data && data.length > 0 ? (
+              {data && data.length > 0 && (
                 <>
                   {data.map((item, i) => {
                     return (
@@ -98,10 +108,6 @@ const Mask = (): JSX.Element => {
                     )
                   })}
                 </>
-              ) : (
-                <div className={'col-md-12'} style={{ textAlign: 'center' }}>
-                  Loading...
-                </div>
               )}
             </div>
           </>
@@ -117,6 +123,11 @@ const Mask = (): JSX.Element => {
             desc="내 반경 3km 이내에서 마스크 재고 현황을 확인해보세요!"
           />
           <Container>
+            {err === 'DENY_PERMISSION' && (
+              <>
+                <Callout></Callout>
+              </>
+            )}
             {start ? (
               <Infomation />
             ) : (
@@ -138,6 +149,7 @@ const Mask = (): JSX.Element => {
                     <button
                       onClick={(): void => {
                         setStart(true)
+                        loadOperation()
                       }}
                     >
                       시작
