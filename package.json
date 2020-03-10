@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext .js,.ts,.jsx,.tsx --ignore-path .gitignore ."
+    "lint": "eslint --ext .js,.ts,.jsx,.tsx --ignore-path .gitignore .",
+    "start:doda": "next start -p 14142"
   },
   "dependencies": {
     "@emotion/core": "^10.0.27",
