@@ -20,6 +20,10 @@ const Callout = styled.div`
   }
 `
 
+const Select = styled.select`
+  -webkit-appearance: none;
+`
+
 const AgreeInfomation = styled.div`
   background: #fff;
   line-height: 1.6;
@@ -57,13 +61,17 @@ const Mask = (): JSX.Element => {
   const [search, setSearch] = useState(false) // 검색이 필요한가요?
   const [data, setData] = useState([]) // 검색 반환 데이터
 
+  const [distance, setDistance] = useState('1km')
+
   const dataLoading = async (lat, lng) => {
+    const distanceM = parseInt(distance.replace('km', '') + '000')
     const fetchData = await fetch(
       'https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?lat=' +
         lat +
         '&lng=' +
         lng +
-        '&m=3000',
+        '&m=' +
+        distanceM,
     )
     const jsonData = await fetchData.json()
     setData(jsonData.stores)
@@ -87,6 +95,29 @@ const Mask = (): JSX.Element => {
     }
   }
 
+  const changeDistance = (e): void => {
+    const action = (): void => {
+      setDistance(e.target.value)
+      const timer = setTimeout(() => {
+        // setDistance 실행 후에 실행하기 위해 지연
+        loadOperation()
+        clearTimeout(timer)
+      }, 700)
+    }
+
+    // 사용자 기기 걱정
+    if (
+      parseInt(e.target.value.replace('km', '')) >= 5 &&
+      window.confirm(
+        '주변에 약국이 많은 지역에서는 5km 이상의 검색을 비권장합니다.\n그래도 시도하겠습니까?',
+      )
+    ) {
+      action()
+    } else {
+      action()
+    }
+  }
+
   if (process.browser) {
     const Infomation = (): JSX.Element => {
       if (search === true) {
@@ -94,9 +125,17 @@ const Mask = (): JSX.Element => {
       } else {
         return (
           <>
-            {/* <div>
-              <MaskSearch />
-            </div> */}
+            <div className="row">
+              <div className="col-md-12">
+                <Select value={distance} onChange={changeDistance}>
+                  <option value="1km">1km</option>
+                  <option value="3km">3km</option>
+                  <option value="5km">5km</option>
+                  <option value="7km">7km</option>
+                  <option value="10km">10km</option>
+                </Select>
+              </div>
+            </div>
             <div
               className="row"
               style={{
