@@ -66,14 +66,6 @@ const Mask = (): JSX.Element => {
         '&m=3000',
     )
     const jsonData = await fetchData.json()
-    jsonData.stores.sort(function(a, b) {
-      if (a.remain_cnt < b.remain_cnt) {
-        return 1
-      }
-      if (a.remain_cnt > b.remain_cnt) {
-        return -1
-      }
-    })
     setData(jsonData.stores)
   }
 

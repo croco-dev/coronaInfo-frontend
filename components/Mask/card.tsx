@@ -26,7 +26,7 @@ const StyleSection = styled.div`
       border: 1px solid #dedede;
       &:nth-of-type(1) {
         font-weight: 500;
-        width: 100px;
+        width: 130px;
         text-align: center;
       }
     }
@@ -112,40 +112,30 @@ const MaskCard = ({ data }) => {
                 <table>
                   <tbody>
                     <tr>
-                      <td>입고 시간</td>
+                      <td>최근 입고</td>
                       <td>
-                        {data.stock_t ? (
-                          <span>{data.stock_t} (24시간 기준)</span>
+                        {data.stock_at ? (
+                          <span>{data.stock_at}</span>
                         ) : (
                           <span className={'gray'}>정보 없음</span>
                         )}
                       </td>
                     </tr>
                     <tr>
-                      <td>입고 수량</td>
+                      <td>재고 상태</td>
                       <td>
-                        {data.stock_cnt ? (
-                          <span>{data.stock_cnt}</span>
+                        {data.remain_stat ? (
+                          <span>{data.remain_stat}</span>
                         ) : (
                           <span className={'gray'}>정보 없음</span>
                         )}
                       </td>
                     </tr>
                     <tr>
-                      <td>판매 수량</td>
+                      <td>정보 업데이트</td>
                       <td>
-                        {data.sold_cnt ? (
-                          <span>{data.sold_cnt}</span>
-                        ) : (
-                          <span className={'gray'}>정보 없음</span>
-                        )}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>재고 수량</td>
-                      <td>
-                        {data.remain_cnt ? (
-                          <span>{data.remain_cnt}</span>
+                        {data.created_at ? (
+                          <span>{data.created_at}</span>
                         ) : (
                           <span className={'gray'}>정보 없음</span>
                         )}
