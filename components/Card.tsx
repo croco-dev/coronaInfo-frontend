@@ -13,10 +13,15 @@ const CardStyle = styled.div`
   z-index: 101;
 `
 
-const Card = ({ children }): JSX.Element => {
+interface CardProps {
+  children: React.ReactNode
+  style?: React.CSSProperties
+}
+
+const Card = ({ children, style }: CardProps): JSX.Element => {
   return (
     <>
-      <CardStyle>{children}</CardStyle>
+      <CardStyle style={style}>{children}</CardStyle>
     </>
   )
 }

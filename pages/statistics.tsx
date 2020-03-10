@@ -100,24 +100,6 @@ const StatisticsPage = ({ data }): JSX.Element => {
                 />
               </div>
             </div>
-            <div className="row">
-              <div className={'col-sm-12 col-lg-6'}>
-                <DataGraph
-                  id={'cure'}
-                  title={'격리해제 확진자 증가 추이'}
-                  data={data.cure_report}
-                  color="#43c595"
-                />
-              </div>
-              <div className={'col-sm-12 col-lg-6'}>
-                <DataGraph
-                  id={'death'}
-                  title={'사망자 증가 추이'}
-                  data={data.death_report}
-                  color="#f24147"
-                />
-              </div>
-            </div>
           </Container>
         </ContentStyle>
       </Layout>

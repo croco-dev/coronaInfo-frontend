@@ -85,7 +85,7 @@ const MaskSearch = (): JSX.Element => {
     </div>
   )
 
-  const SearchResultContainer = () => {
+  const SearchResultContainer = (): JSX.Element => {
     if (data !== null) {
       if (data.documents && data.documents.length > 0) {
         return (
@@ -113,7 +113,7 @@ const MaskSearch = (): JSX.Element => {
         <input
           placeholder="주소 검색"
           value={keyword}
-          onChange={e => {
+          onChange={(e): void => {
             setKeyword(e.target.value)
           }}
         />

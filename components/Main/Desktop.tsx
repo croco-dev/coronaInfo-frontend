@@ -9,7 +9,7 @@ const MapChart = dynamic(() => import('@/components/Chart/Map'), { ssr: false })
 const StatTable = dynamic(() => import('./StatTable'))
 
 const MapContainer = styled.section`
-  padding: 20px 10px;
+  padding: 20px 0;
   h2 {
     font-size: 20px;
     font-weight: 500;
