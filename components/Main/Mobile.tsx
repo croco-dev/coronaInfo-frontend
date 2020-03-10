@@ -3,6 +3,13 @@ import dynamic from 'next/dynamic'
 import React from 'react'
 import Card from '../Card'
 import Container from '../Container'
+import Link from 'next/link'
+
+import { Icon, InlineIcon } from '@iconify/react'
+import mapIcon from '@iconify/icons-ion/map'
+import receiptIcon from '@iconify/icons-ion/receipt'
+import personIcon from '@iconify/icons-ion/person'
+import peopleSharp from '@iconify/icons-ion/people-sharp'
 
 const MapChart = dynamic(() => import('@/components/Chart/Map'), { ssr: false })
 const StatTable = dynamic(() => import('./StatTable'))
@@ -41,6 +48,39 @@ const StatusItem = styled.div`
   }
 `
 
+const QuickLink = styled.a`
+  display: block;
+  border-radius: 8px;
+  padding: 20px 17px;
+  color: #333;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  text-decoration: none;
+  text-align: center;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  svg {
+    width: 24%;
+    height: auto;
+    margin-bottom: 10px;
+    &.orange {
+      color: #ff7800;
+    }
+    &.green {
+      color: #13b363;
+    }
+    &.blue {
+      color: #24a5ff;
+    }
+    &.red {
+      color: #ff5454;
+    }
+  }
+`
+
 const MainMobile = ({ report, location }): JSX.Element => {
   return (
     <>
@@ -68,6 +108,52 @@ const MainMobile = ({ report, location }): JSX.Element => {
                   </StatusItem>
                 </div>
               </Card>
+              <div
+                className="row"
+                style={{
+                  marginBottom: '15px',
+                }}
+              >
+                <div className="col-6" style={{ paddingLeft: '0' }}>
+                  <Link href="/mask" passHref>
+                    <QuickLink>
+                      <Icon icon={mapIcon} className="blue" />
+                      <h3>주변 마스크</h3>
+                    </QuickLink>
+                  </Link>
+                </div>
+                <div className="col-6" style={{ paddingRight: '0' }}>
+                  <Link href="/statistics" passHref>
+                    <QuickLink>
+                      <Icon icon={personIcon} className="green" />
+                      <h3>확진자 통계</h3>
+                    </QuickLink>
+                  </Link>
+                </div>
+              </div>
+              <div
+                className="row"
+                style={{
+                  marginBottom: '15px',
+                }}
+              >
+                <div className="col-6" style={{ paddingLeft: '0' }}>
+                  <Link href="/news" passHref>
+                    <QuickLink>
+                      <Icon icon={receiptIcon} className="red" />
+                      <h3>실시간 뉴스</h3>
+                    </QuickLink>
+                  </Link>
+                </div>
+                <div className="col-6" style={{ paddingRight: '0' }}>
+                  <Link href="/patients" passHref>
+                    <QuickLink>
+                      <Icon icon={peopleSharp} className="orange" />
+                      <h3>확진자 목록</h3>
+                    </QuickLink>
+                  </Link>
+                </div>
+              </div>
               <MarginBox>
                 <Card>
                   <h2>확진자 지도</h2>

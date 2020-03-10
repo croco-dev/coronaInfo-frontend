@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
+    "@iconify/icons-ion": "^1.0.10",
     "@sentry/browser": "^5.13.0",
     "@zeit/next-sass": "^1.0.1",
     "dotenv": "^8.2.0",

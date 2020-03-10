@@ -1001,6 +1001,11 @@
   resolved "https://registry.yarnpkg.com/@iconify/icons-bx/-/icons-bx-1.0.1.tgz#8401e6915ffa0a35c04b3ba3199b1709ff2e91c4"
   integrity sha512-vxEz3niHjxEKCuGcXWakysVknQKtxCYjSrnTjvR3M78iw3O+vdSKZ0nxsGSIT7LswYVwigbgCkljpjcHqfK3tw==
 
+"@iconify/icons-ion@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-ion/-/icons-ion-1.0.10.tgz#34eba03b4a17875407836b594a68890646306bf6"
+  integrity sha512-z58rj8HWGWKb5VvI/rOJXsH2gNiMI065eYnzulL4sv+dpoHnmSHN/0XofyD0x8a6h97KxZQi4v3nJIa2PIEA6Q==
+
 "@iconify/react@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@iconify/react/-/react-1.1.2.tgz#6a87004f08c5d14e90193ccc1479db045df0f91f"
