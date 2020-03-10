@@ -24,7 +24,7 @@ const Select = styled.select`
   -webkit-appearance: none;
   font-size: 0.95rem;
   background: #fff;
-  border: 0;
+  border: 1px solid #ccc;
   border-radius: 6px;
   padding: 7px 20px;
   margin-top: 20px;
