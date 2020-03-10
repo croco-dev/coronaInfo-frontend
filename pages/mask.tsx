@@ -115,9 +115,9 @@ const Mask = (): JSX.Element => {
 
     // 사용자 기기 걱정
     if (
-      e.target.value >= 5000 &&
+      e.target.value >= 3000 &&
       window.confirm(
-        '주변에 약국이 많은 지역에서는 5km 이상의 검색을 비권장합니다.\n그래도 시도하겠습니까?',
+        '주변에 약국이 많은 지역에서는 3km 이상의 검색은 비권장합니다.\n계속하겠습니까?',
       )
     ) {
       action()
@@ -139,10 +139,10 @@ const Mask = (): JSX.Element => {
                 <Select id="selectDistance" value={showDistance} onChange={changeDistance}>
                   <option value={500}>500m</option>
                   <option value={1000}>1km</option>
+                  <option value={2000}>2km</option>
                   <option value={3000}>3km</option>
+                  <option value={4000}>4km</option>
                   <option value={5000}>5km</option>
-                  <option value={7000}>7km</option>
-                  <option value={10000}>10km</option>
                 </Select>
               </SelectDistanceBlock>
             </div>
