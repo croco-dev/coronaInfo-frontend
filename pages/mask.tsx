@@ -74,29 +74,28 @@ const Mask = (): JSX.Element => {
   const [search, setSearch] = useState(false) // 검색이 필요한가요?
   const [data, setData] = useState([]) // 검색 반환 데이터
 
-  const [distance, setDistance] = useState('1km')
+  const [showDistance, setShowDistance] = useState(1000)
 
-  const dataLoading = async (lat, lng) => {
-    const distanceM = parseInt(distance.replace('km', '') + '000')
+  const dataLoading = async (lat, lng, dis = 1000) => {
     const fetchData = await fetch(
       'https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?lat=' +
         lat +
         '&lng=' +
         lng +
         '&m=' +
-        distanceM,
+        dis,
     )
     const jsonData = await fetchData.json()
     setData(jsonData.stores)
   }
 
-  const loadOperation = () => {
+  const loadOperation = (dis = 1000) => {
     if (!navigator.geolocation) {
       setSearch(true)
     } else {
       navigator.geolocation.getCurrentPosition(
         position => {
-          dataLoading(position.coords.latitude, position.coords.longitude)
+          dataLoading(position.coords.latitude, position.coords.longitude, dis)
         },
         err => {
           console.log(err)
@@ -109,18 +108,14 @@ const Mask = (): JSX.Element => {
   }
 
   const changeDistance = (e): void => {
+    setShowDistance(e.target.value)
     const action = (): void => {
-      setDistance(e.target.value)
-      const timer = setTimeout(() => {
-        // setDistance 실행 후에 실행하기 위해 지연
-        loadOperation()
-        clearTimeout(timer)
-      }, 700)
+      loadOperation(e.target.value)
     }
 
     // 사용자 기기 걱정
     if (
-      parseInt(e.target.value.replace('km', '')) >= 5 &&
+      e.target.value >= 5000 &&
       window.confirm(
         '주변에 약국이 많은 지역에서는 5km 이상의 검색을 비권장합니다.\n그래도 시도하겠습니까?',
       )
@@ -141,12 +136,15 @@ const Mask = (): JSX.Element => {
             <div className="row">
               <SelectDistanceBlock className="col-md-12">
                 <label htmlFor="selectDistance">검색 거리: </label>
-                <Select id="selectDistance" value={distance} onChange={changeDistance}>
-                  <option value="1km">1km</option>
-                  <option value="3km">3km</option>
-                  <option value="5km">5km</option>
-                  <option value="7km">7km</option>
-                  <option value="10km">10km</option>
+                <Select id="selectDistance" value={showDistance} onChange={changeDistance}>
+                  <option value={500}>500m</option>
+                  <option value={1000} selected>
+                    1km
+                  </option>
+                  <option value={3000}>3km</option>
+                  <option value={5000}>5km</option>
+                  <option value={7000}>7km</option>
+                  <option value={10000}>10km</option>
                 </Select>
               </SelectDistanceBlock>
             </div>
