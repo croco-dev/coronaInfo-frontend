@@ -190,7 +190,7 @@ const MaskCard = ({ data }) => {
                             )}
                             {data.remain_stat === 'empty' && (
                               <>
-                                <span className="gray">1개 미만</span>
+                                <span className="gray">1개 이하</span>
                               </>
                             )}
                           </span>
