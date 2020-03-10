@@ -10,7 +10,7 @@ const MaskMap = () => {
         height: '100vh',
       }}
       defaultCenter={{ lat: 37.3213564, lng: 127.0978459 }}
-      defaultZoom={8}
+      defaultZoom={15}
     ></NaverMap>
   )
 }
