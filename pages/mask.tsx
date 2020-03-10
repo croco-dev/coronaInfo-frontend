@@ -138,9 +138,7 @@ const Mask = (): JSX.Element => {
                 <label htmlFor="selectDistance">검색 거리: </label>
                 <Select id="selectDistance" value={showDistance} onChange={changeDistance}>
                   <option value={500}>500m</option>
-                  <option value={1000} selected>
-                    1km
-                  </option>
+                  <option value={1000}>1km</option>
                   <option value={3000}>3km</option>
                   <option value={5000}>5km</option>
                   <option value={7000}>7km</option>
