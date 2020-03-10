@@ -178,7 +178,7 @@ const Mask = (): JSX.Element => {
         <Layout>
           <Jumbotron
             title="마스크 재고 현황 (베타)"
-            desc="내 반경 3km 이내에서 마스크 재고 현황을 확인해보세요!"
+            desc="내 위치 기준으로 마스크를 구입할 수 있는 곳은 어딨을까요?"
           />
           <Container>
             {err === 'DENY_PERMISSION' && (
@@ -201,6 +201,9 @@ const Mask = (): JSX.Element => {
                         <b>
                           제공되는 데이터는 실시간이 아니며, 5분 이상의 차이가 있을 수 있습니다.
                         </b>
+                      </li>
+                      <li>
+                        <b>정보 업데이트 시각</b>을 기준으로 현명한 판단 바랍니다.
                       </li>
                       <li>
                         실제 재고와는 차이가 있기 때문에, 해당 데이터를 신뢰하지는 마시기 바랍니다.
@@ -230,7 +233,7 @@ const Mask = (): JSX.Element => {
         <Layout>
           <Jumbotron
             title="마스크 재고 현황 (베타)"
-            desc="내 반경 3km 이내에서 마스크 재고 현황을 확인해보세요!"
+            desc="내 위치 기준으로 마스크를 구입할 수 있는 곳은 어딨을까요?"
           />
           <Container>
             <div>해당 기능은 JavaScript가 켜져 있어야 이용 가능합니다.</div>
