@@ -157,7 +157,7 @@ const Mask = (): JSX.Element => {
                   {data.map((item, i) => {
                     if (item.remain_stat !== null) {
                       return (
-                        <div className="col-md-6" key={i} style={{ marginBottom: '15px' }}>
+                        <div className="col-md-6 col-lg-4" key={i} style={{ marginBottom: '15px' }}>
                           <MaskCard data={item} />
                         </div>
                       )
