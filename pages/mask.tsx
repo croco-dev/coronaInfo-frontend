@@ -22,13 +22,13 @@ const Callout = styled.div`
 
 const Select = styled.select`
   -webkit-appearance: none;
-  font-size: 16px;
+  font-size: 0.95rem;
   background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.09);
   border: 0;
   border-radius: 6px;
-  padding: 5px 20px;
+  padding: 7px 20px;
   margin-top: 20px;
+  cursor: pointer;
 `
 
 const AgreeInfomation = styled.div`
@@ -59,6 +59,12 @@ const AgreeInfomation = styled.div`
     color: #fff;
     cursor: pointer;
     font-family: inherit;
+  }
+`
+
+const SelectDistanceBlock = styled.div`
+  label {
+    margin-right: 6px;
   }
 `
 
@@ -133,15 +139,16 @@ const Mask = (): JSX.Element => {
         return (
           <>
             <div className="row">
-              <div className="col-md-12 searchDistance">
-                <Select value={distance} onChange={changeDistance}>
+              <SelectDistanceBlock className="col-md-12">
+                <label htmlFor="selectDistance">검색 거리: </label>
+                <Select id="selectDistance" value={distance} onChange={changeDistance}>
                   <option value="1km">1km</option>
                   <option value="3km">3km</option>
                   <option value="5km">5km</option>
                   <option value="7km">7km</option>
                   <option value="10km">10km</option>
                 </Select>
-              </div>
+              </SelectDistanceBlock>
             </div>
             <div
               className="row"
