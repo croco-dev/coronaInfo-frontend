@@ -7,6 +7,15 @@ const StyleSection = styled.div`
   .gray {
     color: gray;
   }
+  .green {
+    color: green;
+  }
+  .yellow {
+    color: yellow;
+  }
+  .red {
+    color: red;
+  }
   .name {
     font-size: 20px;
     font-weight: 600;
@@ -36,7 +45,6 @@ const StyleSection = styled.div`
   }
   .mapLink {
     margin-top: 15px;
-    padding: 0 15px;
     a {
       display: block;
       background: #fae000;
@@ -125,7 +133,28 @@ const MaskCard = ({ data }) => {
                       <td>재고 상태</td>
                       <td>
                         {data.remain_stat ? (
-                          <span>{data.remain_stat}</span>
+                          <span>
+                            {data.remain_stat === 'plenty' && (
+                              <>
+                                <span className="green">100+</span>
+                              </>
+                            )}
+                            {data.remain_stat === 'some' && (
+                              <>
+                                <span className="yellow">30~100</span>
+                              </>
+                            )}
+                            {data.remain_stat === 'few' && (
+                              <>
+                                <span className="red">2~30</span>
+                              </>
+                            )}
+                            {data.remain_stat === 'empty' && (
+                              <>
+                                <span className="gray">100+</span>
+                              </>
+                            )}
+                          </span>
                         ) : (
                           <span className={'gray'}>정보 없음</span>
                         )}
