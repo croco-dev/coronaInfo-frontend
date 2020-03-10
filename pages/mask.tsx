@@ -47,6 +47,7 @@ const AgreeInfomation = styled.div`
     padding: 7px 23px;
     color: #fff;
     cursor: pointer;
+    font-family: inherit;
   }
 `
 
