@@ -2,6 +2,22 @@ import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import Card from '@/components/Card'
 
+// const calDistance = (lat1, lng1, lat2, lng2) => {
+//   const deg2rad = deg => {
+//     return deg * (Math.PI / 180)
+//   }
+
+//   const R = 6371 // Radius of the earth in km
+//   const dLat = deg2rad(lat2 - lat1) // deg2rad below
+//   const dLon = deg2rad(lng2 - lng1)
+//   const a =
+//     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+//     Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2)
+//   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+//   const d = R * c // Distance in km
+//   return d
+// }
+
 const StyleSection = styled.div`
   line-height: 1.5;
   .gray {
@@ -11,8 +27,8 @@ const StyleSection = styled.div`
     font-size: 20px;
     font-weight: 600;
     span {
+      margin-left: 8px;
       font-size: 14px;
-      color: red;
     }
   }
   .openBtn {
@@ -26,7 +42,7 @@ const StyleSection = styled.div`
       border: 1px solid #dedede;
       &:nth-of-type(1) {
         font-weight: 500;
-        width: 100px;
+        width: 130px;
         text-align: center;
       }
     }
@@ -36,7 +52,6 @@ const StyleSection = styled.div`
   }
   .mapLink {
     margin-top: 15px;
-    padding: 0 15px;
     a {
       display: block;
       background: #fae000;
@@ -52,24 +67,24 @@ const StyleSection = styled.div`
   }
 `
 const Tag = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   border-radius: 24px;
   color: #fff;
   font-weight: 500;
-  padding: 3px 15px;
-  width: 70px;
+  padding: 3px 30px;
   margin-bottom: 2px;
 
-  &.one {
-    background: var(--main);
+  &.plenty {
+    background: #00a769;
   }
-  &.two {
-    background: #ff5656;
+  &.some {
+    background: #d2950e;
   }
-  &.three {
-    background: #288850;
+  &.few {
+    background: #de2e2e;
+  }
+  &.empty {
+    background: #6b6b6b;
   }
 `
 
@@ -99,11 +114,31 @@ const MaskCard = ({ data }) => {
               </svg>
             )}
           </span>
-          {data.type === '01' && <Tag className="one">약국</Tag>}
-          {data.type === '02' && <Tag className="two">우체국</Tag>}
-          {data.type === '03' && <Tag className="three">농협</Tag>}
+          {data.remain_stat === 'plenty' && (
+            <>
+              <Tag className="plenty">넉넉 (100개 이상)</Tag>
+            </>
+          )}
+          {data.remain_stat === 'some' && (
+            <>
+              <Tag className="some">조금 (30~100)</Tag>
+            </>
+          )}
+          {data.remain_stat === 'few' && (
+            <>
+              <Tag className="few">부족 (2~30)</Tag>
+            </>
+          )}
+          {data.remain_stat === 'empty' && (
+            <>
+              <Tag className="empty">없음 (1개 이하)</Tag>
+            </>
+          )}
           <h2 className="name">
-            {data.name} {data.sold_out === true && <span>일시 품절</span>}
+            {data.name}
+            {data.type === '01' && <span className="one">(약국)</span>}
+            {data.type === '02' && <span className="two">(우체국)</span>}
+            {data.type === '03' && <span className="three">(농협)</span>}
           </h2>
           <Address>{data.addr}</Address>
           {open === true && (
@@ -112,40 +147,51 @@ const MaskCard = ({ data }) => {
                 <table>
                   <tbody>
                     <tr>
-                      <td>입고 시간</td>
+                      <td>최근 입고</td>
                       <td>
-                        {data.stock_t ? (
-                          <span>{data.stock_t} (24시간 기준)</span>
+                        {data.stock_at ? (
+                          <span>{data.stock_at}</span>
                         ) : (
                           <span className={'gray'}>정보 없음</span>
                         )}
                       </td>
                     </tr>
                     <tr>
-                      <td>입고 수량</td>
+                      <td>재고 상태</td>
                       <td>
-                        {data.stock_cnt ? (
-                          <span>{data.stock_cnt}</span>
+                        {data.remain_stat ? (
+                          <span>
+                            {data.remain_stat === 'plenty' && (
+                              <>
+                                <span className="green">100개 이상</span>
+                              </>
+                            )}
+                            {data.remain_stat === 'some' && (
+                              <>
+                                <span className="yellow">30~100</span>
+                              </>
+                            )}
+                            {data.remain_stat === 'few' && (
+                              <>
+                                <span className="red">2~30</span>
+                              </>
+                            )}
+                            {data.remain_stat === 'empty' && (
+                              <>
+                                <span className="gray">1개 미만</span>
+                              </>
+                            )}
+                          </span>
                         ) : (
                           <span className={'gray'}>정보 없음</span>
                         )}
                       </td>
                     </tr>
                     <tr>
-                      <td>판매 수량</td>
+                      <td>정보 업데이트</td>
                       <td>
-                        {data.sold_cnt ? (
-                          <span>{data.sold_cnt}</span>
-                        ) : (
-                          <span className={'gray'}>정보 없음</span>
-                        )}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>재고 수량</td>
-                      <td>
-                        {data.remain_cnt ? (
-                          <span>{data.remain_cnt}</span>
+                        {data.created_at ? (
+                          <span>{data.created_at}</span>
                         ) : (
                           <span className={'gray'}>정보 없음</span>
                         )}
@@ -156,7 +202,7 @@ const MaskCard = ({ data }) => {
                 <div className="mapLink row">
                   <a
                     href={
-                      'https://map.kakao.com/link/to/' +
+                      'https://map.kakao.com/link/map/' +
                       encodeURIComponent(data.name) +
                       ',' +
                       data.lat +
