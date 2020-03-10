@@ -63,7 +63,7 @@ const QuickLink = styled.a`
     font-weight: 500;
   }
   svg {
-    width: 24%;
+    width: 28px;
     height: auto;
     margin-bottom: 10px;
     &.orange {
