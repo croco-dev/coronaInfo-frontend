@@ -36,6 +36,7 @@ const MainMobile = ({ report, location }): JSX.Element => {
                 <div
                   className="col-md-6"
                   style={{
+                    padding: '0',
                     marginBottom: '15px',
                   }}
                 >
@@ -59,6 +60,7 @@ const MainMobile = ({ report, location }): JSX.Element => {
                   className="col-md-6"
                   style={{
                     marginBottom: '15px',
+                    padding: '0',
                   }}
                 >
                   <StatCard
@@ -79,6 +81,7 @@ const MainMobile = ({ report, location }): JSX.Element => {
                 <div
                   className="col-md-12"
                   style={{
+                    padding: '0',
                     marginBottom: '25px',
                   }}
                 >
