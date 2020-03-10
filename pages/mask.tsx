@@ -22,6 +22,13 @@ const Callout = styled.div`
 
 const Select = styled.select`
   -webkit-appearance: none;
+  font-size: 16px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.09);
+  border: 0;
+  border-radius: 6px;
+  padding: 5px 20px;
+  margin-top: 20px;
 `
 
 const AgreeInfomation = styled.div`
@@ -126,7 +133,7 @@ const Mask = (): JSX.Element => {
         return (
           <>
             <div className="row">
-              <div className="col-md-12">
+              <div className="col-md-12 searchDistance">
                 <Select value={distance} onChange={changeDistance}>
                   <option value="1km">1km</option>
                   <option value="3km">3km</option>
