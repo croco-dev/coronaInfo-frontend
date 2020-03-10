@@ -8,13 +8,13 @@ const StyleSection = styled.div`
     color: gray;
   }
   .green {
-    color: green;
+    color: #00a769;
   }
   .yellow {
-    color: yellow;
+    color: #d2950e;
   }
   .red {
-    color: red;
+    color: #de2e2e;
   }
   .name {
     font-size: 20px;
@@ -136,7 +136,7 @@ const MaskCard = ({ data }) => {
                           <span>
                             {data.remain_stat === 'plenty' && (
                               <>
-                                <span className="green">100+</span>
+                                <span className="green">100개 이상</span>
                               </>
                             )}
                             {data.remain_stat === 'some' && (
@@ -151,7 +151,7 @@ const MaskCard = ({ data }) => {
                             )}
                             {data.remain_stat === 'empty' && (
                               <>
-                                <span className="gray">100+</span>
+                                <span className="gray">1개 미만</span>
                               </>
                             )}
                           </span>
