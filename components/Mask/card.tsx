@@ -46,6 +46,9 @@ const StyleSection = styled.div`
         text-align: center;
       }
     }
+    tbody {
+      background: #fff;
+    }
   }
   .infomation {
     margin-top: 20px;
@@ -72,13 +75,14 @@ const Tag = styled.span`
   color: #fff;
   font-weight: 500;
   padding: 3px 30px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 
   &.plenty {
     background: #00a769;
   }
   &.some {
-    background: #d2950e;
+    background: #f1c40f;
+    color: #000;
   }
   &.few {
     background: #de2e2e;
@@ -99,9 +103,33 @@ const MaskCard = ({ data }) => {
     open ? setOpen(false) : setOpen(true)
   }
 
+  let color
+
+  switch (data.remain_stat) {
+    case 'plenty':
+      color = '#d7fdef'
+      break
+    case 'some':
+      color = '#fffae6'
+      break
+    case 'few':
+      color = '#ffdede'
+      break
+    case 'empty':
+      color = '#dcdcdc'
+      break
+    default:
+      color = '#fff'
+      break
+  }
+
   return (
     <>
-      <Card>
+      <Card
+        style={{
+          background: color,
+        }}
+      >
         <StyleSection>
           <span className="openBtn" onClick={changeOpen}>
             {open ? (
