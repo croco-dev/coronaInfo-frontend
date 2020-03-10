@@ -175,7 +175,7 @@ const MaskCard = ({ data }) => {
                 <div className="mapLink row">
                   <a
                     href={
-                      'https://map.kakao.com/link/to/' +
+                      'https://map.kakao.com/link/map/' +
                       encodeURIComponent(data.name) +
                       ',' +
                       data.lat +
