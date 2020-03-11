@@ -7,6 +7,22 @@ import MaskCard from '@/components/Mask/card'
 // import MaskSearch from '@/components/Mask/search'
 import { NextSeo } from 'next-seo'
 
+// const calDistance = (lat1, lng1, lat2, lng2) => {
+//   const deg2rad = deg => {
+//     return deg * (Math.PI / 180)
+//   }
+
+//   const R = 6371 // Radius of the earth in km
+//   const dLat = deg2rad(lat2 - lat1) // deg2rad below
+//   const dLon = deg2rad(lng2 - lng1)
+//   const a =
+//     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+//     Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2)
+//   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+//   const d = R * c // Distance in km
+//   return d
+// }
+
 const Callout = styled.div`
   padding: 20px 25px;
   background: #feeff2;
@@ -138,6 +154,7 @@ const Mask = (): JSX.Element => {
                 <label htmlFor="selectDistance">검색 거리: </label>
                 <Select id="selectDistance" value={showDistance} onChange={changeDistance}>
                   <option value={500}>500m</option>
+                  <option value={700}>700m</option>
                   <option value={1000}>1km</option>
                   <option value={2000}>2km</option>
                   <option value={3000}>3km</option>
@@ -152,17 +169,21 @@ const Mask = (): JSX.Element => {
                 padding: '20px 0',
               }}
             >
-              {data && data.length > 0 && (
+              {data && data.length > 0 ? (
                 <>
                   {data.map((item, i) => {
                     if (item.remain_stat !== null) {
                       return (
-                        <div className="col-md-6" key={i} style={{ marginBottom: '15px' }}>
+                        <div className="col-md-6 col-lg-4" key={i} style={{ marginBottom: '15px' }}>
                           <MaskCard data={item} />
                         </div>
                       )
                     }
                   })}
+                </>
+              ) : (
+                <>
+                  <div style={{ textAlign: 'center' }}>Loading...</div>
                 </>
               )}
             </div>
