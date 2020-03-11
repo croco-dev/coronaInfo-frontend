@@ -1,0 +1,6 @@
+applications:
+  - name: coronas # 애플리케이션 이름
+    memory: 2048M # 애플리케이션 메모리 사이즈
+    instances: 7 # 애플리케이션 인스턴스 개수
+    command: npm start # 애플리케이션 실행 명령어
+    path: ./ # 배포될 애플리케이션의 위치
