@@ -22,6 +22,7 @@
     "node-sass": "^4.13.1",
     "randomcolor": "^0.5.4",
     "react": "16.12.0",
+    "react-app-polyfill": "^1.0.6",
     "react-dom": "16.12.0",
     "react-ga": "^2.7.0",
     "react-naver-maps": "^0.0.13",
