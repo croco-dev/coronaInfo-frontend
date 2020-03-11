@@ -169,7 +169,7 @@ const Mask = (): JSX.Element => {
                 padding: '20px 0',
               }}
             >
-              {data && data.length > 0 && (
+              {data && data.length > 0 ? (
                 <>
                   {data.map((item, i) => {
                     if (item.remain_stat !== null) {
@@ -180,6 +180,10 @@ const Mask = (): JSX.Element => {
                       )
                     }
                   })}
+                </>
+              ) : (
+                <>
+                  <div style={{ textAlign: 'center' }}>Loading...</div>
                 </>
               )}
             </div>
