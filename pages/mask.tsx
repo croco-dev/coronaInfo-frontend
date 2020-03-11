@@ -103,7 +103,15 @@ const Mask = (): JSX.Element => {
     )
     const jsonData = await fetchData.json()
     if (jsonData.count <= 0) setErr(2)
-    else setData(jsonData.stores)
+    else {
+      const data = jsonData.stores.sort((a, b) => {
+        return Math.sqrt(
+          Math.pow(Math.abs(a.lat - b.lat) * (Math.PI / 180), 2) +
+            Math.pow(Math.abs(a.lng - b.lng) * (Math.PI / 180), 2),
+        )
+      })
+      setData(data)
+    }
   }
 
   const loadOperation = (dis = 1000) => {
@@ -125,6 +133,7 @@ const Mask = (): JSX.Element => {
   }
 
   const changeDistance = (e): void => {
+    setErr(0)
     setShowDistance(e.target.value)
     const action = (): void => {
       loadOperation(e.target.value)
