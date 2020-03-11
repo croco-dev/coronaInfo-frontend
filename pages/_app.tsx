@@ -4,6 +4,7 @@ import ReactGA from 'react-ga'
 import { DefaultSeo } from 'next-seo'
 import * as Sentry from '@sentry/browser'
 import ChannelTalk from '@/components/ChannelTalk'
+import 'react-app-polyfill/ie11'
 
 // 👁 Global Style
 import '@/styles/core.scss'
