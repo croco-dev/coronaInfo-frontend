@@ -5,9 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint --ext .js,.ts,.jsx,.tsx --ignore-path .gitignore .",
-    "start:doda": "next start -p 14142"
+    "start": "next start -p 8080",
+    "lint": "eslint --ext .js,.ts,.jsx,.tsx --ignore-path .gitignore ."
   },
   "dependencies": {
     "@emotion/core": "^10.0.27",
@@ -15,6 +14,7 @@
     "@iconify/icons-ion": "^1.0.10",
     "@sentry/browser": "^5.13.0",
     "@zeit/next-sass": "^1.0.1",
+    "acorn": "^7.1.1",
     "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.2.1",
@@ -51,7 +51,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
-    "eslint-plugin-react-hooks": "^2.3.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "prettier": "^1.19.1",
     "terser-webpack-plugin": "^2.3.5",

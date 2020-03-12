@@ -74,6 +74,10 @@ const Tag = styled.span`
   &.empty {
     background: #6b6b6b;
   }
+  &.break {
+    background: #fff;
+    color: #333;
+  }
 `
 
 const Address = styled.span`
@@ -101,6 +105,9 @@ const MaskCard = ({ data }) => {
       break
     case 'empty':
       color = '#dcdcdc'
+      break
+    case 'break':
+      color = '#f7f7f7'
       break
     default:
       color = '#fff'
@@ -144,6 +151,11 @@ const MaskCard = ({ data }) => {
           {data.remain_stat === 'empty' && (
             <>
               <Tag className="empty">없음 (1개 이하)</Tag>
+            </>
+          )}
+          {data.remain_stat === 'break' && (
+            <>
+              <Tag className="break">판매 중지</Tag>
             </>
           )}
           <h2 className="name">
@@ -191,6 +203,11 @@ const MaskCard = ({ data }) => {
                             {data.remain_stat === 'empty' && (
                               <>
                                 <span className="gray">1개 이하</span>
+                              </>
+                            )}
+                            {data.remain_stat === 'break' && (
+                              <>
+                                <span className="gray">판매 중지</span>
                               </>
                             )}
                           </span>

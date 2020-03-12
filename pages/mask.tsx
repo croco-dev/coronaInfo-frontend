@@ -86,7 +86,7 @@ const SelectDistanceBlock = styled.div`
 
 const Mask = (): JSX.Element => {
   const [start, setStart] = useState(false) // 시작 여부
-  const [err, setErr] = useState('NONE')
+  const [err, setErr] = useState(0)
   const [search, setSearch] = useState(false) // 검색이 필요한가요?
   const [data, setData] = useState([]) // 검색 반환 데이터
 
@@ -94,7 +94,7 @@ const Mask = (): JSX.Element => {
 
   const dataLoading = async (lat, lng, dis = 1000) => {
     const fetchData = await fetch(
-      'https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?lat=' +
+      'https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v2/storesByGeo/json?lat=' +
         lat +
         '&lng=' +
         lng +
@@ -102,7 +102,16 @@ const Mask = (): JSX.Element => {
         dis,
     )
     const jsonData = await fetchData.json()
-    setData(jsonData.stores)
+    if (jsonData.count <= 0) setErr(2)
+    else {
+      const data = jsonData.stores.sort((a, b) => {
+        return Math.sqrt(
+          Math.pow(Math.abs(a.lat - b.lat) * (Math.PI / 180), 2) +
+            Math.pow(Math.abs(a.lng - b.lng) * (Math.PI / 180), 2),
+        )
+      })
+      setData(data)
+    }
   }
 
   const loadOperation = (dis = 1000) => {
@@ -115,8 +124,8 @@ const Mask = (): JSX.Element => {
         },
         err => {
           console.log(err)
-          if (err.code == err.PERMISSION_DENIED) {
-            setErr('DENY_PERMISSION')
+          if (err.code === err.PERMISSION_DENIED) {
+            setErr(1)
           }
         },
       )
@@ -124,6 +133,7 @@ const Mask = (): JSX.Element => {
   }
 
   const changeDistance = (e): void => {
+    setErr(0)
     setShowDistance(e.target.value)
     const action = (): void => {
       loadOperation(e.target.value)
@@ -169,17 +179,35 @@ const Mask = (): JSX.Element => {
                 padding: '20px 0',
               }}
             >
-              {data && data.length > 0 && (
+              {err === 2 ? (
                 <>
-                  {data.map((item, i) => {
-                    if (item.remain_stat !== null) {
-                      return (
-                        <div className="col-md-6 col-lg-4" key={i} style={{ marginBottom: '15px' }}>
-                          <MaskCard data={item} />
-                        </div>
-                      )
-                    }
-                  })}
+                  <div style={{ textAlign: 'center' }}>
+                    API가 동작하지 않거나 데이터가 없습니다.
+                  </div>
+                </>
+              ) : (
+                <>
+                  {data && data.length > 0 ? (
+                    <>
+                      {data.map((item, i) => {
+                        if (item.remain_stat !== null) {
+                          return (
+                            <div
+                              className="col-md-6 col-lg-4"
+                              key={i}
+                              style={{ marginBottom: '15px' }}
+                            >
+                              <MaskCard data={item} />
+                            </div>
+                          )
+                        }
+                      })}
+                    </>
+                  ) : (
+                    <>
+                      <div style={{ textAlign: 'center' }}>Loading...</div>
+                    </>
+                  )}
                 </>
               )}
             </div>
@@ -196,7 +224,7 @@ const Mask = (): JSX.Element => {
             desc="내 위치 기준으로 마스크를 구입할 수 있는 곳은 어딨을까요?"
           />
           <Container>
-            {err === 'DENY_PERMISSION' && (
+            {err === 1 && (
               <>
                 <Callout>
                   <h3>위치를 받아올 수 없습니다.</h3>

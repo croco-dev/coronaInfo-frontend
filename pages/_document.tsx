@@ -17,6 +17,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta
             name="google-site-verification"
             content="f3t63McdfQwW6s1PtPOOaR_RifZvgwGRjMp0epjbSsU"
