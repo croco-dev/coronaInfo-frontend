@@ -94,7 +94,7 @@ const Mask = (): JSX.Element => {
 
   const dataLoading = async (lat, lng, dis = 1000) => {
     const fetchData = await fetch(
-      'https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?lat=' +
+      'https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v2/storesByGeo/json?lat=' +
         lat +
         '&lng=' +
         lng +
