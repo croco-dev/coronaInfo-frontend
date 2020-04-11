@@ -9,11 +9,13 @@ const HomeStyle = styled.div`
   word-break: break-all;
   line-height: 1.6;
   div {
+    font-size: 14px;
     margin: 0 auto;
     max-width: 600px;
+    padding: 0 20px;
   }
   h2 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
   }
