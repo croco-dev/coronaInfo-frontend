@@ -5,7 +5,7 @@ import fetch from 'isomorphic-unfetch'
 
 const StyledFooter = styled.footer`
   width: 100%;
-  height: 140px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,27 +24,9 @@ const StyledFooter = styled.footer`
 `
 
 const Footer = (): JSX.Element => {
-  const [version, setVersion] = useState('')
-  useEffect(() => {
-    fetchData()
-    async function fetchData(): Promise<void> {
-      const version = await fetch(`${process.env.API_URL}/versions/?format=json`)
-      const verJson = await version.json()
-      return setVersion(verJson.date)
-    }
-  }, [])
   return (
     <StyledFooter>
       <div>
-        <p>
-          제보, 정정 요청은 이메일로 받습니다 <Emoji str="🙂" /> <br />
-          <span className="small">
-            <Emoji str="📧" /> admin@coronas.info
-          </span>
-        </p>
-        <p>
-          <Emoji str="🔄" /> 업데이트: {version}
-        </p>
         <a
           href="https://www.notion.so/6bd0a7cdaae4456ca7059a7d4da7c484"
           target="_blank"
