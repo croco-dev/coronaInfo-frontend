@@ -1,13 +1,11 @@
-import React from 'react'
-import App from 'next/app'
-import ReactGA from 'react-ga'
-import { DefaultSeo } from 'next-seo'
-import * as Sentry from '@sentry/browser'
-import ChannelTalk from '@/components/ChannelTalk'
-import 'react-app-polyfill/ie11'
-
 // 👁 Global Style
 import '@/styles/core.scss'
+import * as Sentry from '@sentry/browser'
+import { DefaultSeo } from 'next-seo'
+import App from 'next/app'
+import React from 'react'
+import 'react-app-polyfill/ie11'
+import ReactGA from 'react-ga'
 
 if (process.env.NODE_ENV === 'production') {
   Sentry.init({ dsn: 'https://f6473d1b251f4eeca529512dd58ddfcf@sentry.io/3324211' })
@@ -55,7 +53,6 @@ class MyApp extends App {
             cardType: 'summary_large_image',
           }}
         />
-        <ChannelTalk pluginId={process.env.CHANNEL_TALK} />
         <Component {...pageProps} />
       </>
     )

@@ -10,7 +10,6 @@ module.exports = withSass({
   env: {
     API_URL: process.env.API_URL,
     NAVER_MAP_API: process.env.NAVER_MAP_API,
-    CHANNEL_TALK: process.env.CHANNEL_TALK,
   },
   poweredByHeader: false,
   webpack: (config, options) => {
@@ -24,9 +23,11 @@ module.exports = withSass({
     // CSS Minified
     config.optimization.minimizer = []
     config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}))
-    config.optimization.minimizer.push(new TerserPlugin({
-      test: /\.js(\?.*)?$/i,
-    }))
+    config.optimization.minimizer.push(
+      new TerserPlugin({
+        test: /\.js(\?.*)?$/i,
+      }),
+    )
 
     return config
   },
